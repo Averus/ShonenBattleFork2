@@ -141,6 +141,7 @@
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\_new_behaviour_script_8cs.xml" />
     <None Include="Assets\CodeGraphData\Result_solution\xml\_damage_8cs.xml" />
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\_targeting_criteria_8cs.xml" />
+    <None Include="Assets\DefaultChassisVisualsCSV.txt" />
     <None Include="Assets\CodeGraphData\Result_solution\xml\class_no_condition.xml" />
     <None Include="Assets\CodeGraphData\Result_solution\xml\class_targeting_criteria.xml" />
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\dir_2715d255b0c6c13616308a5049ca8ab5.xml" />
@@ -193,6 +194,7 @@
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\dir_0ad65da18f302b9f45fe3778ab1ff78b.xml" />
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\namespace_system_1_1_collections_1_1_generic.xml" />
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\_alone_8cs.xml" />
+    <None Include="Assets\ResolutionVisualsCSV.txt" />
     <None Include="Assets\CodeGraphData\Result_solution\xml\_greater_than_8cs.xml" />
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\class_stat_modulation.xml" />
     <None Include="Assets\CodeGraphData\Result_solution\xml\dir_8c43cc5207e3ceada3bad3fe60cecb19.xml" />

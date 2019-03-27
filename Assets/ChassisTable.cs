@@ -433,7 +433,7 @@ public class ChassisTable : ScriptableObject
         return null;
     }
 
-    private int CompareToHits(Action action)
+    public int CompareToHits(Action action)
     {
        //Debug.Log("comparing to hits");
         //REACTIONS - CONTESTED ABILITIES - EXCHANGES WITH BOTH HALVES
@@ -523,6 +523,7 @@ public class ChassisTable : ScriptableObject
         return 0;
     }
 
+    //this will be changed to check chassis rules, not check resolution visuals as it does now
     public void CheckChassisTable()
     {
         if (actionManager.currentAction != null)
@@ -546,26 +547,29 @@ public class ChassisTable : ScriptableObject
                 {
                     string s = chassisRules[i].visual;
 
-                    if (actionManager.currentAction.provoker != null)
+                    if (actionManager.currentAction.actionType == ThoughtType.Reaction)
                     {
-                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.provoker.actors[0].beingName);
+                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName,actionManager.currentAction.targets[0].beingName, actionManager.currentAction.provoker.actors[0].beingName);
                         Debug.Log(s);
                     }
                     else
                     {
-                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName, "no provoker");
+                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.targets[0].beingName, "no provoker");
                         Debug.Log(s);
                     }
+                    //Only one visual fires with this method, the most specific case
+                    return;
                 } 
             }
         }
     }
 
 
-    private string InsertNames(string s, string attacker, string provoker)
+    private string InsertNames(string s, string attacker, string target, string provoker)
     {
-        s.Replace("ATTACKER", attacker);
-        s.Replace("PROVOKER", provoker);
+        s = s.Replace("ACTOR", attacker);
+        s = s.Replace("TARGET", target);
+        s = s.Replace("PROVOKER", provoker);
 
         return s;
     }

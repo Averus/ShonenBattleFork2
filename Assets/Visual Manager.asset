@@ -11,3 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b831c0c6ddedbf44a9d092b403f9c5e2, type: 3}
   m_Name: Visual Manager
   m_EditorClassIdentifier: 
+  actionManager: {fileID: 0}
+  defaultChassisVisualsCSV: {fileID: 4900000, guid: 2d84ba92cf3de4146bf85434a9b23840,
+    type: 3}
+  resolutionVisualsCSV: {fileID: 4900000, guid: 224ad068ec540dc4c964e88c5209fac7,
+    type: 3}

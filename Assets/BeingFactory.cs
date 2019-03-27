@@ -244,7 +244,7 @@ public class BeingFactory : MonoBehaviour {
         BasicAttackAbilities(p);
 
         //Bestow passive abilities
-        BasicPassiveAbilities(p);
+        //BasicPassiveAbilities(p);
 
         //bestow defences
         BasicDefences(p);

@@ -34,7 +34,11 @@ public class ActionManager : MonoBehaviour {
         else
         {
             chassisTable.actionManager = this;
-            chassisTable.LoadChassisRulesCSV(); 
+            chassisTable.LoadChassisRulesCSV(); //Loads the Chassis rules 
+
+            visualManager.actionManager = this;
+            visualManager.LoadDefaultChassisVisualsCSV(); //loads the default chassis visuals, visuals from the start of an action
+            visualManager.LoadResolutionVisualsCSV(); //loads the resolution visuals, visuals for the resolution of an action - what actually happens as a result 
         }
 		
 	}
@@ -211,8 +215,13 @@ public class ActionManager : MonoBehaviour {
             if (LIST3[0].ability.CanThisBeUsed(this))
             {
                 currentAction = LIST3[0];
+                //calculate tohit values
+                //TODO
+                //get compare to get attackers to hit advantage
+                attackersFavour = chassisTable.CompareToHits(currentAction);
                 //Compare Chassis rules to see if a special effect happens like a beam battle
-                chassisTable.CheckChassisTable();
+                visualManager.VisualiseResolution();
+                //chassisTable.CheckChassisTable();
                 //Debug.Log(LIST3[0].ability.GetParentBeing().beingName + " uses " + LIST3[0].ability.abilityName);
                 //LIST3[0].ability.Use();
             }
