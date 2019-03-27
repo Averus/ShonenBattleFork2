@@ -202,12 +202,12 @@ public class BeingFactory : MonoBehaviour {
         Ability reg = new Ability(b, "Stamina regen", AbilityChassis.Block, 100, 1, false);
         reg.isDefence = false;
 
-        NewRound_Condition nrc = new NewRound_Condition(battleManager, b, "New round condition");
+        //NewRound_Condition nrc = new NewRound_Condition(battleManager, b, "New round condition");
         ModulateResource_Effect staminaRegen = new ModulateResource_Effect(battleManager, b, reg, "Stamina regen", "STAMINA", +50, true);
         Self_TargetingCriteria self = new Self_TargetingCriteria(battleManager, b, reg);
 
         reg.effects.Add(staminaRegen);
-        reg.conditions.Add(nrc);
+        //reg.conditions.Add(nrc);
         reg.targetingCriteria.Add(self);
         b.abilities.Add(reg);
     }

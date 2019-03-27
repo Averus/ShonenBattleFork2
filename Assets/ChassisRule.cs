@@ -18,10 +18,11 @@ public class ChassisRule {
             {
                 if (conditions[i].CanThisBeUsed() == false)
                 {
+                    // Debug.Log("Rule " + i.ToString() + "returns false;");
                     return false;
                 }
-                return true;
             }
+            return true;
         }
         Debug.Log("Error: Chassis rule has no conditions");
         return false;

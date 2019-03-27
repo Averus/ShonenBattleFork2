@@ -20,39 +20,9 @@ public class ActionManager : MonoBehaviour {
 
     public Thought currentThought = null; //The current Thought that is being evaluated
     public Action currentAction = null; //The current action being evaluated
+    public float attackersFavour = 0;
 
 
-/*
-    private void GetCurrentActionAttackersFavour()
-    {
-        attackersFavour = ((currentAction.provoker.toHit / currentAction.toHit) * 100) - 100;
-
-        if (attackersFavour <= criticalFail)
-        {
-            attackersFavourRating = 1;
-        }
-
-        if (attackersFavour > criticalFail && attackersFavour <= fail)
-        {
-            attackersFavourRating = 2;
-        }
-
-        if (attackersFavour > fail && attackersFavour <= success)
-        {
-            attackersFavourRating = 3;
-        }
-
-        if (attackersFavour > success && attackersFavour <= criticalSuccess)
-        {
-            attackersFavourRating = 4;
-        }
-
-        if (attackersFavour > criticalSuccess)
-        {
-            attackersFavourRating = 5;
-        }
-    }
-*/
     // Use this for initialization
     void Start () {
 
@@ -240,6 +210,7 @@ public class ActionManager : MonoBehaviour {
         {
             if (LIST3[0].ability.CanThisBeUsed(this))
             {
+                currentAction = LIST3[0];
                 //Compare Chassis rules to see if a special effect happens like a beam battle
                 chassisTable.CheckChassisTable();
                 //Debug.Log(LIST3[0].ability.GetParentBeing().beingName + " uses " + LIST3[0].ability.abilityName);

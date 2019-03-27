@@ -40,6 +40,7 @@ public class Being : MonoBehaviour{
 
     //New things 17/02/2019
     ActionManager actionManager;
+    public Action currentAction;
     public bool isInTheCurrentRound = false;
     public bool isCommittedToAction = false;
     public bool hasTakenAction = false;

@@ -12,6 +12,8 @@ public class ChassisTable : ScriptableObject
     public TextAsset chassisRulesCSV;
     List<ChassisRule> chassisRules = new List<ChassisRule>();
 
+    public float attackersfavour = 0;
+
     float criticalFail = -100;
     float fail = -75;
     float lowerEqual = -25;
@@ -75,6 +77,36 @@ public class ChassisTable : ScriptableObject
     {
         if (name != null)
         {
+
+            if (name[0] == "AttackersFavour")
+            {
+                if (name[1] != null)
+                {
+                    int param;
+
+                    if (int.TryParse(name[1], out param))
+                    {
+                        if (actionManager != null)
+                        {
+                            return new AttackersFavour_ChassisCondition(actionManager, param);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    else
+                    {
+                        Debug.Log("Error: Could not parse param - should be an int");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Error: No int given for AttackersFavour ChassisCondition creation");
+                    return null;
+                }
+            }
+
+
             if (name[0] == "ActorCount")
             {
                 if (name[1] != null)
@@ -103,23 +135,307 @@ public class ChassisTable : ScriptableObject
                 }
             }
 
-            Debug.Log("Error: ChassisCondition creation name not recognised");
-            return null;
+
+            if (name[0] == "TargetCount")
+            {
+                if (name[1] != null)
+                {
+                    int param;
+
+                    if (int.TryParse(name[1], out param))
+                    {
+                        if (actionManager != null)
+                        {
+                            return new TargetCount_ChassisCondition(actionManager, param);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    else
+                    {
+                        Debug.Log("Error: Could not parse param - should be an int");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Error: No int given for TargetCount ChassisCondition creation");
+                    return null;
+                }
+            }
+
+            if (name[0] == "ProvokerCount")
+            {
+                if (name[1] != null)
+                {
+                    int param;
+
+                    if (int.TryParse(name[1], out param))
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerCount_ChassisCondition(actionManager, param);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    else
+                    {
+                        Debug.Log("Error: Could not parse param - should be an int");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Error: No int given for ProvokerCount ChassisCondition creation");
+                    return null;
+                }
+            }
+
+
+            if (name[0] == "ProvokerIsSoleTarget")
+            {
+                if (name.Length == 1)
+                {   
+                   if (actionManager != null)
+                   {
+                      return new ProvokerIsSoleTarget_ChassisCondition(actionManager);
+                   }
+                   Debug.Log("Error: ChassisTable has no reference to action manager");
+                   return null;   
+                }
+                else
+                {
+                Debug.Log("Error: parameter given for ProvokerIsTarget when none is required");
+                return null;
+                }
+            }
+
+
+            if (name[0] == "ActionType")
+            {
+                if (name[1] != null)
+                {
+                    if (name[1] == "Normal")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActionType_ChassisCondition(actionManager, ThoughtType.Normal );
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Reaction")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActionType_ChassisCondition(actionManager, ThoughtType.Reaction);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    
+                    {
+                        Debug.Log("Error: Could not parse param - should be a ThoughtType eg Normal or Reaction etc ");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Error: No actionType given for ActionType ChassisCondition creation");
+                    return null;
+                }
+            }
+
+
+            if (name[0] == "ActorChassis")
+            {
+                if (name[1] != null)
+                {
+                    if (name[1] == "Melee")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.Melee);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Block")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.Block);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Dodge")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.Dodge);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Beam")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.Beam);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Ball")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.Ball);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "BigBall")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.BigBall);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Blast")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.Blast);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Wave")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ActorChassis_ChassisCondition(actionManager, AbilityChassis.Wave);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+
+                    {
+                        Debug.Log("Error: Could not parse string in actor chassis should be an ability chassis type eg Beam or Block etc string given: " + name[1]);
+                        return null;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Error: No chassis type given for Actor Chassis ChassisCondition creation");
+                    return null;
+                }
+            }
+
+
+            if (name[0] == "ProvokerChassis")
+            {
+                if (name[1] != null)
+                {
+                    if (name[1] == "Melee")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.Melee);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Block")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.Block);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Dodge")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.Dodge);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Beam")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.Beam);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Ball")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.Ball);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "BigBall")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.BigBall);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Blast")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.Blast);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+                    if (name[1] == "Wave")
+                    {
+                        if (actionManager != null)
+                        {
+                            return new ProvokerChassis_ChassisCondition(actionManager, AbilityChassis.Wave);
+                        }
+                        Debug.Log("Error: ChassisTable has no reference to action manager");
+                        return null;
+                    }
+
+                    {
+                        Debug.Log("Error: Could not parse string in provoker chassis should be an ability chassis type eg Beam or Block etc string given: " + name[1]);
+                        return null;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Error: No chassis type given for Provoker Chassis ChassisCondition creation");
+                    return null;
+                }
+            }
+
         }
 
         Debug.Log("Error: Cannot create ChassisCondition - name is null");
         return null;
     }
 
-
-
-
-
-    public float attackersfavour = 0; //for debug to see in inspector
-
     private int CompareToHits(Action action)
     {
-       // Debug.Log("comparing to hits");
+       //Debug.Log("comparing to hits");
         //REACTIONS - CONTESTED ABILITIES - EXCHANGES WITH BOTH HALVES
         if (action.actionType == ThoughtType.Reaction)
         {
@@ -207,21 +523,54 @@ public class ChassisTable : ScriptableObject
         return 0;
     }
 
-
     public void CheckChassisTable()
     {
+        if (actionManager.currentAction != null)
+        {
+            float a = CompareToHits(actionManager.currentAction);
+           // Debug.Log(actionManager.currentAction.actors[0].beingName + "'s actonFacour is " + a);
+            actionManager.attackersFavour = a;
+        }
+        else
+        {
+            Debug.Log("Error: actionManager.currentAction = null");
+        }
+
+
         if (chassisRules != null)
         {
             for (int i = 0; i < chassisRules.Count; i++)
             {
+
                 if (chassisRules[i].CanThisBeUsed())
                 {
-                Debug.Log(chassisRules[i].visual);
-                }
-                
+                    string s = chassisRules[i].visual;
+
+                    if (actionManager.currentAction.provoker != null)
+                    {
+                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.provoker.actors[0].beingName);
+                        Debug.Log(s);
+                    }
+                    else
+                    {
+                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName, "no provoker");
+                        Debug.Log(s);
+                    }
+                } 
             }
         }
     }
+
+
+    private string InsertNames(string s, string attacker, string provoker)
+    {
+        s.Replace("ATTACKER", attacker);
+        s.Replace("PROVOKER", provoker);
+
+        return s;
+    }
+
+
 
     //this is now obsolete
     public void Resolve(Action action)
@@ -341,99 +690,5 @@ public class ChassisTable : ScriptableObject
 
 
 
-
-
-    private bool CurrentActionIsType(int thoughtType)
-    {
-        if (actionManager.currentAction != null)
-        {
-            if (actionManager.currentAction.actionType == (ThoughtType)thoughtType)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private bool CurrentActionActorsCount(int number)
-    {
-        if (actionManager.currentAction != null)
-        {
-            if (actionManager.currentAction.actors.Count == number)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private bool CurrentActionTargetsCount(int number)
-    {
-        if (actionManager.currentAction != null)
-        {
-            if (actionManager.currentAction.targets.Count == number)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private bool ProvokingActorsCount(int number)
-    {
-        if (actionManager.currentAction != null)
-        {
-            if (actionManager.currentAction.provoker != null)
-            {
-                if (actionManager.currentAction.provoker.actors.Count == number)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private bool CurrentActionTargetIsSoleProkover(int number)
-    {
-        if (actionManager.currentAction != null)
-        {
-            if (actionManager.currentAction.provoker != null)
-            {
-                if (actionManager.currentAction.targets[0] == actionManager.currentAction.provoker.actors[0])
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private bool AttackersFavourRatingIs(int number)
-    {
-        //if (actionManager.attackersFavourRating == number)
-      //  {
-       //     return true;
-      //  }
-        return false;
-    }
-
-    private bool CurrentActionAttackerChassisIs(int chassisType)
-    {
-        if (actionManager.currentAction.ability.abilityChassis == (AbilityChassis)chassisType)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private bool CurrentActionProvokerChassisIs(int chassisType)
-    {
-        if (actionManager.currentAction.provoker.ability.abilityChassis == (AbilityChassis)chassisType)
-        {
-            return true;
-        }
-        return false;
-    }
 
 }

@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{94305CC9-D272-C3C8-2720-94B9F7BA18E7}</ProjectGuid>
+    <ProjectGuid>{BF6E4D71-A860-60AA-CCF4-0A77CF6BB3AE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -68,8 +68,6 @@
     <Compile Include="Assets\Abilities\Behaviour.cs" />
     <Compile Include="Assets\Abilities\BeingToken.cs" />
     <Compile Include="Assets\Abilities\Condition.cs" />
-    <Compile Include="Assets\Abilities\Conditions\Alone_Condition.cs" />
-    <Compile Include="Assets\Abilities\Conditions\NewRound_Condition.cs" />
     <Compile Include="Assets\Abilities\Conditions\NoCondition_Condition.cs" />
     <Compile Include="Assets\Abilities\Conditions\ResourceAtValue_Condition.cs" />
     <Compile Include="Assets\Abilities\Defence Effects\AnyAction_DefenceEffect.cs" />
@@ -102,8 +100,15 @@
     <Compile Include="Assets\ActionManager.cs" />
     <Compile Include="Assets\Being.cs" />
     <Compile Include="Assets\BeingFactory.cs" />
+    <Compile Include="Assets\ChassisConditions\ActionType_ChassisCondition.cs" />
+    <Compile Include="Assets\ChassisConditions\ActorChassis_ChassisCondition.cs" />
     <Compile Include="Assets\ChassisConditions\ActorCount_ChassisCondition.cs" />
+    <Compile Include="Assets\ChassisConditions\AttackersFavour_ChassisCondition.cs" />
     <Compile Include="Assets\ChassisConditions\ChassisCondition.cs" />
+    <Compile Include="Assets\ChassisConditions\ProvokerChassis_ChassisCondition.cs" />
+    <Compile Include="Assets\ChassisConditions\ProvokerCount_ChassisCondition.cs" />
+    <Compile Include="Assets\ChassisConditions\ProvokerIsTarget_ChassisCondition.cs" />
+    <Compile Include="Assets\ChassisConditions\TargetCount_ChassisCondition.cs" />
     <Compile Include="Assets\ChassisRule.cs" />
     <Compile Include="Assets\ChassisTable.cs" />
     <Compile Include="Assets\Debug_LISTviewer.cs" />
@@ -254,16 +259,16 @@
     <None Include="Assets\CodeGraphData\Result_solution\xml\class_main.xml" />
     <None Include="Assets\CodeGraphData\Result_Assembly-CSharp\xml\class_includes_effect.xml" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Tim/Documents/ShonenBattleFork2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
