@@ -16,7 +16,7 @@ public class BuffToHit_Effect : Effect {
     }
 
 
-    public BuffToHit_Effect(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int buff) : base(battleManager, parentBeing, parentAbility, effectName)
+    public BuffToHit_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int buff) : base(actionManager, parentBeing, parentAbility, effectName)
     {
         this.buff = buff;
         this.modulator = modulator;

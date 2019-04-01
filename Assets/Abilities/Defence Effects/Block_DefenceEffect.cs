@@ -15,7 +15,7 @@ public class Block_DefenceEffect : Effect {
 
 
 
-    public Block_DefenceEffect(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName) : base(battleManager, parentBeing, parentAbility, effectName)
+    public Block_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName) : base(actionManager, parentBeing, parentAbility, effectName)
     {
 
     }

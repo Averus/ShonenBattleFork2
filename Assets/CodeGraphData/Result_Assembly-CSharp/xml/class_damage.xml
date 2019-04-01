@@ -44,11 +44,11 @@
       <memberdef kind="function" id="class_damage_1a53cf208ad633117a427134e5d13ca19e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Damage.Damage</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, int damage)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int damage)</argsstring>
         <name>Damage</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -103,7 +103,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="99" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="96">
@@ -130,7 +130,7 @@
         </childnode>
       </node>
       <node id="99">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="100" relation="public-inheritance">
         </childnode>
@@ -150,7 +150,7 @@
         <childnode refid="100" relation="public-inheritance">
         </childnode>
         <childnode refid="99" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="97">
@@ -164,7 +164,7 @@
         </childnode>
         <childnode refid="99" relation="usage">
           <edgelabel>UsedInState</edgelabel>
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="101">
@@ -173,7 +173,7 @@
         <childnode refid="100" relation="public-inheritance">
         </childnode>
         <childnode refid="99" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="102" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -182,7 +182,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/Damage.cs" line="6" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/Damage.cs" bodystart="5" bodyend="29"/>
     <listofallmembers>
-      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>Damage</scope><name>battleManager</name></member>
+      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>Damage</scope><name>actionManager</name></member>
       <member refid="class_damage_1aceaa410b10e5c0fc6511c505fe3c9bd7" prot="private" virt="non-virtual"><scope>Damage</scope><name>damage</name></member>
       <member refid="class_damage_1a53cf208ad633117a427134e5d13ca19e" prot="public" virt="non-virtual"><scope>Damage</scope><name>Damage</name></member>
       <member refid="class_effect_1aeb5675bc461e64280c6381979d0fae60" prot="public" virt="non-virtual"><scope>Damage</scope><name>Effect</name></member>

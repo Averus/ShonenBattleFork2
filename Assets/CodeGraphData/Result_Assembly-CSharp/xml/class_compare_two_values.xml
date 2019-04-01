@@ -88,11 +88,11 @@
       <memberdef kind="function" id="class_compare_two_values_1a50c35ae41277971eddbb00d86cd18e2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CompareTwoValues.CompareTwoValues</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string conditionName, Being p, string value, string mode, int target)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string conditionName, Being p, string value, string mode, int target)</argsstring>
         <name>CompareTwoValues</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -158,7 +158,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="65" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="62">
@@ -188,7 +188,7 @@
         </childnode>
       </node>
       <node id="65">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="66" relation="public-inheritance">
         </childnode>
@@ -208,7 +208,7 @@
         <childnode refid="66" relation="public-inheritance">
         </childnode>
         <childnode refid="65" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="67">
@@ -217,7 +217,7 @@
         <childnode refid="66" relation="public-inheritance">
         </childnode>
         <childnode refid="65" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="68" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -226,7 +226,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/CompareTwoValues.cs" line="5" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/CompareTwoValues.cs" bodystart="4" bodyend="99"/>
     <listofallmembers>
-      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>CompareTwoValues</scope><name>battleManager</name></member>
+      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>CompareTwoValues</scope><name>actionManager</name></member>
       <member refid="class_compare_two_values_1ac7e246af887a7ee46f774952e9557277" prot="public" virt="virtual"><scope>CompareTwoValues</scope><name>CanThisBeUsed</name></member>
       <member refid="class_compare_two_values_1a50c35ae41277971eddbb00d86cd18e2c" prot="public" virt="non-virtual"><scope>CompareTwoValues</scope><name>CompareTwoValues</name></member>
       <member refid="class_condition_1ad2270c61a0f492990cccb977faf4e007" prot="public" virt="non-virtual"><scope>CompareTwoValues</scope><name>Condition</name></member>

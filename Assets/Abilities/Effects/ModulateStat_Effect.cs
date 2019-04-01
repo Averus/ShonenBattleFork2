@@ -28,7 +28,7 @@ public class ModulateStat_Effect : Effect
 
 
 
-    public ModulateStat_Effect(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, StatModType modifierType, int value) : base(battleManager, parentBeing, parentAbility, effectName)
+    public ModulateStat_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, StatModType modifierType, int value) : base(actionManager, parentBeing, parentAbility, effectName)
     {
         this.targetStat = targetStat;
         this.modifierType = modifierType;

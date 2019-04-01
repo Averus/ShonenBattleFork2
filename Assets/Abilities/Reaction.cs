@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Reaction {
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public Being parentBeing;
 
 
@@ -57,9 +57,9 @@ public class Reaction {
 
     }
 
-    public Reaction(BattleManager battleManager, Being parentBeing, string reactionName)
+    public Reaction(ActionManager actionManager, Being parentBeing, string reactionName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.reactionName = reactionName;
 

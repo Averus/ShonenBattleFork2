@@ -61,11 +61,11 @@
       <memberdef kind="function" id="class_modulate_to_hit_self_1a61a4fa2d2d8ddcbf7f5f3e8c974edb1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ModulateToHitSelf.ModulateToHitSelf</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int value)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int value)</argsstring>
         <name>ModulateToHitSelf</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -131,7 +131,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="184" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="188">
@@ -152,7 +152,7 @@
         </childnode>
       </node>
       <node id="184">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="185" relation="public-inheritance">
         </childnode>
@@ -172,7 +172,7 @@
         <childnode refid="185" relation="public-inheritance">
         </childnode>
         <childnode refid="184" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="182">
@@ -186,7 +186,7 @@
         </childnode>
         <childnode refid="184" relation="usage">
           <edgelabel>UsedInState</edgelabel>
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="186">
@@ -195,7 +195,7 @@
         <childnode refid="185" relation="public-inheritance">
         </childnode>
         <childnode refid="184" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="187" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -204,7 +204,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/ModulateToHitSelf.cs" line="7" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/ModulateToHitSelf.cs" bodystart="6" bodyend="35"/>
     <listofallmembers>
-      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>ModulateToHitSelf</scope><name>battleManager</name></member>
+      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>ModulateToHitSelf</scope><name>actionManager</name></member>
       <member refid="class_effect_1aeb5675bc461e64280c6381979d0fae60" prot="public" virt="non-virtual"><scope>ModulateToHitSelf</scope><name>Effect</name></member>
       <member refid="class_effect_1ab0d2647d792f5374565264e4494b85a9" prot="public" virt="non-virtual"><scope>ModulateToHitSelf</scope><name>effectName</name></member>
       <member refid="class_modulate_to_hit_self_1a61a4fa2d2d8ddcbf7f5f3e8c974edb1e" prot="public" virt="non-virtual"><scope>ModulateToHitSelf</scope><name>ModulateToHitSelf</name></member>

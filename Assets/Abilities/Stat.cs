@@ -8,15 +8,12 @@ public class Stat {
     public Being parentBeing;
     public string statName = "NO NAME";
     private bool hasChanged; //if it hasnt changed then there's no need to CalculateFinalValue again
-
-    public float max = 0;
+    public  float max = 0;
     public float baseValue = 0;
-    public float current;
+    private float _current = 0;
     private float lastBaseValue = float.MinValue;
-
     readonly List<StatModifier> statModifiers;
-
-    /*
+  
     public float current
     {
         get
@@ -29,9 +26,8 @@ public class Stat {
             }
             return _current;
         }
-    }
-    */
 
+    }
 
     private int CompareModifierOrder(StatModifier a, StatModifier b)
     {
@@ -41,9 +37,6 @@ public class Stat {
             return 1;
         return 0; // if (a.Order == b.Order)
     }
-
-
-
 
     public void AddModifier(StatModifier mod)
     {
@@ -118,9 +111,7 @@ public class Stat {
         return didRemove;
     }
 
-
-
-    public Stat(string name, Being parentBeing, float max, float baseValue)
+    public Stat(string name, Being parentBeing, float baseValue, float max)
     {
         this.parentBeing = parentBeing;
         this.statName = name;

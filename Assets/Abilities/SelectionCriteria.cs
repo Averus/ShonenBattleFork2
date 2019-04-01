@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class SelectionCriteria {
 
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public Being parentBeing;
     public Ability parentAbility;
     public string selectionCriteriaName;
@@ -16,9 +16,9 @@ public abstract class SelectionCriteria {
     public abstract void Assess(Thought thought);
 
 
-    public SelectionCriteria(BattleManager battleManager, Being parentBeing, string selectionCriteriaName, float minPriority, float maxPriority)
+    public SelectionCriteria(ActionManager actionManager, Being parentBeing, string selectionCriteriaName, float minPriority, float maxPriority)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.selectionCriteriaName = selectionCriteriaName;
         this.minPriority = minPriority;

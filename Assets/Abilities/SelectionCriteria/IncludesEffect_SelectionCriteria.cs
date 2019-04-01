@@ -25,9 +25,9 @@ public class IncludesEffect_SelectionCriteria : SelectionCriteria
     }
 
 
-    public IncludesEffect_SelectionCriteria(BattleManager battleManager, Being parentBeing, string selectionCriteriaName, string effectName, float minPriority, float maxPriority) : base(battleManager, parentBeing, selectionCriteriaName, minPriority, maxPriority)
+    public IncludesEffect_SelectionCriteria(ActionManager actionManager, Being parentBeing, string selectionCriteriaName, string effectName, float minPriority, float maxPriority) : base(actionManager, parentBeing, selectionCriteriaName, minPriority, maxPriority)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.effectName = effectName;
         this.minPriority = minPriority;

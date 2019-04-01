@@ -17,17 +17,17 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/Alone.cs" line="7" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/Alone.cs" bodystart="7" bodyend="19"/>
-        <references refid="class_condition_1a7547a121ba397b441439d994cd8246b1" compoundref="_condition_8cs" startline="8">Condition.battleManager</references>
-        <references refid="class_battle_manager_1a14847f4442b25d631380fb1514f33949" compoundref="_battle_manager_8cs" startline="13">BattleManager.combatants</references>
+        <references refid="class_condition_1a7547a121ba397b441439d994cd8246b1" compoundref="_condition_8cs" startline="8">Condition.actionManager</references>
+        <references refid="class_battle_manager_1a14847f4442b25d631380fb1514f33949" compoundref="_battle_manager_8cs" startline="13">ActionManager.combatants</references>
       </memberdef>
       <memberdef kind="function" id="class_alone_1a0f9a9fe4a7641e88f0663bb198ba6356" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Alone.Alone</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string conditionName)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string conditionName)</argsstring>
         <name>Alone</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -44,7 +44,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/Alone.cs" line="23" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/Alone.cs" bodystart="23" bodyend="26"/>
-        <references refid="class_condition_1a7547a121ba397b441439d994cd8246b1" compoundref="_condition_8cs" startline="8">Condition.battleManager</references>
+        <references refid="class_condition_1a7547a121ba397b441439d994cd8246b1" compoundref="_condition_8cs" startline="8">Condition.actionManager</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -74,7 +74,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="11" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="8">
@@ -101,7 +101,7 @@
         </childnode>
       </node>
       <node id="11">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="12" relation="public-inheritance">
         </childnode>
@@ -121,7 +121,7 @@
         <childnode refid="12" relation="public-inheritance">
         </childnode>
         <childnode refid="11" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="13">
@@ -130,7 +130,7 @@
         <childnode refid="12" relation="public-inheritance">
         </childnode>
         <childnode refid="11" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="14" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -140,7 +140,7 @@
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/Alone.cs" line="4" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/Alone.cs" bodystart="4" bodyend="27"/>
     <listofallmembers>
       <member refid="class_alone_1a0f9a9fe4a7641e88f0663bb198ba6356" prot="public" virt="non-virtual"><scope>Alone</scope><name>Alone</name></member>
-      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>Alone</scope><name>battleManager</name></member>
+      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>Alone</scope><name>actionManager</name></member>
       <member refid="class_alone_1ab4794b3c154f22760f71e891deafcedb" prot="public" virt="virtual"><scope>Alone</scope><name>CanThisBeUsed</name></member>
       <member refid="class_condition_1ad2270c61a0f492990cccb977faf4e007" prot="public" virt="non-virtual"><scope>Alone</scope><name>Condition</name></member>
       <member refid="class_condition_1a0d4dc76caf50991138b95d71408c18ff" prot="public" virt="non-virtual"><scope>Alone</scope><name>GetConditionName</name></member>

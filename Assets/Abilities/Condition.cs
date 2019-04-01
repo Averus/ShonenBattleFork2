@@ -3,9 +3,9 @@ using System.Collections;
 
 public abstract class Condition {
 
-    //this is an abstract class beacuse they can use constructors and interfaces cannot. The constructor is used to pass the BattleManager reference
+    //this is an abstract class beacuse they can use constructors and interfaces cannot. The constructor is used to pass the ActionManager reference
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public Being parentBeing;
     public Ability parentAbility;
 
@@ -21,9 +21,9 @@ public abstract class Condition {
 
  
 
-    public Condition(BattleManager battleManager, Being parentBeing, string conditionName)
+    public Condition(ActionManager actionManager, Being parentBeing, string conditionName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.conditionName = conditionName;
 

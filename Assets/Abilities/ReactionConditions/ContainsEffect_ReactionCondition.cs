@@ -31,9 +31,9 @@ public class ContainsEffect_ReactionCondition : ReactionCondition
 
 
 
-    public ContainsEffect_ReactionCondition(BattleManager battleManager, Being parentBeing, string reactionConditionName, string effectName) : base(battleManager, parentBeing, reactionConditionName)
+    public ContainsEffect_ReactionCondition(ActionManager actionManager, Being parentBeing, string reactionConditionName, string effectName) : base(actionManager, parentBeing, reactionConditionName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.reactionConditionName = reactionConditionName;
         this.effectName = effectName;

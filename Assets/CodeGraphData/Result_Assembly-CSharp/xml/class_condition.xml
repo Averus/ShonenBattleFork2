@@ -9,10 +9,10 @@
     <derivedcompoundref refid="class_no_condition" prot="public" virt="non-virtual">NoCondition</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" static="no" mutable="no">
-        <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-        <definition>BattleManager Condition.battleManager</definition>
+        <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+        <definition>ActionManager Condition.actionManager</definition>
         <argsstring></argsstring>
-        <name>battleManager</name>
+        <name>actionManager</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -104,11 +104,11 @@
       <memberdef kind="function" id="class_condition_1ad2270c61a0f492990cccb977faf4e007" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Condition.Condition</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string conditionName)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string conditionName)</argsstring>
         <name>Condition</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -179,7 +179,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="78" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="82">
@@ -200,7 +200,7 @@
         </childnode>
       </node>
       <node id="78">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="79" relation="public-inheritance">
         </childnode>
@@ -220,7 +220,7 @@
         <childnode refid="79" relation="public-inheritance">
         </childnode>
         <childnode refid="78" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="80">
@@ -229,7 +229,7 @@
         <childnode refid="79" relation="public-inheritance">
         </childnode>
         <childnode refid="78" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="81" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -238,7 +238,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Condition.cs" line="4" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Condition.cs" bodystart="4" bodyend="30"/>
     <listofallmembers>
-      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>Condition</scope><name>battleManager</name></member>
+      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>Condition</scope><name>actionManager</name></member>
       <member refid="class_condition_1ad3758954bf17f24844e813a5919a2874" prot="public" virt="pure-virtual"><scope>Condition</scope><name>CanThisBeUsed</name></member>
       <member refid="class_condition_1ad2270c61a0f492990cccb977faf4e007" prot="public" virt="non-virtual"><scope>Condition</scope><name>Condition</name></member>
       <member refid="class_condition_1aec29b26eb673fa507a9e3847e4ac0449" prot="private" virt="non-virtual"><scope>Condition</scope><name>conditionName</name></member>

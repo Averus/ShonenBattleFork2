@@ -26,11 +26,11 @@
       <memberdef kind="function" id="class_others_1a2ca91913fcb259165aaeec82310ce4ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Others.Others</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility)</argsstring>
         <name>Others</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -47,7 +47,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria/Others.cs" line="20" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria/Others.cs" bodystart="20" bodyend="26"/>
-        <references refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" compoundref="_targeting_criteria_8cs" startline="8">TargetingCriteria.battleManager</references>
+        <references refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" compoundref="_targeting_criteria_8cs" startline="8">TargetingCriteria.actionManager</references>
         <references refid="class_targeting_criteria_1a43be31f00d78b7434d007d884784003c" compoundref="_targeting_criteria_8cs" startline="10">TargetingCriteria.parentAbility</references>
         <references refid="class_targeting_criteria_1adf088b14853867eca5f70b4175e8c32a" compoundref="_targeting_criteria_8cs" startline="9">TargetingCriteria.parentBeing</references>
       </memberdef>
@@ -79,7 +79,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="209" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="213">
@@ -109,11 +109,11 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="209" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="209">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="210" relation="public-inheritance">
         </childnode>
@@ -139,7 +139,7 @@
         <childnode refid="210" relation="public-inheritance">
         </childnode>
         <childnode refid="209" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="211">
@@ -148,7 +148,7 @@
         <childnode refid="210" relation="public-inheritance">
         </childnode>
         <childnode refid="209" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="212" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -157,7 +157,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria/Others.cs" line="6" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria/Others.cs" bodystart="6" bodyend="28"/>
     <listofallmembers>
-      <member refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" prot="public" virt="non-virtual"><scope>Others</scope><name>battleManager</name></member>
+      <member refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" prot="public" virt="non-virtual"><scope>Others</scope><name>actionManager</name></member>
       <member refid="class_others_1af22a4ac1625bb02bf2d0f1a6800bd3ab" prot="public" virt="virtual"><scope>Others</scope><name>CanThisBeTargeted</name></member>
       <member refid="class_others_1a2ca91913fcb259165aaeec82310ce4ed" prot="public" virt="non-virtual"><scope>Others</scope><name>Others</name></member>
       <member refid="class_targeting_criteria_1a43be31f00d78b7434d007d884784003c" prot="public" virt="non-virtual"><scope>Others</scope><name>parentAbility</name></member>

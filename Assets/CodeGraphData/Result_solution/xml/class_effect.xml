@@ -10,10 +10,10 @@
     <derivedcompoundref refid="class_modulate_to_hit_self" prot="public" virt="non-virtual">ModulateToHitSelf</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" static="no" mutable="no">
-        <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-        <definition>BattleManager Effect.battleManager</definition>
+        <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+        <definition>ActionManager Effect.actionManager</definition>
         <argsstring></argsstring>
-        <name>battleManager</name>
+        <name>actionManager</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -72,8 +72,8 @@
       </sectiondef>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_effect_1afaf800832717bed94f92ced8016285f6" prot="private" static="no" mutable="no">
-        <type><ref refid="class_battle_manager_1a0c808fe5ef5596ff69d154ca96881d3b" kindref="member">BattleManager.CombatStates</ref></type>
-        <definition>BattleManager.CombatStates Effect.UsedInState</definition>
+        <type><ref refid="class_battle_manager_1a0c808fe5ef5596ff69d154ca96881d3b" kindref="member">ActionManager.CombatStates</ref></type>
+        <definition>ActionManager.CombatStates Effect.UsedInState</definition>
         <argsstring></argsstring>
         <name>UsedInState</name>
         <briefdescription>
@@ -112,11 +112,11 @@
       <memberdef kind="function" id="class_effect_1aeb5675bc461e64280c6381979d0fae60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Effect.Effect</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName)</argsstring>
         <name>Effect</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -137,7 +137,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effect.cs" line="17" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effect.cs" bodystart="17" bodyend="23"/>
-        <references refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" compoundref="_effect_8cs" startline="6">battleManager</references>
+        <references refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" compoundref="_effect_8cs" startline="6">actionManager</references>
         <references refid="class_effect_1ab0d2647d792f5374565264e4494b85a9" compoundref="_effect_8cs" startline="10">effectName</references>
         <references refid="class_effect_1aab3f7eee5bc2a8eaf2cbe0ed4313f427" compoundref="_effect_8cs" startline="8">parentAbility</references>
         <references refid="class_effect_1aeb4b0db75413b945faae306f2650a854" compoundref="_effect_8cs" startline="7">parentBeing</references>
@@ -200,7 +200,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="125" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="129">
@@ -221,7 +221,7 @@
         </childnode>
       </node>
       <node id="125">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="126" relation="public-inheritance">
         </childnode>
@@ -241,7 +241,7 @@
         <childnode refid="126" relation="public-inheritance">
         </childnode>
         <childnode refid="125" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="123">
@@ -255,7 +255,7 @@
         </childnode>
         <childnode refid="125" relation="usage">
           <edgelabel>UsedInState</edgelabel>
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="127">
@@ -264,7 +264,7 @@
         <childnode refid="126" relation="public-inheritance">
         </childnode>
         <childnode refid="125" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="128" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -273,7 +273,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effect.cs" line="4" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effect.cs" bodystart="4" bodyend="24"/>
     <listofallmembers>
-      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>Effect</scope><name>battleManager</name></member>
+      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>Effect</scope><name>actionManager</name></member>
       <member refid="class_effect_1aeb5675bc461e64280c6381979d0fae60" prot="public" virt="non-virtual"><scope>Effect</scope><name>Effect</name></member>
       <member refid="class_effect_1ab0d2647d792f5374565264e4494b85a9" prot="public" virt="non-virtual"><scope>Effect</scope><name>effectName</name></member>
       <member refid="class_effect_1aab3f7eee5bc2a8eaf2cbe0ed4313f427" prot="public" virt="non-virtual"><scope>Effect</scope><name>parentAbility</name></member>

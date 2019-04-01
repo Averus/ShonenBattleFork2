@@ -177,7 +177,7 @@
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Being.cs" line="28" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Being.cs" bodystart="28" bodyend="-1"/>
         <referencedby refid="class_being_1a9ab922a1da91d98902cea7e24c3b4b55" compoundref="_being_8cs" startline="113" endline="147">SelectAnAbility</referencedby>
         <referencedby refid="class_being_1a52e41a9867126e2adc3ba9eb069e3ea0" compoundref="_being_8cs" startline="149" endline="165">SelectTargets</referencedby>
-        <referencedby refid="class_battle_manager_1a228378f569e306b1567e24c135715de7" compoundref="_battle_manager_8cs" startline="94" endline="108">BattleManager.StartTurn</referencedby>
+        <referencedby refid="class_battle_manager_1a228378f569e306b1567e24c135715de7" compoundref="_battle_manager_8cs" startline="94" endline="108">ActionManager.StartTurn</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_being_1adae2fe62ed8790c7d11115c17a2ffdcd" prot="public" static="no" mutable="no">
         <type>List&lt; <ref refid="class_being" kindref="compound">Being</ref> &gt;</type>
@@ -192,7 +192,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Being.cs" line="29" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Being.cs" bodystart="29" bodyend="-1"/>
-        <referencedby refid="class_battle_manager_1a228378f569e306b1567e24c135715de7" compoundref="_battle_manager_8cs" startline="94" endline="108">BattleManager.StartTurn</referencedby>
+        <referencedby refid="class_battle_manager_1a228378f569e306b1567e24c135715de7" compoundref="_battle_manager_8cs" startline="94" endline="108">ActionManager.StartTurn</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -323,7 +323,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="38" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="36">
@@ -344,7 +344,7 @@
         </childnode>
       </node>
       <node id="38">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="39" relation="public-inheritance">
         </childnode>
@@ -364,7 +364,7 @@
         <childnode refid="39" relation="public-inheritance">
         </childnode>
         <childnode refid="38" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="40">
@@ -373,7 +373,7 @@
         <childnode refid="39" relation="public-inheritance">
         </childnode>
         <childnode refid="38" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="41" relation="usage">
           <edgelabel>beingFactory</edgelabel>

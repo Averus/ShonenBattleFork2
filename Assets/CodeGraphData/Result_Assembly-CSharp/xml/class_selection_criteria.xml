@@ -5,10 +5,10 @@
     <derivedcompoundref refid="class_includes_effect" prot="public" virt="non-virtual">IncludesEffect</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" prot="public" static="no" mutable="no">
-        <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-        <definition>BattleManager SelectionCriteria.battleManager</definition>
+        <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+        <definition>ActionManager SelectionCriteria.actionManager</definition>
         <argsstring></argsstring>
-        <name>battleManager</name>
+        <name>actionManager</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -84,11 +84,11 @@
       <memberdef kind="function" id="class_selection_criteria_1af4b413d34d4b29f1618947f003db11b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SelectionCriteria.SelectionCriteria</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string selectionCriteriaName)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string selectionCriteriaName)</argsstring>
         <name>SelectionCriteria</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -105,7 +105,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria.cs" line="16" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria.cs" bodystart="16" bodyend="21"/>
-        <references refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" compoundref="_selection_criteria_8cs" startline="7">battleManager</references>
+        <references refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" compoundref="_selection_criteria_8cs" startline="7">actionManager</references>
         <references refid="class_selection_criteria_1abe0caeb6ff8f8a62965f89af96b5977c" compoundref="_selection_criteria_8cs" startline="8">parentBeing</references>
         <references refid="class_selection_criteria_1a43921a270333dde26742c522aa2400ef" compoundref="_selection_criteria_8cs" startline="10">selectionCriteriaName</references>
       </memberdef>
@@ -137,7 +137,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="219" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="224">
@@ -150,7 +150,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="219" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="223">
@@ -171,7 +171,7 @@
         </childnode>
       </node>
       <node id="219">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="220" relation="public-inheritance">
         </childnode>
@@ -191,7 +191,7 @@
         <childnode refid="220" relation="public-inheritance">
         </childnode>
         <childnode refid="219" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="221">
@@ -200,7 +200,7 @@
         <childnode refid="220" relation="public-inheritance">
         </childnode>
         <childnode refid="219" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="222" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -209,7 +209,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria.cs" line="4" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria.cs" bodystart="4" bodyend="23"/>
     <listofallmembers>
-      <member refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" prot="public" virt="non-virtual"><scope>SelectionCriteria</scope><name>battleManager</name></member>
+      <member refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" prot="public" virt="non-virtual"><scope>SelectionCriteria</scope><name>actionManager</name></member>
       <member refid="class_selection_criteria_1a8b1e44611916c1b4eba31dd4f9162a02" prot="public" virt="pure-virtual"><scope>SelectionCriteria</scope><name>Check</name></member>
       <member refid="class_selection_criteria_1ad0a73aea8531c8d0dcd1a76a42ddc7c2" prot="public" virt="non-virtual"><scope>SelectionCriteria</scope><name>parentAbility</name></member>
       <member refid="class_selection_criteria_1abe0caeb6ff8f8a62965f89af96b5977c" prot="public" virt="non-virtual"><scope>SelectionCriteria</scope><name>parentBeing</name></member>

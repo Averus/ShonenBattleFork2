@@ -34,7 +34,7 @@ public class ResourceAtValue_Condition : Condition
     }
 
 
-    public ResourceAtValue_Condition(BattleManager battleManager, Being parentBeing, string conditionName, string resourceName, string modifier, float value) : base(battleManager, parentBeing, conditionName)
+    public ResourceAtValue_Condition(ActionManager actionManager, Being parentBeing, string conditionName, string resourceName, string modifier, float value) : base(actionManager, parentBeing, conditionName)
     {
         this.resourceName = resourceName;
         this.modifier = modifier;

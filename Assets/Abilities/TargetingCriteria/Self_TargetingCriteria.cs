@@ -19,9 +19,9 @@ public class Self_TargetingCriteria : TargetingCriteria {
 
 
 
-    public Self_TargetingCriteria(BattleManager battleManager, Being parentBeing, Ability parentAbility) : base(battleManager, parentBeing, parentAbility)
+    public Self_TargetingCriteria(ActionManager actionManager, Being parentBeing, Ability parentAbility) : base(actionManager, parentBeing, parentAbility)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.parentAbility = parentAbility;
 

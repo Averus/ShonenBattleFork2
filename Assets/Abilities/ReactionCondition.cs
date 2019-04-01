@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ReactionCondition {
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public Being parentBeing;
     public Ability parentAbility;
     public string reactionConditionName;
@@ -14,9 +14,9 @@ public abstract class ReactionCondition {
 
 
 
-    public ReactionCondition(BattleManager battleManager, Being parentBeing, string reactionConditionName)
+    public ReactionCondition(ActionManager actionManager, Being parentBeing, string reactionConditionName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.reactionConditionName = reactionConditionName;
 

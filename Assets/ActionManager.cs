@@ -18,10 +18,11 @@ public class ActionManager : MonoBehaviour {
     public int step = 0;
     public bool pause = false;
 
+    public List<Effect> effectQueue = new List<Effect>(); //rename to effectsInPlay
+
     public Thought currentThought = null; //The current Thought that is being evaluated
     public Action currentAction = null; //The current action being evaluated
     public float attackersFavour = 0;
-
 
     // Use this for initialization
     void Start () {
@@ -128,15 +129,11 @@ public class ActionManager : MonoBehaviour {
         SortList2();
     }
 
-
-
     private void SortList1()
     {
         List<BeingToken> sortedList = LIST1.OrderByDescending(o => o.reflexSpeed).ToList();
         LIST1 = sortedList;
     }
-
-
 
     private void SortList2()
     {
@@ -232,6 +229,27 @@ public class ActionManager : MonoBehaviour {
             Debug.Log("List 3 empty --> step 3");
             step = 3;
         }
+    }
+
+    private Action CalculateToHit(Action a)
+    {
+        if (a == null)
+        {
+            Debug.Log("Error: CalculateToHit passed null instead of Action");
+        }
+        else
+        {
+            if (a.actionType == ThoughtType.Normal)
+            {
+
+            }
+            if (a.actionType == ThoughtType.Reaction)
+            {
+
+            }
+        }
+
+        return a;
     }
 
     private void NextTurn()

@@ -5,10 +5,10 @@
     <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" prot="public" static="no" mutable="no">
-        <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-        <definition>BattleManager BeingFactory.battleManager</definition>
+        <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+        <definition>ActionManager BeingFactory.actionManager</definition>
         <argsstring></argsstring>
-        <name>battleManager</name>
+        <name>actionManager</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -34,7 +34,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" line="12" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" bodystart="12" bodyend="19"/>
-        <references refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" compoundref="_being_factory_8cs" startline="7">battleManager</references>
+        <references refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" compoundref="_being_factory_8cs" startline="7">actionManager</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,15 +54,15 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" line="21" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" bodystart="21" bodyend="122"/>
-        <references refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" compoundref="_being_factory_8cs" startline="7">battleManager</references>
+        <references refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" compoundref="_being_factory_8cs" startline="7">actionManager</references>
       </memberdef>
       <memberdef kind="function" id="class_being_factory_1a62ec2f35a163d5306d1e3c4bdb40956a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BeingFactory.BeingFactory</definition>
-        <argsstring>(BattleManager bm)</argsstring>
+        <argsstring>(ActionManager bm)</argsstring>
         <name>BeingFactory</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
           <declname>bm</declname>
         </param>
         <briefdescription>
@@ -72,7 +72,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" line="124" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" bodystart="124" bodyend="127"/>
-        <references refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" compoundref="_being_factory_8cs" startline="7">battleManager</references>
+        <references refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" compoundref="_being_factory_8cs" startline="7">actionManager</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -92,7 +92,7 @@
     </inheritancegraph>
     <collaborationgraph>
       <node id="47">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="46" relation="public-inheritance">
         </childnode>
@@ -112,7 +112,7 @@
         <childnode refid="46" relation="public-inheritance">
         </childnode>
         <childnode refid="47" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="48">
@@ -121,7 +121,7 @@
         <childnode refid="46" relation="public-inheritance">
         </childnode>
         <childnode refid="47" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="45" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -130,7 +130,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" line="5" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/BeingFactory.cs" bodystart="5" bodyend="130"/>
     <listofallmembers>
-      <member refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" prot="public" virt="non-virtual"><scope>BeingFactory</scope><name>battleManager</name></member>
+      <member refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" prot="public" virt="non-virtual"><scope>BeingFactory</scope><name>actionManager</name></member>
       <member refid="class_being_factory_1a62ec2f35a163d5306d1e3c4bdb40956a" prot="public" virt="non-virtual"><scope>BeingFactory</scope><name>BeingFactory</name></member>
       <member refid="class_being_factory_1a6f8600623467feda4535cb420b0a6690" prot="public" virt="non-virtual"><scope>BeingFactory</scope><name>CreateBeing</name></member>
       <member refid="class_being_factory_1a0f2ea0a58361d393c01e95eba1822ca5" prot="private" virt="non-virtual"><scope>BeingFactory</scope><name>Start</name></member>

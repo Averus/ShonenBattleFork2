@@ -3,9 +3,9 @@ using System.Collections;
 
 public abstract class TargetingCriteria{
 
-    //this is an abstract class beacuse they can use constructors and interfaces cannot. The constructor is used to pass the BattleManager reference
+    //this is an abstract class beacuse they can use constructors and interfaces cannot. The constructor is used to pass the ActionManager reference
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public Being parentBeing;
     public Ability parentAbility;
 
@@ -14,9 +14,9 @@ public abstract class TargetingCriteria{
 
 
 
-    public TargetingCriteria(BattleManager battleManager, Being parentBeing, Ability parentAbility)
+    public TargetingCriteria(ActionManager actionManager, Being parentBeing, Ability parentAbility)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.parentAbility = parentAbility;
 

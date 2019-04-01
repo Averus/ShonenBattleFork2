@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BeingFactory : MonoBehaviour {
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public GameObject beingPrefab;
 
 
@@ -13,7 +13,7 @@ public class BeingFactory : MonoBehaviour {
     void Start()
     {
 
-        battleManager = GetComponent<BattleManager>();
+        actionManager = GetComponent<ActionManager>();
 
         if (beingPrefab == null)
         {
@@ -42,15 +42,13 @@ public class BeingFactory : MonoBehaviour {
       
 
         Stat dex = new Stat("DEXTERITY", b, 100, 100);
-        dex.current = 10;
-
-        Stat toHit = new Stat("TOHIT", b, 100, 100);
-        toHit.current = 0;
-
-
         b.stats.Add(dex);
-        b.stats.Add(toHit);
-        
+
+        Stat meleeAccuracy = new Stat("MELEEACCURACY", b, 0, 100);
+        b.stats.Add(dex);
+
+        Stat rangedAccuracy = new Stat("RANGEDACCURACY", b, 0, 100);
+        b.stats.Add(dex);
 
 
     }
@@ -62,15 +60,15 @@ public class BeingFactory : MonoBehaviour {
         b.stats.Add(reflex);
     }
     //defence blocks
-    void BasicDefences(Being b)
+    void BasicDefences(Being b) 
     {
         Ability def1 = new Ability(b,"Block",AbilityChassis.Block, 100, 1, true);
         def1.isDefence = true;
         def1.defenceSpeed = 50;
-        ResourceAtValue_Condition reqStam = new ResourceAtValue_Condition(battleManager, b, "Stamina above 0", "STAMINA", ">", 0);
-        ModulateResource_Effect costsStamina = new ModulateResource_Effect(battleManager, b, def1, "CostsStamina", "STAMINA", -10, true);
-        Block_DefenceEffect block = new Block_DefenceEffect(battleManager, b, def1, "Block");
-        Self_TargetingCriteria self = new Self_TargetingCriteria(battleManager, b, def1);
+        ResourceAtValue_Condition reqStam = new ResourceAtValue_Condition(actionManager, b, "Stamina above 0", "STAMINA", ">", 0);
+        ModulateResource_Effect costsStamina = new ModulateResource_Effect(actionManager, b, def1, "CostsStamina", "STAMINA", -10, true);
+        Block_DefenceEffect block = new Block_DefenceEffect(actionManager, b, def1, "Block");
+        Self_TargetingCriteria self = new Self_TargetingCriteria(actionManager, b, def1);
 
         def1.effects.Add(block);
         def1.effects.Add(costsStamina);
@@ -82,10 +80,10 @@ public class BeingFactory : MonoBehaviour {
         Ability def2 = new Ability(b, "Dodge", AbilityChassis.Dodge, 100, 1, true);
         def2.isDefence = true;
         def2.defenceSpeed = 40;
-        ResourceAtValue_Condition reqStam2 = new ResourceAtValue_Condition(battleManager, b, "Stamina above 0", "STAMINA", ">", 0);
-        ModulateResource_Effect costsStamina2 = new ModulateResource_Effect(battleManager, b, def2, "CostsStamina", "STAMINA", -20, true);
-        Dodge_DefenceEffect dodge = new Dodge_DefenceEffect(battleManager, b, def2, "Dodge");
-        Self_TargetingCriteria self2 = new Self_TargetingCriteria(battleManager, b, def2);
+        ResourceAtValue_Condition reqStam2 = new ResourceAtValue_Condition(actionManager, b, "Stamina above 0", "STAMINA", ">", 0);
+        ModulateResource_Effect costsStamina2 = new ModulateResource_Effect(actionManager, b, def2, "CostsStamina", "STAMINA", -20, true);
+        Dodge_DefenceEffect dodge = new Dodge_DefenceEffect(actionManager, b, def2, "Dodge");
+        Self_TargetingCriteria self2 = new Self_TargetingCriteria(actionManager, b, def2);
 
         def2.effects.Add(dodge);
         def2.effects.Add(costsStamina2);
@@ -97,9 +95,9 @@ public class BeingFactory : MonoBehaviour {
         //Ability def3 = new Ability(b, "Any Action", 100, 1, true);
        // def3.isDefence = true;
        // def3.defenceSpeed = 5;
-        NoCondition_Condition noCondition6 = new NoCondition_Condition(battleManager, b, "NoCondition");
-      //  Self_TargetingCriteria self3 = new Self_TargetingCriteria(battleManager, b, def3);
-      //  AnyAction_DefenceEffect anyAction = new AnyAction_DefenceEffect(battleManager, b, def3, "AnyAction");
+        NoCondition_Condition noCondition6 = new NoCondition_Condition(actionManager, b, "NoCondition");
+      //  Self_TargetingCriteria self3 = new Self_TargetingCriteria(actionManager, b, def3);
+      //  AnyAction_DefenceEffect anyAction = new AnyAction_DefenceEffect(actionManager, b, def3, "AnyAction");
 
        // def3.effects.Add(anyAction);
        // def3.conditions.Add(noCondition6);
@@ -111,9 +109,9 @@ public class BeingFactory : MonoBehaviour {
     void AttackBehaviour(Being b)
     {
         //Create a new behaviour called 'just attack'
-        Behaviour justAttack = new Behaviour(battleManager, b, "Just attack");
-        NoCondition_Condition noCondition = new NoCondition_Condition(battleManager, b, "NoCondition");
-        IncludesEffect_SelectionCriteria includesDamage = new IncludesEffect_SelectionCriteria(battleManager, b, "IncludesDamage", "Damage", 10,20);
+        Behaviour justAttack = new Behaviour(actionManager, b, "Just attack");
+        NoCondition_Condition noCondition = new NoCondition_Condition(actionManager, b, "NoCondition");
+        IncludesEffect_SelectionCriteria includesDamage = new IncludesEffect_SelectionCriteria(actionManager, b, "IncludesDamage", "Damage", 10,20);
 
         justAttack.conditions.Add(noCondition); ;
         justAttack.selectionCriteria.Add(includesDamage);
@@ -122,11 +120,11 @@ public class BeingFactory : MonoBehaviour {
     void HealSelfBehaviour(Being b)
     {
         //Create a new behaviour called 'heal self'
-        Behaviour healSelf = new Behaviour(battleManager, b, "Heal self");
+        Behaviour healSelf = new Behaviour(actionManager, b, "Heal self");
         //Create a condition that hp must be below 20 
-        ResourceAtValue_Condition hpLessThanTwenty = new ResourceAtValue_Condition(battleManager, b, "HP less that 20", "HP", "<", 20);
+        ResourceAtValue_Condition hpLessThanTwenty = new ResourceAtValue_Condition(actionManager, b, "HP less that 20", "HP", "<", 20);
         //Create a selectionCriteria for appropriate abilities that the must have a 'healself' effect
-        IncludesEffect_SelectionCriteria includesHealSelf = new IncludesEffect_SelectionCriteria(battleManager, b, "IncludesHealSelf", "HealSelf", 20, 30);
+        IncludesEffect_SelectionCriteria includesHealSelf = new IncludesEffect_SelectionCriteria(actionManager, b, "IncludesHealSelf", "HealSelf", 20, 30);
 
         healSelf.conditions.Add(hpLessThanTwenty); ;
         healSelf.selectionCriteria.Add(includesHealSelf);
@@ -135,11 +133,11 @@ public class BeingFactory : MonoBehaviour {
     void BasicReactions(Being b)
     {
         //Create a new reaction called 'self preservation'
-        Reaction selfPreservation = new Reaction(battleManager, b, "Self Preservation");
-        AmTarget_ReactionCondition amtarget = new AmTarget_ReactionCondition(battleManager, b, "Am target");
-        ContainsEffect_ReactionCondition dealsDamage = new ContainsEffect_ReactionCondition(battleManager, b, "Deals Damage", "Damage");
-        IncludesEffect_SelectionCriteria dodges = new IncludesEffect_SelectionCriteria(battleManager, b, "dodges", "Dodge", 20, 30);
-        IncludesEffect_SelectionCriteria blocks = new IncludesEffect_SelectionCriteria(battleManager, b, "blocks", "Block", 20, 30);
+        Reaction selfPreservation = new Reaction(actionManager, b, "Self Preservation");
+        AmTarget_ReactionCondition amtarget = new AmTarget_ReactionCondition(actionManager, b, "Am target");
+        ContainsEffect_ReactionCondition dealsDamage = new ContainsEffect_ReactionCondition(actionManager, b, "Deals Damage", "Damage");
+        IncludesEffect_SelectionCriteria dodges = new IncludesEffect_SelectionCriteria(actionManager, b, "dodges", "Dodge", 20, 30);
+        IncludesEffect_SelectionCriteria blocks = new IncludesEffect_SelectionCriteria(actionManager, b, "blocks", "Block", 20, 30);
 
         selfPreservation.reactionConditions.Add(amtarget);
         selfPreservation.reactionConditions.Add(dealsDamage);
@@ -153,9 +151,9 @@ public class BeingFactory : MonoBehaviour {
     {
 
         Ability ab3 = new Ability(b, "Poor punch", AbilityChassis.Melee, 100, 1, false);
-        NoCondition_Condition noCondition2 = new NoCondition_Condition(battleManager, b, "NoCondition");
-        ModulateResource_Effect damage = new ModulateResource_Effect(battleManager, b, ab3, "Damage", "HP", -3, false);
-        Others_TargetingCriteria o = new Others_TargetingCriteria(battleManager, b, ab3);
+        NoCondition_Condition noCondition2 = new NoCondition_Condition(actionManager, b, "NoCondition");
+        ModulateResource_Effect damage = new ModulateResource_Effect(actionManager, b, ab3, "Damage", "HP", -3, false);
+        Others_TargetingCriteria o = new Others_TargetingCriteria(actionManager, b, ab3);
 
         ab3.conditions.Add(noCondition2);
         ab3.effects.Add(damage);
@@ -165,10 +163,10 @@ public class BeingFactory : MonoBehaviour {
 
 
         Ability ab4 = new Ability(b, "Punch", AbilityChassis.Melee, 100,1, false);
-        ResourceAtValue_Condition reqStam = new ResourceAtValue_Condition(battleManager, b, "Stamina above 0", "STAMINA", ">", 0);
-        ModulateResource_Effect costsStamina = new ModulateResource_Effect(battleManager, b, ab3, "CostsStamina", "STAMINA", -20, true);
-        ModulateResource_Effect damage2 = new ModulateResource_Effect(battleManager, b, ab4, "Damage", "HP", -10, false);
-        Others_TargetingCriteria o2 = new Others_TargetingCriteria(battleManager, b, ab4);
+        ResourceAtValue_Condition reqStam = new ResourceAtValue_Condition(actionManager, b, "Stamina above 0", "STAMINA", ">", 0);
+        ModulateResource_Effect costsStamina = new ModulateResource_Effect(actionManager, b, ab3, "CostsStamina", "STAMINA", -20, true);
+        ModulateResource_Effect damage2 = new ModulateResource_Effect(actionManager, b, ab4, "Damage", "HP", -10, false);
+        Others_TargetingCriteria o2 = new Others_TargetingCriteria(actionManager, b, ab4);
 
         ab4.abilityType = AbilityType.PublicNormal;
         ab4.conditions.Add(reqStam);
@@ -183,10 +181,10 @@ public class BeingFactory : MonoBehaviour {
         //Create a new ability called Healself
         Ability ab = new Ability(b, "Heal", AbilityChassis.Melee, 100, 1, false);
         //create a condition that MP must not be greater the 5 (the cost)
-        ResourceAtValue_Condition gt = new ResourceAtValue_Condition(battleManager, b, "MP greater than 5", "MP", ">", 5);
+        ResourceAtValue_Condition gt = new ResourceAtValue_Condition(actionManager, b, "MP greater than 5", "MP", ">", 5);
 
-        HealSelf_Effect hs = new HealSelf_Effect(battleManager, b, ab, "HealSelf", 10);
-        Self_TargetingCriteria s = new Self_TargetingCriteria(battleManager, b, ab);
+        HealSelf_Effect hs = new HealSelf_Effect(actionManager, b, ab, "HealSelf", 10);
+        Self_TargetingCriteria s = new Self_TargetingCriteria(actionManager, b, ab);
 
         ab.conditions.Add(gt);
         ab.effects.Add(hs);
@@ -202,9 +200,9 @@ public class BeingFactory : MonoBehaviour {
         Ability reg = new Ability(b, "Stamina regen", AbilityChassis.Block, 100, 1, false);
         reg.isDefence = false;
 
-        //NewRound_Condition nrc = new NewRound_Condition(battleManager, b, "New round condition");
-        ModulateResource_Effect staminaRegen = new ModulateResource_Effect(battleManager, b, reg, "Stamina regen", "STAMINA", +50, true);
-        Self_TargetingCriteria self = new Self_TargetingCriteria(battleManager, b, reg);
+        //NewRound_Condition nrc = new NewRound_Condition(actionManager, b, "New round condition");
+        ModulateResource_Effect staminaRegen = new ModulateResource_Effect(actionManager, b, reg, "Stamina regen", "STAMINA", +50, true);
+        Self_TargetingCriteria self = new Self_TargetingCriteria(actionManager, b, reg);
 
         reg.effects.Add(staminaRegen);
         //reg.conditions.Add(nrc);
@@ -232,22 +230,22 @@ public class BeingFactory : MonoBehaviour {
 
 
         //Bestow Resources
-        BasicResources(p);
+        //BasicResources(p);
 
         //Bestow stats
         NewBasicStats(p);
 
         //Bestow behaviours
-        AttackBehaviour(p);
+        //AttackBehaviour(p);
 
         //Bestow abilities
-        BasicAttackAbilities(p);
+        //BasicAttackAbilities(p);
 
         //Bestow passive abilities
         //BasicPassiveAbilities(p);
 
         //bestow defences
-        BasicDefences(p);
+       // BasicDefences(p);
 
 
 
@@ -263,9 +261,9 @@ public class BeingFactory : MonoBehaviour {
 
     }
 
-    public BeingFactory(BattleManager bm)
+    public BeingFactory(ActionManager am)
     {
-        battleManager = bm;
+        actionManager = am;
     }
 
 

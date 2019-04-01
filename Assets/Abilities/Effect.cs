@@ -4,20 +4,20 @@ using System.Collections;
 [System.Serializable]
 public abstract class Effect{
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public Being parentBeing;
     public Ability parentAbility;
 
     public string effectName;
 
-    BattleManager.CombatStates UsedInState;
+    //ActionManager.CombatStates UsedInState;
 
     public abstract void Use(Being target);
 
 
-    public Effect(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName)
+    public Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.parentAbility = parentAbility;
         this.effectName = effectName;

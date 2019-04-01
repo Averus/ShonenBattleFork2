@@ -43,11 +43,11 @@
       <memberdef kind="function" id="class_heal_self_1af2e19a6d66319dc861f633a8dde89f23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>HealSelf.HealSelf</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, int healAmount)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int healAmount)</argsstring>
         <name>HealSelf</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -102,7 +102,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="146" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="150">
@@ -123,7 +123,7 @@
         </childnode>
       </node>
       <node id="146">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="147" relation="public-inheritance">
         </childnode>
@@ -149,7 +149,7 @@
         <childnode refid="147" relation="public-inheritance">
         </childnode>
         <childnode refid="146" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="144">
@@ -163,7 +163,7 @@
         </childnode>
         <childnode refid="146" relation="usage">
           <edgelabel>UsedInState</edgelabel>
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="148">
@@ -172,7 +172,7 @@
         <childnode refid="147" relation="public-inheritance">
         </childnode>
         <childnode refid="146" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="149" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -181,7 +181,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/HealSelf.cs" line="5" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/HealSelf.cs" bodystart="5" bodyend="23"/>
     <listofallmembers>
-      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>HealSelf</scope><name>battleManager</name></member>
+      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>HealSelf</scope><name>actionManager</name></member>
       <member refid="class_effect_1aeb5675bc461e64280c6381979d0fae60" prot="public" virt="non-virtual"><scope>HealSelf</scope><name>Effect</name></member>
       <member refid="class_effect_1ab0d2647d792f5374565264e4494b85a9" prot="public" virt="non-virtual"><scope>HealSelf</scope><name>effectName</name></member>
       <member refid="class_heal_self_1a22d31c1ebf1503278eb5e17e81774382" prot="public" virt="non-virtual"><scope>HealSelf</scope><name>healByValue</name></member>

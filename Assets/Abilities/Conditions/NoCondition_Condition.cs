@@ -9,7 +9,7 @@ public class NoCondition_Condition : Condition
         return true;
     }
 
-    public NoCondition_Condition(BattleManager battleManager, Being parentBeing, string conditionName) : base(battleManager, parentBeing, conditionName) //This should grab the battleManager from the base constructor (Condition)
+    public NoCondition_Condition(ActionManager actionManager, Being parentBeing, string conditionName) : base(actionManager, parentBeing, conditionName) //This should grab the actionManager from the base constructor (Condition)
     {
        
     }

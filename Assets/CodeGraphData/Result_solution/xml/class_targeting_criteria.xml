@@ -6,10 +6,10 @@
     <derivedcompoundref refid="class_self" prot="public" virt="non-virtual">Self</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" prot="public" static="no" mutable="no">
-        <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-        <definition>BattleManager TargetingCriteria.battleManager</definition>
+        <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+        <definition>ActionManager TargetingCriteria.actionManager</definition>
         <argsstring></argsstring>
-        <name>battleManager</name>
+        <name>actionManager</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -79,11 +79,11 @@
       <memberdef kind="function" id="class_targeting_criteria_1ab265c3de65d098d16f7585d72d818eb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TargetingCriteria.TargetingCriteria</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility)</argsstring>
         <name>TargetingCriteria</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -100,7 +100,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria.cs" line="17" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria.cs" bodystart="17" bodyend="23"/>
-        <references refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" compoundref="_targeting_criteria_8cs" startline="8">battleManager</references>
+        <references refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" compoundref="_targeting_criteria_8cs" startline="8">actionManager</references>
         <references refid="class_targeting_criteria_1a43be31f00d78b7434d007d884784003c" compoundref="_targeting_criteria_8cs" startline="10">parentAbility</references>
         <references refid="class_targeting_criteria_1adf088b14853867eca5f70b4175e8c32a" compoundref="_targeting_criteria_8cs" startline="9">parentBeing</references>
       </memberdef>
@@ -138,7 +138,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="246" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="250">
@@ -168,11 +168,11 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="246" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="246">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="247" relation="public-inheritance">
         </childnode>
@@ -192,7 +192,7 @@
         <childnode refid="247" relation="public-inheritance">
         </childnode>
         <childnode refid="246" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="248">
@@ -201,7 +201,7 @@
         <childnode refid="247" relation="public-inheritance">
         </childnode>
         <childnode refid="246" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="249" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -210,7 +210,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria.cs" line="4" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/TargetingCriteria.cs" bodystart="4" bodyend="24"/>
     <listofallmembers>
-      <member refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" prot="public" virt="non-virtual"><scope>TargetingCriteria</scope><name>battleManager</name></member>
+      <member refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" prot="public" virt="non-virtual"><scope>TargetingCriteria</scope><name>actionManager</name></member>
       <member refid="class_targeting_criteria_1a50a40effb92015a7b17329b84b2a36d8" prot="public" virt="pure-virtual"><scope>TargetingCriteria</scope><name>CanThisBeTargeted</name></member>
       <member refid="class_targeting_criteria_1a43be31f00d78b7434d007d884784003c" prot="public" virt="non-virtual"><scope>TargetingCriteria</scope><name>parentAbility</name></member>
       <member refid="class_targeting_criteria_1adf088b14853867eca5f70b4175e8c32a" prot="public" virt="non-virtual"><scope>TargetingCriteria</scope><name>parentBeing</name></member>

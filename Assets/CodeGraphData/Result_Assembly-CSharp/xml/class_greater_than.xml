@@ -65,11 +65,11 @@
       <memberdef kind="function" id="class_greater_than_1a43cda4ea92e4a4e723804de661e604cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GreaterThan.GreaterThan</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string conditionName, string mode, Being p, int target)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string conditionName, string mode, Being p, int target)</argsstring>
         <name>GreaterThan</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -130,7 +130,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="136" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="140">
@@ -151,7 +151,7 @@
         </childnode>
       </node>
       <node id="136">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="137" relation="public-inheritance">
         </childnode>
@@ -180,7 +180,7 @@
         <childnode refid="137" relation="public-inheritance">
         </childnode>
         <childnode refid="136" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="138">
@@ -189,7 +189,7 @@
         <childnode refid="137" relation="public-inheritance">
         </childnode>
         <childnode refid="136" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="139" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -198,7 +198,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/GreaterThan.cs" line="6" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/GreaterThan.cs" bodystart="5" bodyend="26"/>
     <listofallmembers>
-      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>GreaterThan</scope><name>battleManager</name></member>
+      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>GreaterThan</scope><name>actionManager</name></member>
       <member refid="class_greater_than_1a968be964ff7485f6be1aa3dd7024dd56" prot="public" virt="virtual"><scope>GreaterThan</scope><name>CanThisBeUsed</name></member>
       <member refid="class_condition_1ad2270c61a0f492990cccb977faf4e007" prot="public" virt="non-virtual"><scope>GreaterThan</scope><name>Condition</name></member>
       <member refid="class_condition_1a0d4dc76caf50991138b95d71408c18ff" prot="public" virt="non-virtual"><scope>GreaterThan</scope><name>GetConditionName</name></member>

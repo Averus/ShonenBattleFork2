@@ -17,7 +17,7 @@ public class CostsStat_Effect : Effect {
         {
 
             StatModulation sm = new StatModulation(s, "-", cost);
-            battleManager.effectQueue.Add(sm);
+            //actionManager.effectQueue.Add(sm);
             //Debug.Log( parentBeing.beingName + "gets a " + statName + " -" + cost + " token");
             return;
         }
@@ -29,9 +29,9 @@ public class CostsStat_Effect : Effect {
 
     }
 
-    public CostsStat_Effect(BattleManager battleManager, Being parentBeing, Ability parentAbility, String effectName, String statName, int cost) : base(battleManager, parentBeing, parentAbility, effectName)
+    public CostsStat_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, String effectName, String statName, int cost) : base(actionManager, parentBeing, parentAbility, effectName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.parentAbility = parentAbility;
         this.statName = statName;

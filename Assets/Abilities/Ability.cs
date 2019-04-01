@@ -30,7 +30,7 @@ public class Ability {
     public bool isPassive = false;
     public bool isDefence = false;
     public int defenceSpeed = 0;
-    BattleManager battlemanager;
+    ActionManager battlemanager;
     public string abilityName = "BLANK ABILITY";
     public int ranks = 0;
     public int numberOfTargets = 1;

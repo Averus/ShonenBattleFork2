@@ -24,7 +24,7 @@
     <member refid="class_at_percentage_1a502c96846f51fcb96110bf3dbcc45101" kind="function"><name>Start</name></member>
     <member refid="class_at_percentage_1a90f498dd454c7083b07a2af894807487" kind="function"><name>Update</name></member>
   </compound>
-  <compound refid="class_battle_manager" kind="class"><name>BattleManager</name>
+  <compound refid="class_battle_manager" kind="class"><name>ActionManager</name>
     <member refid="class_battle_manager_1a0c808fe5ef5596ff69d154ca96881d3b" kind="enum"><name>CombatStates</name></member>
     <member refid="class_battle_manager_1a0c808fe5ef5596ff69d154ca96881d3ba03f75fdb8eb27d5a3e66baf023bf9d32" kind="enumvalue"><name>INITIATIVESORT</name></member>
     <member refid="class_battle_manager_1a0c808fe5ef5596ff69d154ca96881d3ba4761218e46f6d9a403fddb9c53d1f7a1" kind="enumvalue"><name>STARTTURN</name></member>
@@ -44,10 +44,10 @@
     <member refid="class_battle_manager_1a5975f2475d79a4c93d7c52b37682e91e" kind="function"><name>Update</name></member>
     <member refid="class_battle_manager_1ab5f7d47077513e4bc7315154f1f5ef96" kind="function"><name>StartCombat</name></member>
     <member refid="class_battle_manager_1a9377bfedc2c1003b4584dd02a3b87105" kind="function"><name>NextTurn</name></member>
-    <member refid="class_battle_manager_1aea83074d2bedf9b13de2afde98f467c3" kind="function"><name>BattleManager</name></member>
+    <member refid="class_battle_manager_1aea83074d2bedf9b13de2afde98f467c3" kind="function"><name>ActionManager</name></member>
   </compound>
   <compound refid="class_behaviour" kind="class"><name>Behaviour</name>
-    <member refid="class_behaviour_1a08f3f3523a5b859666dba194460e5e90" kind="variable"><name>battleManager</name></member>
+    <member refid="class_behaviour_1a08f3f3523a5b859666dba194460e5e90" kind="variable"><name>actionManager</name></member>
     <member refid="class_behaviour_1ad5ab96a1100642a91a91d22024be347c" kind="variable"><name>parentBeing</name></member>
     <member refid="class_behaviour_1aafc5d2b0ae7f5f14dce7a33c11799ed9" kind="variable"><name>behaviourName</name></member>
     <member refid="class_behaviour_1a04af641f94492bf25646eccd0eb717e6" kind="variable"><name>conditions</name></member>
@@ -79,7 +79,7 @@
     <member refid="class_being_1a52e41a9867126e2adc3ba9eb069e3ea0" kind="function"><name>SelectTargets</name></member>
   </compound>
   <compound refid="class_being_factory" kind="class"><name>BeingFactory</name>
-    <member refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" kind="variable"><name>battleManager</name></member>
+    <member refid="class_being_factory_1ad4a540dd284e45cc024d5193263d9d3a" kind="variable"><name>actionManager</name></member>
     <member refid="class_being_factory_1a0f2ea0a58361d393c01e95eba1822ca5" kind="function"><name>Start</name></member>
     <member refid="class_being_factory_1a6f8600623467feda4535cb420b0a6690" kind="function"><name>CreateBeing</name></member>
     <member refid="class_being_factory_1a62ec2f35a163d5306d1e3c4bdb40956a" kind="function"><name>BeingFactory</name></member>
@@ -99,7 +99,7 @@
     <member refid="class_compare_two_values_1a50c35ae41277971eddbb00d86cd18e2c" kind="function"><name>CompareTwoValues</name></member>
   </compound>
   <compound refid="class_condition" kind="class"><name>Condition</name>
-    <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" kind="variable"><name>battleManager</name></member>
+    <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" kind="variable"><name>actionManager</name></member>
     <member refid="class_condition_1a5e1cc13cbc82d4a42cb20feb67646583" kind="variable"><name>parentBeing</name></member>
     <member refid="class_condition_1a9daca5094be459a0d023b8c1ecdec6b7" kind="variable"><name>parentAbility</name></member>
     <member refid="class_condition_1aec29b26eb673fa507a9e3847e4ac0449" kind="variable"><name>conditionName</name></member>
@@ -123,7 +123,7 @@
     <member refid="class_damage_self_1a1a6aab01d9371b6bc61eee083b520284" kind="function"><name>DamageSelf</name></member>
   </compound>
   <compound refid="class_effect" kind="class"><name>Effect</name>
-    <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" kind="variable"><name>battleManager</name></member>
+    <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" kind="variable"><name>actionManager</name></member>
     <member refid="class_effect_1aeb4b0db75413b945faae306f2650a854" kind="variable"><name>parentBeing</name></member>
     <member refid="class_effect_1aab3f7eee5bc2a8eaf2cbe0ed4313f427" kind="variable"><name>parentAbility</name></member>
     <member refid="class_effect_1ab0d2647d792f5374565264e4494b85a9" kind="variable"><name>effectName</name></member>
@@ -159,7 +159,7 @@
     <member refid="class_main_1aae34c2c96593c6170bd80a37be299bb1" kind="enum"><name>GameStates</name></member>
     <member refid="class_main_1aae34c2c96593c6170bd80a37be299bb1a14d0b0e872355d0bf01b18cc2d4eb670" kind="enumvalue"><name>BATTLE</name></member>
     <member refid="class_main_1a972af12adb7b1056713bbab3b3ee0af3" kind="variable"><name>gameState</name></member>
-    <member refid="class_main_1aa9ad5333eb06842a1ff93c11dae4f0c6" kind="variable"><name>battleManager</name></member>
+    <member refid="class_main_1aa9ad5333eb06842a1ff93c11dae4f0c6" kind="variable"><name>actionManager</name></member>
     <member refid="class_main_1a3e8c0d7969e0472fdf85326ad1db03ed" kind="variable"><name>beingFactory</name></member>
     <member refid="class_main_1a12eb7f6752454cc3cdc2f1f5702eb801" kind="function"><name>Start</name></member>
     <member refid="class_main_1ae84e1ae284e16e270bea9f0362598a34" kind="function"><name>waitToStart</name></member>
@@ -183,7 +183,7 @@
     <member refid="class_others_1a2ca91913fcb259165aaeec82310ce4ed" kind="function"><name>Others</name></member>
   </compound>
   <compound refid="class_selection_criteria" kind="class"><name>SelectionCriteria</name>
-    <member refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" kind="variable"><name>battleManager</name></member>
+    <member refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" kind="variable"><name>actionManager</name></member>
     <member refid="class_selection_criteria_1abe0caeb6ff8f8a62965f89af96b5977c" kind="variable"><name>parentBeing</name></member>
     <member refid="class_selection_criteria_1ad0a73aea8531c8d0dcd1a76a42ddc7c2" kind="variable"><name>parentAbility</name></member>
     <member refid="class_selection_criteria_1a43921a270333dde26742c522aa2400ef" kind="variable"><name>selectionCriteriaName</name></member>
@@ -209,7 +209,7 @@
     <member refid="class_stat_modulation_1a705e63abf491aaa3c23a36240401f9f1" kind="function"><name>StatModulation</name></member>
   </compound>
   <compound refid="class_targeting_criteria" kind="class"><name>TargetingCriteria</name>
-    <member refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" kind="variable"><name>battleManager</name></member>
+    <member refid="class_targeting_criteria_1a53a29a55b6d8508737fe20c41fc408b0" kind="variable"><name>actionManager</name></member>
     <member refid="class_targeting_criteria_1adf088b14853867eca5f70b4175e8c32a" kind="variable"><name>parentBeing</name></member>
     <member refid="class_targeting_criteria_1a43be31f00d78b7434d007d884784003c" kind="variable"><name>parentAbility</name></member>
     <member refid="class_targeting_criteria_1a50a40effb92015a7b17329b84b2a36d8" kind="function"><name>CanThisBeTargeted</name></member>
@@ -269,7 +269,7 @@
   </compound>
   <compound refid="_self_8cs" kind="file"><name>Self.cs</name>
   </compound>
-  <compound refid="_battle_manager_8cs" kind="file"><name>BattleManager.cs</name>
+  <compound refid="_battle_manager_8cs" kind="file"><name>ActionManager.cs</name>
   </compound>
   <compound refid="_being_8cs" kind="file"><name>Being.cs</name>
   </compound>

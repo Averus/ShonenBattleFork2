@@ -66,11 +66,11 @@
       <memberdef kind="function" id="class_less_than_1ab71d958c1ad27a08004e6c505b395242" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>LessThan.LessThan</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string conditionName, string mode, Being p, int target)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string conditionName, string mode, Being p, int target)</argsstring>
         <name>LessThan</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -139,7 +139,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="168" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="172">
@@ -160,7 +160,7 @@
         </childnode>
       </node>
       <node id="168">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="169" relation="public-inheritance">
         </childnode>
@@ -180,7 +180,7 @@
         <childnode refid="169" relation="public-inheritance">
         </childnode>
         <childnode refid="168" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="170">
@@ -189,7 +189,7 @@
         <childnode refid="169" relation="public-inheritance">
         </childnode>
         <childnode refid="168" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="171" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -198,7 +198,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/LessThan.cs" line="6" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/LessThan.cs" bodystart="5" bodyend="45"/>
     <listofallmembers>
-      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>LessThan</scope><name>battleManager</name></member>
+      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>LessThan</scope><name>actionManager</name></member>
       <member refid="class_less_than_1acfcca37dbca9b9153c1b015f354083ac" prot="public" virt="virtual"><scope>LessThan</scope><name>CanThisBeUsed</name></member>
       <member refid="class_condition_1ad2270c61a0f492990cccb977faf4e007" prot="public" virt="non-virtual"><scope>LessThan</scope><name>Condition</name></member>
       <member refid="class_condition_1a0d4dc76caf50991138b95d71408c18ff" prot="public" virt="non-virtual"><scope>LessThan</scope><name>GetConditionName</name></member>

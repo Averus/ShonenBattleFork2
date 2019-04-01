@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="_battle_manager_8cs" kind="file">
-    <compoundname>BattleManager.cs</compoundname>
-    <innerclass refid="class_battle_manager" prot="public">BattleManager</innerclass>
+    <compoundname>ActionManager.cs</compoundname>
+    <innerclass refid="class_battle_manager" prot="public">ActionManager</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -12,7 +12,7 @@
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System.Collections;</highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System.Collections.Generic;</highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5" refid="class_battle_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_battle_manager" kindref="compound">BattleManager</ref><sp/>:<sp/>MonoBehaviour<sp/>{</highlight></codeline>
+<codeline lineno="5" refid="class_battle_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_battle_manager" kindref="compound">ActionManager</ref><sp/>:<sp/>MonoBehaviour<sp/>{</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
@@ -161,13 +161,13 @@
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154" refid="class_battle_manager_1aea83074d2bedf9b13de2afde98f467c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_battle_manager_1aea83074d2bedf9b13de2afde98f467c3" kindref="member">BattleManager</ref>(<ref refid="class_main" kindref="compound">Main</ref><sp/>main,<sp/><ref refid="class_being_factory" kindref="compound">BeingFactory</ref><sp/>bf)</highlight></codeline>
+<codeline lineno="154" refid="class_battle_manager_1aea83074d2bedf9b13de2afde98f467c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_battle_manager_1aea83074d2bedf9b13de2afde98f467c3" kindref="member">ActionManager</ref>(<ref refid="class_main" kindref="compound">Main</ref><sp/>main,<sp/><ref refid="class_being_factory" kindref="compound">BeingFactory</ref><sp/>bf)</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_battle_manager_1ad4b3afb30d49d50322a2815f547abcc7" kindref="member">mainState</ref><sp/>=<sp/>main;</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_battle_manager_1a03412169d7da172a7dff648be7b376f6" kindref="member">beingFactory</ref><sp/>=<sp/>bf;</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="159"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/BattleManager.cs"/>
+    <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/ActionManager.cs"/>
   </compounddef>
 </doxygen>

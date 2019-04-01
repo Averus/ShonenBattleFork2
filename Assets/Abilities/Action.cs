@@ -7,7 +7,7 @@ using UnityEngine;
 public class Action{
 
     public ThoughtType actionType;
-    public float toHit; //I don't think this is used
+    public float toHit; //a formula of dexterity, accuracy etc called in ActionManager
     public float reflex;
     //public float priority;
     public readonly List<Being> actors;

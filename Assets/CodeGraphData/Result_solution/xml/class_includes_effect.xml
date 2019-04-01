@@ -44,11 +44,11 @@
       <memberdef kind="function" id="class_includes_effect_1a9b1ddd8d0ff47188f157cc86bf9fb043" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>IncludesEffect.IncludesEffect</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string selectionCriteriaName, string effectName)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string selectionCriteriaName, string effectName)</argsstring>
         <name>IncludesEffect</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -69,7 +69,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria/IncludesEffect.cs" line="28" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria/IncludesEffect.cs" bodystart="28" bodyend="34"/>
-        <references refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" compoundref="_selection_criteria_8cs" startline="7">SelectionCriteria.battleManager</references>
+        <references refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" compoundref="_selection_criteria_8cs" startline="7">SelectionCriteria.actionManager</references>
         <references refid="class_includes_effect_1acc36c04b6b2fc1981c1a7732f3ca079e" compoundref="_includes_effect_8cs" startline="8">effectName</references>
         <references refid="class_selection_criteria_1abe0caeb6ff8f8a62965f89af96b5977c" compoundref="_selection_criteria_8cs" startline="8">SelectionCriteria.parentBeing</references>
       </memberdef>
@@ -101,7 +101,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="157" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="162">
@@ -114,7 +114,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="157" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="161">
@@ -135,7 +135,7 @@
         </childnode>
       </node>
       <node id="157">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="158" relation="public-inheritance">
         </childnode>
@@ -161,7 +161,7 @@
         <childnode refid="158" relation="public-inheritance">
         </childnode>
         <childnode refid="157" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="159">
@@ -170,7 +170,7 @@
         <childnode refid="158" relation="public-inheritance">
         </childnode>
         <childnode refid="157" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="160" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -179,7 +179,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria/IncludesEffect.cs" line="6" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/SelectionCriteria/IncludesEffect.cs" bodystart="5" bodyend="38"/>
     <listofallmembers>
-      <member refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" prot="public" virt="non-virtual"><scope>IncludesEffect</scope><name>battleManager</name></member>
+      <member refid="class_selection_criteria_1a9d23c93479bf9df8fbc82ca7cfb3f078" prot="public" virt="non-virtual"><scope>IncludesEffect</scope><name>actionManager</name></member>
       <member refid="class_includes_effect_1ae3ecce8552949da9199f319e71feecdc" prot="public" virt="virtual"><scope>IncludesEffect</scope><name>Check</name></member>
       <member refid="class_includes_effect_1acc36c04b6b2fc1981c1a7732f3ca079e" prot="private" virt="non-virtual"><scope>IncludesEffect</scope><name>effectName</name></member>
       <member refid="class_includes_effect_1a9b1ddd8d0ff47188f157cc86bf9fb043" prot="public" virt="non-virtual"><scope>IncludesEffect</scope><name>IncludesEffect</name></member>

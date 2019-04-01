@@ -4,10 +4,10 @@
     <compoundname>Behaviour</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_behaviour_1a08f3f3523a5b859666dba194460e5e90" prot="public" static="no" mutable="no">
-        <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-        <definition>BattleManager Behaviour.battleManager</definition>
+        <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+        <definition>ActionManager Behaviour.actionManager</definition>
         <argsstring></argsstring>
-        <name>battleManager</name>
+        <name>actionManager</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -115,11 +115,11 @@
       <memberdef kind="function" id="class_behaviour_1a4ef2d8a9c55b5d9cd67e1ec14df3328a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Behaviour.Behaviour</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string behaviourName)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string behaviourName)</argsstring>
         <name>Behaviour</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -136,7 +136,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Behaviour.cs" line="60" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Behaviour.cs" bodystart="60" bodyend="66"/>
-        <references refid="class_behaviour_1a08f3f3523a5b859666dba194460e5e90" compoundref="_behaviour_8cs" startline="7">battleManager</references>
+        <references refid="class_behaviour_1a08f3f3523a5b859666dba194460e5e90" compoundref="_behaviour_8cs" startline="7">actionManager</references>
         <references refid="class_behaviour_1aafc5d2b0ae7f5f14dce7a33c11799ed9" compoundref="_behaviour_8cs" startline="11">behaviourName</references>
         <references refid="class_behaviour_1ad5ab96a1100642a91a91d22024be347c" compoundref="_behaviour_8cs" startline="8">parentBeing</references>
       </memberdef>
@@ -156,7 +156,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="30" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="28">
@@ -183,11 +183,11 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="30" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="30">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="31" relation="public-inheritance">
         </childnode>
@@ -207,7 +207,7 @@
         <childnode refid="31" relation="public-inheritance">
         </childnode>
         <childnode refid="30" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="32">
@@ -216,7 +216,7 @@
         <childnode refid="31" relation="public-inheritance">
         </childnode>
         <childnode refid="30" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="33" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -225,7 +225,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Behaviour.cs" line="5" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Behaviour.cs" bodystart="5" bodyend="68"/>
     <listofallmembers>
-      <member refid="class_behaviour_1a08f3f3523a5b859666dba194460e5e90" prot="public" virt="non-virtual"><scope>Behaviour</scope><name>battleManager</name></member>
+      <member refid="class_behaviour_1a08f3f3523a5b859666dba194460e5e90" prot="public" virt="non-virtual"><scope>Behaviour</scope><name>actionManager</name></member>
       <member refid="class_behaviour_1a4ef2d8a9c55b5d9cd67e1ec14df3328a" prot="public" virt="non-virtual"><scope>Behaviour</scope><name>Behaviour</name></member>
       <member refid="class_behaviour_1aafc5d2b0ae7f5f14dce7a33c11799ed9" prot="public" virt="non-virtual"><scope>Behaviour</scope><name>behaviourName</name></member>
       <member refid="class_behaviour_1a8fb1e3415dda4b06c3bf7d08cbf10ecd" prot="public" virt="non-virtual"><scope>Behaviour</scope><name>CanThisBeDone</name></member>

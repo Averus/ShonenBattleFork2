@@ -21,11 +21,11 @@
       <memberdef kind="function" id="class_no_condition_1a6072d66d2805095dad9e2311943e59dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>NoCondition.NoCondition</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, string conditionName)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, string conditionName)</argsstring>
         <name>NoCondition</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -71,7 +71,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="199" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="203">
@@ -92,7 +92,7 @@
         </childnode>
       </node>
       <node id="199">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="200" relation="public-inheritance">
         </childnode>
@@ -118,7 +118,7 @@
         <childnode refid="200" relation="public-inheritance">
         </childnode>
         <childnode refid="199" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="201">
@@ -127,7 +127,7 @@
         <childnode refid="200" relation="public-inheritance">
         </childnode>
         <childnode refid="199" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="202" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -136,7 +136,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/NoCondition.cs" line="6" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Conditions/NoCondition.cs" bodystart="5" bodyend="16"/>
     <listofallmembers>
-      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>NoCondition</scope><name>battleManager</name></member>
+      <member refid="class_condition_1a7547a121ba397b441439d994cd8246b1" prot="public" virt="non-virtual"><scope>NoCondition</scope><name>actionManager</name></member>
       <member refid="class_no_condition_1a98b029d02c537b38e156a25e5981a7a1" prot="public" virt="virtual"><scope>NoCondition</scope><name>CanThisBeUsed</name></member>
       <member refid="class_condition_1ad2270c61a0f492990cccb977faf4e007" prot="public" virt="non-virtual"><scope>NoCondition</scope><name>Condition</name></member>
       <member refid="class_condition_1a0d4dc76caf50991138b95d71408c18ff" prot="public" virt="non-virtual"><scope>NoCondition</scope><name>GetConditionName</name></member>

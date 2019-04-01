@@ -44,11 +44,11 @@
       <memberdef kind="function" id="class_costs_m_p_1a0bb43dc719b7d6581d91564d1164f25c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CostsMP.CostsMP</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility, String effectName, int cost)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility, String effectName, int cost)</argsstring>
         <name>CostsMP</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -73,7 +73,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/CostsMP.cs" line="20" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/CostsMP.cs" bodystart="20" bodyend="26"/>
-        <references refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" compoundref="_effect_8cs" startline="6">Effect.battleManager</references>
+        <references refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" compoundref="_effect_8cs" startline="6">Effect.actionManager</references>
         <references refid="class_costs_m_p_1a2a36da3975bf3021f3d152255b7baaeb" compoundref="_costs_m_p_8cs" startline="7">cost</references>
         <references refid="class_effect_1aab3f7eee5bc2a8eaf2cbe0ed4313f427" compoundref="_effect_8cs" startline="8">Effect.parentAbility</references>
         <references refid="class_effect_1aeb4b0db75413b945faae306f2650a854" compoundref="_effect_8cs" startline="7">Effect.parentBeing</references>
@@ -106,7 +106,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="88" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="92">
@@ -133,7 +133,7 @@
         </childnode>
       </node>
       <node id="88">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="89" relation="public-inheritance">
         </childnode>
@@ -153,7 +153,7 @@
         <childnode refid="89" relation="public-inheritance">
         </childnode>
         <childnode refid="88" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="86">
@@ -167,7 +167,7 @@
         </childnode>
         <childnode refid="88" relation="usage">
           <edgelabel>UsedInState</edgelabel>
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="90">
@@ -176,7 +176,7 @@
         <childnode refid="89" relation="public-inheritance">
         </childnode>
         <childnode refid="88" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="91" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -185,7 +185,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/CostsMP.cs" line="5" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/CostsMP.cs" bodystart="5" bodyend="27"/>
     <listofallmembers>
-      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>CostsMP</scope><name>battleManager</name></member>
+      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>CostsMP</scope><name>actionManager</name></member>
       <member refid="class_costs_m_p_1a2a36da3975bf3021f3d152255b7baaeb" prot="private" virt="non-virtual"><scope>CostsMP</scope><name>cost</name></member>
       <member refid="class_costs_m_p_1a0bb43dc719b7d6581d91564d1164f25c" prot="public" virt="non-virtual"><scope>CostsMP</scope><name>CostsMP</name></member>
       <member refid="class_effect_1aeb5675bc461e64280c6381979d0fae60" prot="public" virt="non-virtual"><scope>CostsMP</scope><name>Effect</name></member>

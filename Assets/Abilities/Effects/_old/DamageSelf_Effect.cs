@@ -18,7 +18,7 @@ public class DamageSelf_Effect : Effect {
     }
 
 
-    public DamageSelf_Effect(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, int damage) : base(battleManager, parentBeing, parentAbility, effectName)
+    public DamageSelf_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int damage) : base(actionManager, parentBeing, parentAbility, effectName)
     {
         this.damage = damage;
     }

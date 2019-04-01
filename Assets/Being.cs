@@ -45,7 +45,7 @@ public class Being : MonoBehaviour{
     public bool isCommittedToAction = false;
     public bool hasTakenAction = false;
     public List<Thought> selectedAbilities = new List<Thought>();
-    public List<Effect> EffectsQueue = new List<Effect>();
+    public List<EffectToken> EffectsQueue = new List<EffectToken>();
     //public float currentActionReflex = 0; //the reflex speed this Being is currently acting under.
 
 

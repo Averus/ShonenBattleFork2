@@ -8,14 +8,14 @@ public enum GameStates { BATTLE };
 public GameStates gameState = new GameStates();
 
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public BeingFactory beingFactory;
     
 
     void Start()
     {
 
-        battleManager = GetComponent<BattleManager>();
+        actionManager = GetComponent<ActionManager>();
         beingFactory = GetComponent<BeingFactory>();
 
 
@@ -41,14 +41,14 @@ public GameStates gameState = new GameStates();
         Being g = beingFactory.CreateBeing("Moolah");
         Being h = beingFactory.CreateBeing("Dave");
 
-        //battleManager.combatants.Add(b);
+        //actionManager.combatants.Add(b);
 
-        //battleManager.combatants.Add(c);
+        //actionManager.combatants.Add(c);
 
 
 
         //gameState = GameStates.BATTLE;
-        //battleManager.StartCombat();
+        //actionManager.StartCombat();
 
 
 

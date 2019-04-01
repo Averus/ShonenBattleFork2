@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Behaviour{
 
-    public BattleManager battleManager;
+    public ActionManager actionManager;
     public Being parentBeing;
 
 
@@ -47,9 +47,9 @@ public class Behaviour{
 
     }
 
-    public Behaviour(BattleManager battleManager, Being parentBeing, string behaviourName)
+    public Behaviour(ActionManager actionManager, Being parentBeing, string behaviourName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.behaviourName = behaviourName;
 

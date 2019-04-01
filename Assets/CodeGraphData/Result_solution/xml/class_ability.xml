@@ -4,8 +4,8 @@
     <compoundname>Ability</compoundname>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_ability_1a6eebb7b0147bfa79aa971f3fe16a0c0e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-        <definition>BattleManager Ability.battlemanager</definition>
+        <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+        <definition>ActionManager Ability.battlemanager</definition>
         <argsstring></argsstring>
         <name>battlemanager</name>
         <briefdescription>
@@ -93,7 +93,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Ability.cs" line="14" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Ability.cs" bodystart="14" bodyend="-1"/>
-        <referencedby refid="class_battle_manager_1ae0caafb1566d5bdab37b39ac6d27c5b0" compoundref="_battle_manager_8cs" startline="110" endline="142">BattleManager.CalculateToHit</referencedby>
+        <referencedby refid="class_battle_manager_1ae0caafb1566d5bdab37b39ac6d27c5b0" compoundref="_battle_manager_8cs" startline="110" endline="142">ActionManager.CalculateToHit</referencedby>
         <referencedby refid="class_includes_effect_1ae3ecce8552949da9199f319e71feecdc" compoundref="_includes_effect_8cs" startline="11" endline="25">IncludesEffect.Check</referencedby>
         <referencedby refid="class_ability_1a0472d3aca8ab9280471162179ce13d8b" compoundref="_ability_8cs" startline="74" endline="81">Use</referencedby>
       </memberdef>
@@ -179,7 +179,7 @@
         <references refid="class_ability_1ad1a1f24d99c8b5d6d8cb570a06403eb3" compoundref="_ability_8cs" startline="8">abilityName</references>
         <references refid="class_ability_1a6eebb7b0147bfa79aa971f3fe16a0c0e" compoundref="_ability_8cs" startline="7">battlemanager</references>
         <references refid="class_ability_1aedfd1c0855381a203798f8aaa0876dbb" compoundref="_ability_8cs" startline="20" endline="48">checkForValidTargets</references>
-        <references refid="class_battle_manager_1a14847f4442b25d631380fb1514f33949" compoundref="_battle_manager_8cs" startline="13">BattleManager.combatants</references>
+        <references refid="class_battle_manager_1a14847f4442b25d631380fb1514f33949" compoundref="_battle_manager_8cs" startline="13">ActionManager.combatants</references>
         <references refid="class_ability_1a2d3ccff2472c6e66303c24bd02ce466d" compoundref="_ability_8cs" startline="13">conditions</references>
         <references refid="class_ability_1ae9d85b6a143740687f32f0dd2ad40cd5" compoundref="_ability_8cs" startline="17">validTargets</references>
       </memberdef>
@@ -222,10 +222,10 @@
       <memberdef kind="function" id="class_ability_1a07a26a3f1bc7f3142bffc087e2052800" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Ability.Ability</definition>
-        <argsstring>(BattleManager bm, string name, bool active)</argsstring>
+        <argsstring>(ActionManager bm, string name, bool active)</argsstring>
         <name>Ability</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
           <declname>bm</declname>
         </param>
         <param>
@@ -258,7 +258,7 @@
         </childnode>
       </node>
       <node id="2">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
@@ -278,7 +278,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="2" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="4">
@@ -287,7 +287,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="2" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
           <edgelabel>beingFactory</edgelabel>

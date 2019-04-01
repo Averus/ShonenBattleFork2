@@ -55,11 +55,11 @@
       <memberdef kind="function" id="class_buff_to_hit_1a97a03f1fdb754e1cf6b7dccb93b0368f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BuffToHit.BuffToHit</definition>
-        <argsstring>(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int buff)</argsstring>
+        <argsstring>(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int buff)</argsstring>
         <name>BuffToHit</name>
         <param>
-          <type><ref refid="class_battle_manager" kindref="compound">BattleManager</ref></type>
-          <declname>battleManager</declname>
+          <type><ref refid="class_battle_manager" kindref="compound">ActionManager</ref></type>
+          <declname>actionManager</declname>
         </param>
         <param>
           <type><ref refid="class_being" kindref="compound">Being</ref></type>
@@ -119,7 +119,7 @@
           <edgelabel>parentBeing</edgelabel>
         </childnode>
         <childnode refid="54" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="58">
@@ -146,7 +146,7 @@
         </childnode>
       </node>
       <node id="54">
-        <label>BattleManager</label>
+        <label>ActionManager</label>
         <link refid="class_battle_manager"/>
         <childnode refid="55" relation="public-inheritance">
         </childnode>
@@ -166,7 +166,7 @@
         <childnode refid="55" relation="public-inheritance">
         </childnode>
         <childnode refid="54" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="52">
@@ -180,7 +180,7 @@
         </childnode>
         <childnode refid="54" relation="usage">
           <edgelabel>UsedInState</edgelabel>
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
       </node>
       <node id="56">
@@ -189,7 +189,7 @@
         <childnode refid="55" relation="public-inheritance">
         </childnode>
         <childnode refid="54" relation="usage">
-          <edgelabel>battleManager</edgelabel>
+          <edgelabel>actionManager</edgelabel>
         </childnode>
         <childnode refid="57" relation="usage">
           <edgelabel>beingFactory</edgelabel>
@@ -198,7 +198,7 @@
     </collaborationgraph>
     <location file="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/BuffToHit.cs" line="5" column="1" bodyfile="C:/Users/Tim/Documents/ShonenBattle/Assets/Abilities/Effects/BuffToHit.cs" bodystart="5" bodyend="24"/>
     <listofallmembers>
-      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>BuffToHit</scope><name>battleManager</name></member>
+      <member refid="class_effect_1ac5dffe56d653b75f816b7855c90f1d87" prot="public" virt="non-virtual"><scope>BuffToHit</scope><name>actionManager</name></member>
       <member refid="class_buff_to_hit_1aea7d812a52a48f1591522c84b0316a34" prot="private" virt="non-virtual"><scope>BuffToHit</scope><name>buff</name></member>
       <member refid="class_buff_to_hit_1a97a03f1fdb754e1cf6b7dccb93b0368f" prot="public" virt="non-virtual"><scope>BuffToHit</scope><name>BuffToHit</name></member>
       <member refid="class_effect_1aeb5675bc461e64280c6381979d0fae60" prot="public" virt="non-virtual"><scope>BuffToHit</scope><name>Effect</name></member>

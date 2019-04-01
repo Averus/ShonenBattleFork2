@@ -13,14 +13,14 @@ public class Damage_Effect : Effect
     {
 
         StatModulation sm = new StatModulation(target.GetStat("HP"), "-", damage);
-        battleManager.effectQueue.Add(sm);
+        //actionManager.effectQueue.Add(sm);
         //Debug.Log("HP minus damage StatModulation put in " + target.beingName + "'s statModulation list.");
 
 
     }
 
 
-    public Damage_Effect(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName, int damage) : base(battleManager, parentBeing, parentAbility, effectName)
+    public Damage_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int damage) : base(actionManager, parentBeing, parentAbility, effectName)
     {
         this.damage = damage;
     } 

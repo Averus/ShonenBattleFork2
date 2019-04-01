@@ -22,9 +22,9 @@ public class AmTarget_ReactionCondition : ReactionCondition
 
 
 
-    public AmTarget_ReactionCondition(BattleManager battleManager, Being parentBeing, string reactionConditionName) : base(battleManager, parentBeing, reactionConditionName)
+    public AmTarget_ReactionCondition(ActionManager actionManager, Being parentBeing, string reactionConditionName) : base(actionManager, parentBeing, reactionConditionName)
     {
-        this.battleManager = battleManager;
+        this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.reactionConditionName = reactionConditionName;
 

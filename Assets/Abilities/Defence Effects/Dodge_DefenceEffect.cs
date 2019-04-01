@@ -16,9 +16,9 @@ public class Dodge_DefenceEffect : Effect
 
 
 
-    public Dodge_DefenceEffect(BattleManager battleManager, Being parentBeing, Ability parentAbility, string effectName) : base(battleManager, parentBeing, parentAbility, effectName)
+    public Dodge_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName) : base(actionManager, parentBeing, parentAbility, effectName)
     {
-        
+
     }
 
 
