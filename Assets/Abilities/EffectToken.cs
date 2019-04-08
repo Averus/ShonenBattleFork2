@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class EffectToken
+public class EffectToken
 {
-    string effectTokenName = "NO EFFECT TOKEN NAME";
+    public Being target;
 
-    public abstract void Use();
+    public Effect effect;
+
+    public EffectToken(Effect effect, Being target)
+    {
+        this.target = target;
+        this.effect = effect;
+    }
 
 }

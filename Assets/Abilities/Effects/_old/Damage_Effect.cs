@@ -20,7 +20,7 @@ public class Damage_Effect : Effect
     }
 
 
-    public Damage_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int damage) : base(actionManager, parentBeing, parentAbility, effectName)
+    public Damage_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int damage, CombatState usedInState) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
     {
         this.damage = damage;
     } 

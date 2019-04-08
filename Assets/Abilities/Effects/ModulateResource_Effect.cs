@@ -34,7 +34,7 @@ public class ModulateResource_Effect : Effect{
 
 
 
-    public ModulateResource_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, int value, bool targetSelf) : base(actionManager, parentBeing, parentAbility, effectName)
+    public ModulateResource_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, int value, bool targetSelf, CombatState usedInState) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
     {
         this.targetResource = targetStat;
         this.value = value;

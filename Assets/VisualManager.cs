@@ -567,7 +567,7 @@ public class VisualManager : ScriptableObject {
         }
     }
 
-    public void VisualiseAction(Action a)
+    public void Visualise(Action a)
     {
         if (a.ability.visual !=null)
         {

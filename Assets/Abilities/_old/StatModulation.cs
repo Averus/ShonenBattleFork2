@@ -19,13 +19,13 @@ public class StatModulation : EffectToken {
 
         if (modifier == "+")
         {
-            targetStat.current += value;
+            //targetStat.current += value;
             return;
         }
 
         if (modifier == "-")
         {
-            targetStat.current -= value;
+            //targetStat.current -= value;
             return;
         }
 

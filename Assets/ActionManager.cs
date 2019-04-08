@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum CombatState
+{
+    Normal = 100,
+    AbilitySpeedCalc = 200,
+}
+
 public class ActionManager : MonoBehaviour {
 
     public VisualManager visualManager;
@@ -17,8 +23,8 @@ public class ActionManager : MonoBehaviour {
     public int currentTurn = 0;
     public int step = 0;
     public bool pause = false;
-
-    public List<Effect> effectQueue = new List<Effect>(); //rename to effectsInPlay
+    public CombatState combatState = 0;
+    public List<Effect> effectsInPlay = new List<Effect>(); //rename to effectsInPlay
 
     public Thought currentThought = null; //The current Thought that is being evaluated
     public Action currentAction = null; //The current action being evaluated
@@ -142,6 +148,32 @@ public class ActionManager : MonoBehaviour {
         LIST2 = SortedList;
     }
 
+    private void ActivateEffects(Ability ability)
+    {
+        for (int i = 0; i < ability.effects.Count; i++)
+        {
+            if (ability.effects[i].UsedInState == combatState)
+            {
+                EffectToken effectToken = new EffectToken(ability.effects[i], )
+                
+                effectsInPlay.Add(ability.effects[i]);
+            }
+        }
+    }
+
+    private void SortEffectsInPLay()
+    {
+        //sorts by resolution order so ResolveEffectsInPlay can simply fire along the line
+    }
+
+    private void ResolveEffectsInPlay()
+    {
+        for (int i = 0; i < effectsInPlay.Count; i++)
+        {
+            //effectsInPlay[i].Use(effectsInPlay[i].parentAbility.tar)
+        }
+    }
+
     private void CommitToAction()
     {
         for (int i = LIST2.Count - 1; i > -1; i--)
@@ -158,15 +190,19 @@ public class ActionManager : MonoBehaviour {
 
             LIST2[0].ability.GetParentBeing().isCommittedToAction = true;//this should only happen when it's a PUBLICNORMAL abilty
             currentThought = LIST2[0];
-            visualManager.VisualiseThought(LIST2);
+            //The abilites visual fires (not the individual effect visuals, the 'activate' visual)
+            //visualManager.VisualiseThought(LIST2);
             //Move thought from list 2 to become an action in list 3: 'X dashes forwards'
             Action a = LIST2[0].ability.GetParentBeing().Act(LIST2[0]);
             LIST3.Add(a);
             //find action 'a' that were currently moving from Thought to Action in LIST3 - it might not be in element 0
-            currentAction = LIST3.Find(action => action == a); 
-            visualManager.VisualiseAction(a);
+            currentAction = LIST3.Find(action => action == a);
+            visualManager.Visualise(a);
             SortList3();
             LIST2.RemoveAt(0);
+
+
+
             //Get reactions from capable Beings
             List<Thought> tempList = new List<Thought>();
             for (int i = 0; i < LIST1.Count; i++)

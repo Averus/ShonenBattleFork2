@@ -11,14 +11,14 @@ public class DamageSelf_Effect : Effect {
     {
 
         Stat hp = parentBeing.GetStat("HP"); 
-        hp.current -= damage;
+        //hp.current -= damage;
         Debug.Log(parentBeing.beingName + " hurts itself for " + damage + " damage.");
         Debug.Log(parentBeing.beingName + " HP at " + hp.current);
 
     }
 
 
-    public DamageSelf_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int damage) : base(actionManager, parentBeing, parentAbility, effectName)
+    public DamageSelf_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int damage, CombatState usedInState) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
     {
         this.damage = damage;
     }

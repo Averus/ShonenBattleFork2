@@ -10,16 +10,17 @@ public abstract class Effect{
 
     public string effectName;
 
-    //ActionManager.CombatStates UsedInState;
+    public CombatState UsedInState;
 
     public abstract void Use(Being target);
 
 
-    public Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName)
+    public Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState UsedInState)
     {
         this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.parentAbility = parentAbility;
         this.effectName = effectName;
+        this.UsedInState = UsedInState;
     }
 }
