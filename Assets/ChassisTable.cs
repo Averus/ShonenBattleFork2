@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Linq;
 
 
 [CreateAssetMenu]
@@ -24,6 +25,7 @@ public class ChassisTable : ScriptableObject
     public void LoadChassisRulesCSV()
     {
         chassisRules = LoadChassisRules(chassisRulesCSV);
+        chassisRules = SortListBySalience(chassisRules);
     }
 
     private List<ChassisRule> LoadChassisRules( TextAsset txt)
@@ -60,7 +62,6 @@ public class ChassisTable : ScriptableObject
                     }
                 }
                 chassisRules.Add(rule);
-                Debug.Log("ChassisRule length " + chassisRules.Count);
             }
         }
         
@@ -69,6 +70,7 @@ public class ChassisTable : ScriptableObject
             Debug.Log("Error: txt asset is null");
         }
 
+        Debug.Log(chassisRules.Count + " Chassis rules loaded");
         return chassisRules;
       
     }
@@ -523,7 +525,6 @@ public class ChassisTable : ScriptableObject
         return 0;
     }
 
-    //this will be changed to check chassis rules, not check resolution visuals as it does now
     public void CheckChassisTable()
     {
         if (actionManager.currentAction != null)
@@ -564,6 +565,11 @@ public class ChassisTable : ScriptableObject
         }
     }
 
+    private List<ChassisRule> SortListBySalience(List<ChassisRule> list)
+    {
+        List<ChassisRule> SortedList = list.OrderByDescending(o => o.conditions.Count).ToList();
+        return SortedList;
+    }
 
     private string InsertNames(string s, string attacker, string target, string provoker)
     {
@@ -576,7 +582,12 @@ public class ChassisTable : ScriptableObject
 
 
 
+
+
+
+
     //this is now obsolete
+    /*
     public void Resolve(Action action)
     {
         //Debug.Log("resolving");
@@ -689,7 +700,7 @@ public class ChassisTable : ScriptableObject
     }
 
 
-
+    */
 
 
 

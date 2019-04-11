@@ -24,7 +24,7 @@ public class ActionManager : MonoBehaviour {
     public int step = 0;
     public bool pause = false;
     public CombatState combatState = 0;
-    public List<Effect> effectsInPlay = new List<Effect>(); //rename to effectsInPlay
+    public List<EffectToken> effectsInPlay = new List<EffectToken>();
 
     public Thought currentThought = null; //The current Thought that is being evaluated
     public Action currentAction = null; //The current action being evaluated
@@ -144,24 +144,24 @@ public class ActionManager : MonoBehaviour {
     private void SortList2()
     {
         //Should put instant actions on top etc, so Order by.andThen.etc
-        List<Thought> SortedList = LIST2.OrderByDescending(o => o.reflex).ToList();
+        List<Thought> SortedList = LIST2.OrderBy(o => o.ability.abilityType).ThenByDescending(o => o.reflex).ToList();
         LIST2 = SortedList;
     }
 
-    private void ActivateEffects(Ability ability)
+    private void ActivateEffects(Action action)
     {
-        for (int i = 0; i < ability.effects.Count; i++)
+        for (int i = 0; i < action.ability.effects.Count; i++)
         {
-            if (ability.effects[i].UsedInState == combatState)
+            if (action.ability.effects[i].UsedInState == combatState)
             {
-                EffectToken effectToken = new EffectToken(ability.effects[i], )
+                EffectToken effectToken = new EffectToken(action.ability.effects[i], action.targets);
                 
-                effectsInPlay.Add(ability.effects[i]);
+                effectsInPlay.Add(effectToken);
             }
         }
     }
 
-    private void SortEffectsInPLay()
+    private void SortEffectsInPlay()
     {
         //sorts by resolution order so ResolveEffectsInPlay can simply fire along the line
     }
@@ -170,7 +170,14 @@ public class ActionManager : MonoBehaviour {
     {
         for (int i = 0; i < effectsInPlay.Count; i++)
         {
-            //effectsInPlay[i].Use(effectsInPlay[i].parentAbility.tar)
+            if (effectsInPlay[i].effect.UsedInState == combatState)
+            {
+                for (int ii = 0; ii < effectsInPlay[i].targets.Count; ii++)
+                {
+                    effectsInPlay[i].effect.Use(effectsInPlay[i].targets[ii]);
+                    Debug.Log("Doing effect " + effectsInPlay[i].effect.effectName + " from " + effectsInPlay[i].effect.parentAbility + " in " + effectsInPlay[i].effect.parentBeing);
+                }
+            }
         }
     }
 
@@ -197,11 +204,19 @@ public class ActionManager : MonoBehaviour {
             LIST3.Add(a);
             //find action 'a' that were currently moving from Thought to Action in LIST3 - it might not be in element 0
             currentAction = LIST3.Find(action => action == a);
+            //Play the 'activate' visual of the ability
             visualManager.Visualise(a);
             SortList3();
             LIST2.RemoveAt(0);
 
-
+            //Now we begin calculating the abilities speed
+            combatState = CombatState.AbilitySpeedCalc;
+            //Place effects that fire in the current state into the EffectsInPlay list
+            ActivateEffects(currentAction);
+            //Sort the list by resolution order
+            SortEffectsInPlay(); //TODO
+            //Resolve the list
+            ResolveEffectsInPlay();
 
             //Get reactions from capable Beings
             List<Thought> tempList = new List<Thought>();
@@ -213,12 +228,12 @@ public class ActionManager : MonoBehaviour {
                     tempList.AddRange(LIST1[i].being.React(a));
                 }
             }
-            //Remove reactions that are slower than the original actions (currentAction)'s reflex
+            //Remove reactions that are slower than the original actions (currentAction)'s action speed (or tohit whatever I'm calling it)
             for (int i = tempList.Count - 1; i > -1; i--)
             {
-                if (tempList[i].reflex < currentThought.reflex)
+                if (tempList[i].reflex < currentAction.toHit)
                 {
-                    //Debug.Log(tempList[i].ability.GetParentBeing().beingName + " " + tempList[i].ability.abilityName +" " + tempList[i].reflex + " is less than " + currentAction.reflex);
+                    //Debug.Log(tempList[i].ability.GetParentBeing().beingName + " " + tempList[i].ability.abilityName +" " + tempList[i].reflex + " is less than " + currentAction.toHit);
                     tempList.RemoveAt(i);
                 }
             }

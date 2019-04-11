@@ -35,34 +35,25 @@ public class BeingFactory : MonoBehaviour {
         b.resources.Add(hp);
         b.resources.Add(stamina);
     }
-
     //stat blocks
     void BasicStats(Being b)
     {
-      
 
-        Stat dex = new Stat("DEXTERITY", b, 100, 100);
-        b.stats.Add(dex);
-
-        Stat meleeAccuracy = new Stat("MELEEACCURACY", b, 0, 100);
-        b.stats.Add(dex);
-
-        Stat rangedAccuracy = new Stat("RANGEDACCURACY", b, 0, 100);
-        b.stats.Add(dex);
 
 
     }
     void NewBasicStats(Being b)
     {
         Stat reflex = new Stat("REFLEX", b, 100, 100);
-        //reflex.current = 10f;
-
         b.stats.Add(reflex);
+
+        Stat dex = new Stat("DEXTERITY", b, 50, 100);
+        b.stats.Add(dex);
     }
     //defence blocks
     void BasicDefences(Being b) 
     {
-        Ability def1 = new Ability(b,"Block",AbilityChassis.Block, 100, 1, true);
+        Ability def1 = new Ability(b,"Block",AbilityChassis.Block, AbilityType.PublicNormal, 100, 1, true);
         def1.isDefence = true;
         def1.defenceSpeed = 50;
         ResourceAtValue_Condition reqStam = new ResourceAtValue_Condition(actionManager, b, "Stamina above 0", "STAMINA", ">", 0);
@@ -77,7 +68,7 @@ public class BeingFactory : MonoBehaviour {
         b.defences.Add(def1);
 
         //Create a generic 'dodge' defence
-        Ability def2 = new Ability(b, "Dodge", AbilityChassis.Dodge, 100, 1, true);
+        Ability def2 = new Ability(b, "Dodge", AbilityChassis.Dodge, AbilityType.PublicNormal, 100, 1, true);
         def2.isDefence = true;
         def2.defenceSpeed = 40;
         ResourceAtValue_Condition reqStam2 = new ResourceAtValue_Condition(actionManager, b, "Stamina above 0", "STAMINA", ">", 0);
@@ -104,7 +95,6 @@ public class BeingFactory : MonoBehaviour {
        // def3.targetingCriteria.Add(self3);
        // b.defences.Add(def3);
     }
-
     //behaviours
     void AttackBehaviour(Being b)
     {
@@ -145,12 +135,22 @@ public class BeingFactory : MonoBehaviour {
         selfPreservation.selectionCriteria.Add(blocks);
 
         b.reactions.Add(selfPreservation);
+
+        //create a reaction called 'notice danger'
+        Reaction noticeDanger = new Reaction(actionManager, b, "Notice Danger");
+        ContainsEffect_ReactionCondition dealsDamage2 = new ContainsEffect_ReactionCondition(actionManager, b, "Deals Damage", "Damage");
+        IncludesEffect_SelectionCriteria exclamation = new IncludesEffect_SelectionCriteria(actionManager, b, "Exclamation", "Exclamation", 20, 30);
+
+        noticeDanger.reactionConditions.Add(dealsDamage2);
+        noticeDanger.selectionCriteria.Add(exclamation);
+        b.reactions.Add(noticeDanger);
+
     }
     //ability packs
     void BasicAttackAbilities(Being b)
     {
 
-        Ability ab3 = new Ability(b, "Poor punch", AbilityChassis.Melee, 100, 1, false);
+        Ability ab3 = new Ability(b, "Poor punch", AbilityChassis.Melee, AbilityType.PublicNormal, 100, 1, false);
         NoCondition_Condition noCondition2 = new NoCondition_Condition(actionManager, b, "NoCondition");
         ModulateResource_Effect damage = new ModulateResource_Effect(actionManager, b, ab3, "Damage", "HP", -3, false, CombatState.Normal);
         Others_TargetingCriteria o = new Others_TargetingCriteria(actionManager, b, ab3);
@@ -162,7 +162,7 @@ public class BeingFactory : MonoBehaviour {
         // b.abilities.Add(ab3);
 
 
-        Ability ab4 = new Ability(b, "Punch", AbilityChassis.Melee, 100,1, false);
+        Ability ab4 = new Ability(b, "Punch", AbilityChassis.Melee,AbilityType.PublicNormal, 100,1, false);
         ResourceAtValue_Condition reqStam = new ResourceAtValue_Condition(actionManager, b, "Stamina above 0", "STAMINA", ">", 0);
         ModulateResource_Effect costsStamina = new ModulateResource_Effect(actionManager, b, ab3, "CostsStamina", "STAMINA", -20, true, CombatState.Normal);
         ModulateResource_Effect damage2 = new ModulateResource_Effect(actionManager, b, ab4, "Damage", "HP", -10, false, CombatState.Normal);
@@ -179,7 +179,7 @@ public class BeingFactory : MonoBehaviour {
     void BasicSelfHealingAbility(Being b)
     {
         //Create a new ability called Healself
-        Ability ab = new Ability(b, "Heal", AbilityChassis.Melee, 100, 1, false);
+        Ability ab = new Ability(b, "Heal", AbilityChassis.Melee, AbilityType.PublicNormal, 100, 1, false);
         //create a condition that MP must not be greater the 5 (the cost)
         ResourceAtValue_Condition gt = new ResourceAtValue_Condition(actionManager, b, "MP greater than 5", "MP", ">", 5);
 
@@ -193,11 +193,10 @@ public class BeingFactory : MonoBehaviour {
 
 
     }
-    
     //passive ability packs
     void BasicPassiveAbilities(Being b)
     {
-        Ability reg = new Ability(b, "Stamina regen", AbilityChassis.Block, 100, 1, false);
+        Ability reg = new Ability(b, "Stamina regen", AbilityChassis.Block, AbilityType.PublicNormal, 100, 1, false);
         reg.isDefence = false;
 
         //NewRound_Condition nrc = new NewRound_Condition(actionManager, b, "New round condition");
@@ -209,7 +208,6 @@ public class BeingFactory : MonoBehaviour {
         reg.targetingCriteria.Add(self);
         b.abilities.Add(reg);
     }
-
 
     public Being CreateBeing(string name)
     {
@@ -245,7 +243,7 @@ public class BeingFactory : MonoBehaviour {
         //BasicPassiveAbilities(p);
 
         //bestow defences
-       // BasicDefences(p);
+        // BasicDefences(p);
 
 
 

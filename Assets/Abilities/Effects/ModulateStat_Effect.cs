@@ -9,6 +9,7 @@ public class ModulateStat_Effect : Effect
     public string targetStat;
     StatModType modifierType;
     public int value;
+    public CombatState usedInState;
 
 
     public override void Use(Being target)
@@ -33,6 +34,7 @@ public class ModulateStat_Effect : Effect
         this.targetStat = targetStat;
         this.modifierType = modifierType;
         this.value = value;
+        this.usedInState = usedInState;
     }
 }
 

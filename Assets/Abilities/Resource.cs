@@ -60,7 +60,7 @@ public class Resource{
         //resourceModifiers = new List<ResourceModifier>();
     }
 
-    //second constructor does nto require Max, which is set to 0 instead (floats cannot be nulled)
+    //second constructor does not require Max, which is set to 0 instead (floats cannot be nulled)
     public Resource(string resourceName, float current) : this(resourceName, current, 0) { }
 
 }

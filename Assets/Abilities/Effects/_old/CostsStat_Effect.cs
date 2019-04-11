@@ -16,7 +16,7 @@ public class CostsStat_Effect : Effect {
         if (s!= null)
         {
 
-            StatModulation sm = new StatModulation(s, "-", cost);
+            //StatModulation sm = new StatModulation(s, "-", cost);
             //actionManager.effectQueue.Add(sm);
             //Debug.Log( parentBeing.beingName + "gets a " + statName + " -" + cost + " token");
             return;

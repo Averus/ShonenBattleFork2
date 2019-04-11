@@ -5,13 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class EffectToken
 {
-    public Being target;
+    public List<Being> targets;
 
     public Effect effect;
 
-    public EffectToken(Effect effect, Being target)
+    public EffectToken(Effect effect, List<Being> targets)
     {
-        this.target = target;
+        this.targets = targets;
         this.effect = effect;
     }
 

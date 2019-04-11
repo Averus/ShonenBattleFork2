@@ -12,7 +12,7 @@ public class Damage_Effect : Effect
     public override void Use(Being target)
     {
 
-        StatModulation sm = new StatModulation(target.GetStat("HP"), "-", damage);
+        //StatModulation sm = new StatModulation(target.GetStat("HP"), "-", damage);
         //actionManager.effectQueue.Add(sm);
         //Debug.Log("HP minus damage StatModulation put in " + target.beingName + "'s statModulation list.");
 

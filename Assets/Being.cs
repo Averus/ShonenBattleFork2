@@ -310,7 +310,11 @@ public void SelectAnAbility()
 
     public float rollReflex()
     {
-        return Random.Range(0, GetStatValue("REFLEX",2));
+        float reflexRoll = Random.Range(0, GetStatValue("REFLEX",2));
+        float pl = this.GetResourceValue("POWERLEVEL", 1);
+        float reflex = reflexRoll += pl;
+
+        return reflex;
     }
     
     public List<Thought> Think() //This should check to see that the being isnt unconcious etc
@@ -518,11 +522,10 @@ public void SelectAnAbility()
 
      private float rollToHit(Thought thought)
     {
-        float tohit = this.GetStatValue("TOHIT", 2);
         float dex = this.GetStatValue("DEXTERITY", 2);
-        float random = Random.Range(1, 101);
+        float random = Random.Range(1, 10);
         float pl = this.GetResourceValue("POWERLEVEL", 1);
-        float ToHit = pl + ((dex / 100) * thought.ability.ranks) + random + tohit;
+        float ToHit = pl + ((dex / 100) * thought.ability.ranks) + random;
         //Debug.Log(pl + " + (" + (dex / 100) + " * " + thought.ability.ranks + ") + " + random + " + " + tohit + " = " + ToHit);
 
         return ToHit;

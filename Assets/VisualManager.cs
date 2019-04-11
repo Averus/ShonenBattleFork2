@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu]
 public class VisualManager : ScriptableObject {
@@ -16,6 +17,7 @@ public class VisualManager : ScriptableObject {
     public void LoadDefaultChassisVisualsCSV()
     {
         defaultChassisVisuals = LoadDefaultChassisVisuals(defaultChassisVisualsCSV);
+        defaultChassisVisuals = SortListBySalience(defaultChassisVisuals);
     }
 
     private List<ChassisRule> LoadDefaultChassisVisuals(TextAsset txt)
@@ -68,6 +70,7 @@ public class VisualManager : ScriptableObject {
     public void LoadResolutionVisualsCSV()
     {
         resolutionVisuals = LoadResolutionVisuals(resolutionVisualsCSV);
+        resolutionVisuals = SortListBySalience(resolutionVisuals);
     }
 
     private List<ChassisRule> LoadResolutionVisuals(TextAsset txt)
@@ -538,7 +541,11 @@ public class VisualManager : ScriptableObject {
         return s;
     }
 
-
+    private List<ChassisRule> SortListBySalience(List<ChassisRule> list)
+    {
+        List<ChassisRule> SortedList = list.OrderByDescending(o => o.conditions.Count).ToList(); 
+        return SortedList;
+    }
 
 
     public void VisualiseThought(List<Thought> LIST2)

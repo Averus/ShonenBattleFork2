@@ -15,7 +15,7 @@ public class ModulateToHitSelf_Effect : Effect
     {
         //this effect ignores the target and uses the paarent being instead. Feels not modular enough if I'm honest, we need a dashboard for effects to refer to.
 
-        StatModulation sm = new StatModulation(parentBeing.GetStat("TOHIT"), modulator, value);
+        //StatModulation sm = new StatModulation(parentBeing.GetStat("TOHIT"), modulator, value);
         //actionManager.effectQueue.Add(sm);
         //Debug.Log("TOHIT token generated for " + parentBeing.beingName);
     }

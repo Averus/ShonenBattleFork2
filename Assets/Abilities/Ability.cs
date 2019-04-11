@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public enum AbilityType
 {
-    Priority = 1, //currentl;y unused, might be for essential game related actions
+    Priority = 1, //currently unused, might be for essential game related actions
     Instant = 100,
     PublicNormal = 200,
 }
@@ -21,6 +21,8 @@ public enum AbilityChassis
 
     Block = 700,
     Dodge = 800,
+
+    Speech = 900,
 }
 
 [System.Serializable]
@@ -191,11 +193,12 @@ public class Ability {
     */
 
 
-    public Ability(Being parentBeing, string name, AbilityChassis abilityChassis, int ranks, int numberOfTargets, bool isPassive)
+    public Ability(Being parentBeing, string name, AbilityChassis abilityChassis, AbilityType abilityType, int ranks, int numberOfTargets, bool isPassive)
     {
         this.parentBeing = parentBeing;
         this.abilityName = name;
         this.abilityChassis = abilityChassis;
+        this.abilityType = abilityType;
         this.ranks = ranks;
         this.numberOfTargets = numberOfTargets;
         this.isPassive = isPassive;

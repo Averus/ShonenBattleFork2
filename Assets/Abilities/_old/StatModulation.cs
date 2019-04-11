@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StatModulation : EffectToken {
+public class StatModulation : Effect {
 
 
     //This class will be created by 'damage' effects, 'buff to hit' effects etc, anything that modulates a stat. They will get put in a modulation array in each being and resolved in BODMAS order.
@@ -13,7 +13,7 @@ public class StatModulation : EffectToken {
     public string modifier;
     public int value;
 
-    public override void Use()
+    public override void Use(Being target)
     {
         //Debug.Log("using " + targetStat.statName + " token");
 
@@ -32,14 +32,13 @@ public class StatModulation : EffectToken {
         else
         {
             Debug.Log("ERROR: modifier requested was not recognised");
-        }
-
-
-       
+        } 
 
     }
 
-    public StatModulation(Stat targetStat, string modifier, int value)
+    
+
+    public StatModulation(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, Stat targetStat, string modifier, int value) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
     {
         this.targetStat = targetStat;
         this.modifier = modifier;
