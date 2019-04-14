@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Visual Manager
   m_EditorClassIdentifier: 
   actionManager: {fileID: 0}
-  defaultChassisVisualsCSV: {fileID: 4900000, guid: 2d84ba92cf3de4146bf85434a9b23840,
+  defaultChassisVisualsCSV: {fileID: 4900000, guid: d7732cbde6725d342bc5a4ea7ed9ee1e,
     type: 3}
   resolutionVisualsCSV: {fileID: 4900000, guid: 224ad068ec540dc4c964e88c5209fac7,
     type: 3}

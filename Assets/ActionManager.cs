@@ -8,6 +8,9 @@ public enum CombatState
 {
     Normal = 100,
     AbilitySpeedCalc = 200,
+    ToHitCalc = 300,
+    Hit = 400,
+    Miss = 500,
 }
 
 public class ActionManager : MonoBehaviour {
@@ -28,7 +31,7 @@ public class ActionManager : MonoBehaviour {
 
     public Thought currentThought = null; //The current Thought that is being evaluated
     public Action currentAction = null; //The current action being evaluated
-    public float attackersFavour = 0;
+    public float attackersFavour = 0; //Actors speed value
 
     // Use this for initialization
     void Start () {
@@ -181,6 +184,71 @@ public class ActionManager : MonoBehaviour {
         }
     }
 
+    public void UseCurrentActionActorEffects(CombatState combatState)
+    {
+        //We begin calculating the abilities speed
+        this.combatState = combatState;
+        //Place effects that fire in the current state into the EffectsInPlay list
+        ActivateEffects(currentAction);
+        //Sort the list by resolution order
+        SortEffectsInPlay(); //TODO
+                             //Resolve the list
+        ResolveEffectsInPlay();
+    }
+
+    public void UseCurrentActionProvokerEffects(CombatState combatState)
+    {
+        //We begin calculating the abilities speed
+        this.combatState = combatState;
+        //Place effects that fire in the current state into the EffectsInPlay list
+        if (currentAction.provoker != null)
+        {
+            ActivateEffects(currentAction.provoker);
+        }
+        else
+        {
+            Debug.Log("Error: UseCurrentAbilityProvokerEffects was called but currentActon.provoker is null");
+        }
+        //Sort the list by resolution order
+        SortEffectsInPlay(); //TODO
+                             //Resolve the list
+        ResolveEffectsInPlay();
+    }
+
+    public void UseCurrentActionActorAndProvokerEffects(CombatState combatState)
+    {
+        //We begin calculating the abilities speed
+        this.combatState = combatState;
+        //Place effects that fire in the current state into the EffectsInPlay list
+        ActivateEffects(currentAction);
+        //Also for the provoker
+        if (currentAction.provoker != null)
+        {
+            ActivateEffects(currentAction.provoker);
+        }
+        else
+        {
+            Debug.Log("Error: UseCurrentAbilityProvokerEffects was called but currentActon.provoker is null");
+        }
+        //Sort the list by resolution order
+        SortEffectsInPlay(); //TODO
+                             //Resolve the list
+        ResolveEffectsInPlay();
+    }
+
+    public void UseCurrentActionActorAndTargetEffects(CombatState combatState)
+    {
+        //We begin calculating the abilities speed
+        this.combatState = combatState;
+        //Place effects that fire in the current state into the EffectsInPlay list
+        ActivateEffects(currentAction.provoker);
+        //Sort the list by resolution order
+        SortEffectsInPlay(); //TODO
+                             //Resolve the list
+        ResolveEffectsInPlay();
+    }
+
+
     private void CommitToAction()
     {
         for (int i = LIST2.Count - 1; i > -1; i--)
@@ -209,14 +277,8 @@ public class ActionManager : MonoBehaviour {
             SortList3();
             LIST2.RemoveAt(0);
 
-            //Now we begin calculating the abilities speed
-            combatState = CombatState.AbilitySpeedCalc;
-            //Place effects that fire in the current state into the EffectsInPlay list
-            ActivateEffects(currentAction);
-            //Sort the list by resolution order
-            SortEffectsInPlay(); //TODO
-            //Resolve the list
-            ResolveEffectsInPlay();
+            //look for and resolve effects that fire on AbilitySpeedCalc in current ability
+            UseCurrentActionActorEffects(CombatState.AbilitySpeedCalc);
 
             //Get reactions from capable Beings
             List<Thought> tempList = new List<Thought>();
@@ -239,7 +301,7 @@ public class ActionManager : MonoBehaviour {
             }
             LIST2.AddRange(tempList);
             SortList2();
-            //perhaps remove all commited Beungs from LIST2 at this point
+            //perhaps remove all commited Beings from LIST2 at this point
 
         }
         else
@@ -269,7 +331,7 @@ public class ActionManager : MonoBehaviour {
                 attackersFavour = chassisTable.CompareToHits(currentAction);
                 //Compare Chassis rules to see if a special effect happens like a beam battle
                 visualManager.VisualiseResolution();
-                //chassisTable.CheckChassisTable();
+                chassisTable.CheckChassisTable();
                 //Debug.Log(LIST3[0].ability.GetParentBeing().beingName + " uses " + LIST3[0].ability.abilityName);
                 //LIST3[0].ability.Use();
             }

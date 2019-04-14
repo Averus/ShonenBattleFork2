@@ -8,7 +8,7 @@ public class ChassisRule {
     public string visual = "NO VISUAL";
 
     public List<ChassisCondition> conditions = new List<ChassisCondition>();
-    public List<Effect> effects = new List<Effect>();
+    public List<FunctionCall> functons = new List<FunctionCall>();
 
     public bool CanThisBeUsed()
     {

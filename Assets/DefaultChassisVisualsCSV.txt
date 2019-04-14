@@ -1,5 +1,0 @@
-ActorCount 1,TargetCount 1,ActorChassis Melee,"ACTOR leaps forward towards TARGET"
-ActorCount 1,TargetCount 1,ActorChassis Beam,"ACTOR cups their hands and releases a wave of energy towards TARGET"
-ActorCount 1,TargetCount 1,ActorChassis Ball,"ACTOR aims their outstretched arm and fires a ball of energy at TARGET"
-ActorCount 1,TargetCount 1,ActorChassis BigBall,"ACTOR raises their hands to the sky as a ball of energy coalesces above them before hurling it at TARGET"
-ActorCount 1,TargetCount 1,ActorChassis Blast,"ACTOR aims their outstretched hand at TARGET engulfing them in an explosion of light and heat"

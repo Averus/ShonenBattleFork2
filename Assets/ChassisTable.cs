@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using System.Linq;
-
+using System;
 
 [CreateAssetMenu]
 public class ChassisTable : ScriptableObject
@@ -46,12 +46,26 @@ public class ChassisTable : ScriptableObject
                 for (int i = 0; i < arr.Length; i++)
                 {
 
+                    //detect function call names
+                    if (arr[i].StartsWith("_"))
+                    {
+                        //split on SPACE to break into a string name in [0] and parameter(s) in [1],[2] etc
+                        string[] ob = arr[i].Split();
+                        FunctionCall e = CreateFunctionCall(ob);
+
+                        if (e != null)
+                        {
+                            rule.functons.Add(e);
+                        }
+                    }
+                    //detect visuals -- we dont need this here, visuals and rules are totally seperate
                     if (arr[i].StartsWith("\""))
                     {
-                        rule.visual = arr[i];
+                        //rule.visual = arr[i];
                     }
-                    else
+                    if (!arr[i].StartsWith("_") && !arr[i].StartsWith("\""))
                     {
+                        //split on SPACE to break into a string name in [0] and parameter(s) in [1],[2] etc
                         string[] ob = arr[i].Split();
                         ChassisCondition cc = CreateChassisCondition(ob);
 
@@ -73,6 +87,31 @@ public class ChassisTable : ScriptableObject
         Debug.Log(chassisRules.Count + " Chassis rules loaded");
         return chassisRules;
       
+    }
+
+    private FunctionCall CreateFunctionCall(string[] name)
+    {
+        if (name != null)
+        {
+            if (name[0] == "_ActorHit")
+            {
+                return new ActorAbilityHit_FunctionCall(actionManager);
+            }
+            if (name[0] == "_ProvokerHit")
+            {
+                return new ProvokerAbilityHit_FunctionCall(actionManager);
+            }
+            if (name[0] == "_ActorAndProvokerHit")
+            {
+                return new ActorAndProvokerAbilityHit_FunctionCall(actionManager);
+            }
+        }
+        else
+        {
+            Debug.Log("Error: String that was supposed to be a function in a chassis rule was blank instead");
+        }
+
+        return null;
     }
 
     private ChassisCondition CreateChassisCondition(string[] name)
@@ -530,7 +569,7 @@ public class ChassisTable : ScriptableObject
         if (actionManager.currentAction != null)
         {
             float a = CompareToHits(actionManager.currentAction);
-           // Debug.Log(actionManager.currentAction.actors[0].beingName + "'s actonFacour is " + a);
+            //Debug.Log(actionManager.currentAction.actors[0].beingName + "'s actonFacour is " + a);
             actionManager.attackersFavour = a;
         }
         else
@@ -549,14 +588,12 @@ public class ChassisTable : ScriptableObject
                     string s = chassisRules[i].visual;
 
                     if (actionManager.currentAction.actionType == ThoughtType.Reaction)
-                    {
-                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName,actionManager.currentAction.targets[0].beingName, actionManager.currentAction.provoker.actors[0].beingName);
-                        Debug.Log(s);
+                    {                     
+                        Debug.Log("ChassisTable: It's a reaction!");
                     }
                     else
                     {
-                        s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.targets[0].beingName, "no provoker");
-                        Debug.Log(s);
+                        Debug.Log("ChassisTable: It's a normal action!");
                     }
                     //Only one visual fires with this method, the most specific case
                     return;
@@ -571,14 +608,7 @@ public class ChassisTable : ScriptableObject
         return SortedList;
     }
 
-    private string InsertNames(string s, string attacker, string target, string provoker)
-    {
-        s = s.Replace("ACTOR", attacker);
-        s = s.Replace("TARGET", target);
-        s = s.Replace("PROVOKER", provoker);
-
-        return s;
-    }
+   
 
 
 

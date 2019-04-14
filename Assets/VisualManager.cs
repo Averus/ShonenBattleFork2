@@ -11,13 +11,13 @@ public class VisualManager : ScriptableObject {
     //visuals for starting an action i.e 'jumping forwards'
     public TextAsset defaultChassisVisualsCSV;
     public TextAsset resolutionVisualsCSV;
-    List<ChassisRule> defaultChassisVisuals = new List<ChassisRule>();
+    List<ChassisRule> defaultActivationChassisVisuals = new List<ChassisRule>();
     List<ChassisRule> resolutionVisuals = new List<ChassisRule>();
 
     public void LoadDefaultChassisVisualsCSV()
     {
-        defaultChassisVisuals = LoadDefaultChassisVisuals(defaultChassisVisualsCSV);
-        defaultChassisVisuals = SortListBySalience(defaultChassisVisuals);
+        defaultActivationChassisVisuals = LoadDefaultChassisVisuals(defaultChassisVisualsCSV);
+        defaultActivationChassisVisuals = SortListBySalience(defaultActivationChassisVisuals);
     }
 
     private List<ChassisRule> LoadDefaultChassisVisuals(TextAsset txt)
@@ -479,16 +479,16 @@ public class VisualManager : ScriptableObject {
         return null;
     }
 
-    private void GetDefaultVisual()
+    private void GetDefaultActivationVisual()
     {
-        if (defaultChassisVisuals != null)
+        if (defaultActivationChassisVisuals != null)
         {
-            for (int i = 0; i < defaultChassisVisuals.Count; i++)
+            for (int i = 0; i < defaultActivationChassisVisuals.Count; i++)
             {
 
-                if (defaultChassisVisuals[i].CanThisBeUsed())
+                if (defaultActivationChassisVisuals[i].CanThisBeUsed())
                 {
-                    string s = defaultChassisVisuals[i].visual;
+                    string s = defaultActivationChassisVisuals[i].visual;
 
                     if (actionManager.currentAction.actionType == ThoughtType.Reaction)
                     {
@@ -582,7 +582,7 @@ public class VisualManager : ScriptableObject {
         }
         if (a.ability.visual == null)
         {
-            GetDefaultVisual();
+            GetDefaultActivationVisual();
         }
     }
 
