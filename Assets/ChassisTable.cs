@@ -582,18 +582,27 @@ public class ChassisTable : ScriptableObject
         {
             for (int i = 0; i < chassisRules.Count; i++)
             {
-
+                //if the rules conditions are all true
                 if (chassisRules[i].CanThisBeUsed())
                 {
-                    string s = chassisRules[i].visual;
-
                     if (actionManager.currentAction.actionType == ThoughtType.Reaction)
-                    {                     
-                        Debug.Log("ChassisTable: It's a reaction!");
+                    {
+                        //use the functions in the appropriate rule
+                        for (int ii = 0; ii < chassisRules[i].functons.Count; ii++)
+                        {
+                            Debug.Log(chassisRules[i].functons.Count);
+                            chassisRules[i].functons[ii].Use();
+                        }
+                        return;
                     }
                     else
                     {
-                        Debug.Log("ChassisTable: It's a normal action!");
+                        //use the functions in the appropriate rule
+                        for (int ii = 0; ii < chassisRules[i].functons.Count; ii++)
+                        {
+                            chassisRules[i].functons[ii].Use();
+                        }
+                        return;
                     }
                     //Only one visual fires with this method, the most specific case
                     return;

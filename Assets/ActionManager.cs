@@ -6,11 +6,12 @@ using UnityEngine;
 
 public enum CombatState
 {
-    Normal = 100,
+    Activate = 100,
     AbilitySpeedCalc = 200,
     ToHitCalc = 300,
     Hit = 400,
     Miss = 500,
+    LateEffects = 600,
 }
 
 public class ActionManager : MonoBehaviour {
@@ -178,7 +179,7 @@ public class ActionManager : MonoBehaviour {
                 for (int ii = 0; ii < effectsInPlay[i].targets.Count; ii++)
                 {
                     effectsInPlay[i].effect.Use(effectsInPlay[i].targets[ii]);
-                    Debug.Log("Doing effect " + effectsInPlay[i].effect.effectName + " from " + effectsInPlay[i].effect.parentAbility + " in " + effectsInPlay[i].effect.parentBeing);
+                    Debug.Log("Doing effect " + effectsInPlay[i].effect.effectName + " from " + effectsInPlay[i].effect.parentAbility + " in " + effectsInPlay[i].effect.parentBeing.beingName);
                 }
             }
         }
@@ -194,6 +195,8 @@ public class ActionManager : MonoBehaviour {
         SortEffectsInPlay(); //TODO
                              //Resolve the list
         ResolveEffectsInPlay();
+
+
     }
 
     public void UseCurrentActionProvokerEffects(CombatState combatState)
@@ -247,7 +250,6 @@ public class ActionManager : MonoBehaviour {
                              //Resolve the list
         ResolveEffectsInPlay();
     }
-
 
     private void CommitToAction()
     {
@@ -329,11 +331,24 @@ public class ActionManager : MonoBehaviour {
                 //TODO
                 //get compare to get attackers to hit advantage
                 attackersFavour = chassisTable.CompareToHits(currentAction);
-                //Compare Chassis rules to see if a special effect happens like a beam battle
+                
                 visualManager.VisualiseResolution();
+                //Compare Chassis rules to see if a special effect happens like a beam battle
                 chassisTable.CheckChassisTable();
-                //Debug.Log(LIST3[0].ability.GetParentBeing().beingName + " uses " + LIST3[0].ability.abilityName);
-                //LIST3[0].ability.Use();
+
+                //Functions get called from the chassisTable like 'UseCurrentActionActorEffects' etc which fire the 'on hit' effects like damage etc
+
+                //we ask each Being to check if it's state has changed and do anything about it that it wants to eg dying if HP is now 0
+                for (int i = 0; i < LIST1.Count; i++)
+                {
+                    LIST1[i].being.resolutionFunction.Use();
+                }
+
+                combatState = CombatState.LateEffects;
+                //Fire the late effects which should be the last items in the effectsInPlay list (?) eg knockback working - things that happen at the end of a turn
+                ResolveEffectsInPlay();
+
+
             }
             LIST3.RemoveAt(0);
         }

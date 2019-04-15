@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Resource{
 
-
+    public float last;//Used to work out how much change there's been since last checked
     public readonly string resourceName = "NO NAME";
     float current;
     float max;
@@ -56,7 +56,7 @@ public class Resource{
         this.resourceName = resourceName;
         this.current = current;
         this.max = max;
-
+        this.last = current;
         //resourceModifiers = new List<ResourceModifier>();
     }
 

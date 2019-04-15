@@ -37,7 +37,6 @@ public class Being : MonoBehaviour{
     public List<Ability> useableDefences = new List<Ability>();
     public List<Being> selectedDefenceTargets = new List<Being>();
 
-
     //New things 17/02/2019
     ActionManager actionManager;
     public Action currentAction;
@@ -47,7 +46,8 @@ public class Being : MonoBehaviour{
     public List<Thought> selectedAbilities = new List<Thought>();
     public List<EffectToken> EffectsQueue = new List<EffectToken>();
     //public float currentActionReflex = 0; //the reflex speed this Being is currently acting under.
-
+    public FunctionCall resolutionFunction; //This is a pointer to a function that will be called from actionManager after an ability has been used
+    public float HPDamageThisTurn = 0; //set in RuleFunctions
 
     public void Start()
     {
@@ -315,8 +315,7 @@ public void SelectAnAbility()
         float reflex = reflexRoll += pl;
 
         return reflex;
-    }
-    
+    } 
     public List<Thought> Think() //This should check to see that the being isnt unconcious etc
     {
         List<Thought> thoughts = new List<Thought>();
@@ -519,8 +518,7 @@ public void SelectAnAbility()
 
         return new Action(thought.thoughtType, rollToHit(thought), thought.reflex, thought.actors, thought.ability, thought.targets);
     }
-
-     private float rollToHit(Thought thought)
+    private float rollToHit(Thought thought)
     {
         float dex = this.GetStatValue("DEXTERITY", 2);
         float random = Random.Range(1, 10);
@@ -530,7 +528,17 @@ public void SelectAnAbility()
 
         return ToHit;
     }
-
+    public void CheckResolveRules()
+    {
+        if (resolutionFunction != null)
+        {
+            resolutionFunction.Use();
+        }
+        else
+        {
+            Debug.Log("Error: " + beingName + " has no resolutionfunction!");
+        }
+    }
 
     public void Update()
     {

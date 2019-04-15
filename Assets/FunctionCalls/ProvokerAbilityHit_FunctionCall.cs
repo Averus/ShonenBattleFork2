@@ -8,6 +8,7 @@ public class ProvokerAbilityHit_FunctionCall : FunctionCall
 
     public override void Use()
     {
+        Debug.Log("Provoker Ability Hit");
         actionManager.UseCurrentActionProvokerEffects(CombatState.Hit);
     }
 

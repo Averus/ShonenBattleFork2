@@ -9,6 +9,7 @@ public class ActorAbilityHit_FunctionCall : FunctionCall
 
     public override void Use()
     {
+        Debug.Log("ActorAbilityHit");
         actionManager.UseCurrentActionActorEffects(CombatState.Hit);
     }
 
