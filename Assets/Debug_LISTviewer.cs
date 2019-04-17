@@ -33,9 +33,18 @@ public class Debug_LISTviewer : MonoBehaviour {
         t += "LIST2";
         t += "\n";
 
+
         for (int i = 0; i < actionmanager.LIST2.Count; i++)
         {
-            t += actionmanager.LIST2[i].thoughtType + " " + actionmanager.LIST2[i].ability.abilityType + " " + actionmanager.LIST2[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST2[i].ability.abilityName + "-->" + actionmanager.LIST2[i].targets[0].beingName + " Reflex: " + actionmanager.LIST2[i].reflex     +     "\n";
+            if (actionmanager.LIST2[i].thoughtType == ThoughtType.Reaction)
+            {
+                t += actionmanager.LIST2[i].thoughtType + " " + actionmanager.LIST2[i].provoker.toHit + " " + actionmanager.LIST2[i].ability.abilityType + " " + actionmanager.LIST2[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST2[i].ability.abilityName + "-->" + actionmanager.LIST2[i].targets[0].beingName + " Reflex: " + actionmanager.LIST2[i].reflex + "\n";
+            }
+            else
+            {
+                t += actionmanager.LIST2[i].thoughtType + " " + actionmanager.LIST2[i].ability.abilityType + " " + actionmanager.LIST2[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST2[i].ability.abilityName + "-->" + actionmanager.LIST2[i].targets[0].beingName + " Reflex: " + actionmanager.LIST2[i].reflex + "\n";
+            }
+
         }
 
         t += "\n";
@@ -44,7 +53,15 @@ public class Debug_LISTviewer : MonoBehaviour {
 
         for (int i = 0; i < actionmanager.LIST3.Count; i++)
         {
-            t += actionmanager.LIST3[i].actionType + " " + actionmanager.LIST3[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST3[i].ability.abilityName  + "-->" + actionmanager.LIST3[i].targets[0].beingName + " ToHit: " + actionmanager.LIST3[i].toHit + " Reflex: " + actionmanager.LIST3[i].reflex +  "\n";
+            if (actionmanager.LIST3[i].actionType == ThoughtType.Reaction)
+            {
+                t += actionmanager.LIST3[i].actionType + " " + actionmanager.LIST3[i].provoker.toHit + " " + actionmanager.LIST3[i].ability.abilityType + " " + actionmanager.LIST3[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST3[i].ability.abilityName + "-->" + actionmanager.LIST3[i].targets[0].beingName + " Reflex: " + actionmanager.LIST3[i].reflex + " ToHit: " + actionmanager.LIST3[i].toHit + "\n";
+            }
+            else
+            {
+                t += actionmanager.LIST3[i].actionType + " " + actionmanager.LIST3[i].ability.abilityType + " " + actionmanager.LIST3[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST3[i].ability.abilityName + "-->" + actionmanager.LIST3[i].targets[0].beingName + " Reflex: " + actionmanager.LIST3[i].reflex + " ToHit: " + actionmanager.LIST3[i].toHit + "\n";
+            }
+            
         }
 
     

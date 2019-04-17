@@ -25,13 +25,13 @@ public class RuleFunctions : ScriptableObject
             {
                 float damage = hp.last - hp.GetCurrent();
                 b.HPDamageThisTurn = damage;
-                Debug.Log(damage + " damage dealt to " + b.beingName);
+                //Debug.Log(damage + " damage dealt to " + b.beingName);
             }
             else
             {
                 float damage = hp.GetCurrent() - hp.last;
                 b.HPDamageThisTurn = damage;
-                Debug.Log(damage + " hp added to " + b.beingName);
+                //Debug.Log(damage + " hp added to " + b.beingName);
             }
 
             hp.last = hp.GetCurrent();

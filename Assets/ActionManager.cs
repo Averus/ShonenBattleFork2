@@ -327,28 +327,28 @@ public class ActionManager : MonoBehaviour {
             if (LIST3[0].ability.CanThisBeUsed(this))
             {
                 currentAction = LIST3[0];
-                //calculate tohit values
-                //TODO
-                //get compare to get attackers to hit advantage
-                attackersFavour = chassisTable.CompareToHits(currentAction);
-                
-                visualManager.VisualiseResolution();
-                //Compare Chassis rules to see if a special effect happens like a beam battle
-                chassisTable.CheckChassisTable();
 
-                //Functions get called from the chassisTable like 'UseCurrentActionActorEffects' etc which fire the 'on hit' effects like damage etc
-
-                //we ask each Being to check if it's state has changed and do anything about it that it wants to eg dying if HP is now 0
-                for (int i = 0; i < LIST1.Count; i++)
+                if (IsFirstLIST3ProvokerStillActive())
                 {
-                    LIST1[i].being.resolutionFunction.Use();
+                    //compare tohits to get attackers to hit advantage
+                    attackersFavour = chassisTable.CompareToHits(currentAction);
+
+                    visualManager.VisualiseResolution();
+                    //Compare Chassis rules to see if a special effect happens like a beam battle
+                    chassisTable.CheckChassisTable();
+
+                    //Functions get called from the chassisTable like 'UseCurrentActionActorEffects' etc which fire the 'on hit' effects like damage etc
+
+                    //we ask each Being to check if it's state has changed and do anything about it that it wants to eg dying if HP is now 0
+                    for (int i = 0; i < LIST1.Count; i++)
+                    {
+                        LIST1[i].being.resolutionFunction.Use();
+                    }
+
+                    combatState = CombatState.LateEffects;
+                    //Fire the late effects which should be the last items in the effectsInPlay list (?) eg knockback working - things that happen at the end of a turn
+                    ResolveEffectsInPlay();
                 }
-
-                combatState = CombatState.LateEffects;
-                //Fire the late effects which should be the last items in the effectsInPlay list (?) eg knockback working - things that happen at the end of a turn
-                ResolveEffectsInPlay();
-
-
             }
             LIST3.RemoveAt(0);
         }
@@ -357,6 +357,22 @@ public class ActionManager : MonoBehaviour {
             Debug.Log("List 3 empty --> step 3");
             step = 3;
         }
+    }
+
+    private bool IsFirstLIST3ProvokerStillActive()
+    {
+        if (LIST3[0].actionType == ThoughtType.Reaction)
+        {
+            if (LIST3.Contains(LIST3[0].provoker))
+            {
+                return true;                
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private Action CalculateToHit(Action a)

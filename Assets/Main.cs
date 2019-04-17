@@ -34,7 +34,7 @@ public GameStates gameState = new GameStates();
 
         Being a = beingFactory.CreateBeing("Tim");
         Being b = beingFactory.CreateBeing("Jeff");
-        //Being c = beingFactory.CreateBeing("Larry");
+        Being c = beingFactory.CreateBeing("Larry");
         //Being d = beingFactory.CreateBeing("Junipur");
         //Being e = beingFactory.CreateBeing("Swelt");
         //Being f = beingFactory.CreateBeing("Trion");
