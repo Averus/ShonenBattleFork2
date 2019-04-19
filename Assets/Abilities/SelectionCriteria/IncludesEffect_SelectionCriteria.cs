@@ -6,34 +6,31 @@ public class IncludesEffect_SelectionCriteria : SelectionCriteria
 {
 
     String effectName;
-    
 
-    public override void Assess(Thought thought)
+
+    public override bool IsThisSuitable(Ability ability)
     {
-       //Debug.Log("Looking for abilities in " + abil.abilityName + " that contain an effect called " + effectName);
-        for (int i = 0; i < thought.ability.effects.Count; i++)
+        for (int i = 0; i < ability.effects.Count; i++)
         {
-            if (thought.ability.effects[i].effectName == effectName)
+            if (ability.effects[i].effectName == effectName)
             {
-                //Debug.Log(abil.abilityName + " contains an effect called " + effectName);
-                thought.priority += UnityEngine.Random.Range(minPriority, maxPriority);
+                return true;
             }
         }
-        //Debug.Log(abil.abilityName + " does not contain an effect called " + effectName);
-       
 
+        return false;
     }
 
 
-    public IncludesEffect_SelectionCriteria(ActionManager actionManager, Being parentBeing, string selectionCriteriaName, string effectName, float minPriority, float maxPriority) : base(actionManager, parentBeing, selectionCriteriaName, minPriority, maxPriority)
+
+
+
+    public IncludesEffect_SelectionCriteria(ActionManager actionManager, Being parentBeing, string selectionCriteriaName, string effectName) : base(actionManager, parentBeing, selectionCriteriaName)
     {
         this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.effectName = effectName;
-        this.minPriority = minPriority;
-        this.maxPriority = maxPriority;
     }
-
 
 
 }

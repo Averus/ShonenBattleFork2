@@ -7,18 +7,16 @@ public abstract class TargetingCriteria{
 
     public ActionManager actionManager;
     public Being parentBeing;
-    public Ability parentAbility;
 
 
     public abstract bool CanThisBeTargeted(Being potentialTarget);
 
 
 
-    public TargetingCriteria(ActionManager actionManager, Being parentBeing, Ability parentAbility)
+    public TargetingCriteria(ActionManager actionManager, Being parentBeing)
     {
         this.actionManager = actionManager;
         this.parentBeing = parentBeing;
-        this.parentAbility = parentAbility;
 
     }
 }

@@ -62,7 +62,7 @@ public class Ability {
     public List<Being> validTargets = new List<Being>();
 
 
-    private void checkForValidTargets(List<BeingToken> beings)
+    private void PopulateValidTargets(List<BeingToken> beings)
     {
 
         if (targetingCriteria.Count == 0)
@@ -84,7 +84,7 @@ public class Ability {
             {
                 if (targetingCriteria[ii].CanThisBeTargeted(beings[i].being))     // Each Target rule can evaluate whether a given Being can be targeted...
                 {
-                    validTargets.Add(beings[i].being);                  //If even one of the Target rules returns 'true' then that combatant is added to the temporary list of validTargets, to be returned.
+                    validTargets.Add(beings[i].being);                  //If even one of the Target rules returns 'true' then that combatant is added to the list of validTargets.
 
                 }
             }
@@ -121,7 +121,7 @@ public class Ability {
     public bool CanThisBeUsed(ActionManager actionManager) //this is the new version for Action manager
     {
 
-        checkForValidTargets(actionManager.LIST1); // It's a bit ugly, but I get combatants from actionManager here. I do think actionmanager should always be visible (and static)
+        PopulateValidTargets(actionManager.LIST1); // It's a bit ugly, but I get combatants from actionManager here. I do think actionmanager should always be visible (and static)
 
         if (validTargets.Count == 0)
         {

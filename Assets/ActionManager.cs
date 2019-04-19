@@ -289,7 +289,11 @@ public class ActionManager : MonoBehaviour {
                 if (LIST1[i].being.isCommittedToAction == false) //May change this later, either put it in the Being or think about situations where they can't return a PublicAction but can a mental or instant action
                 {
                     //Debug.Log(LIST1[i].being.beingName + " is thinking about a response");
-                    tempList.AddRange(LIST1[i].being.React(a));
+                    List<Thought> safteyList = LIST1[i].being.React(a);
+                    if (safteyList != null)
+                    {
+                        tempList.AddRange(safteyList);
+                    }
                 }
             }
             //Remove reactions that are slower than the original actions (currentAction)'s action speed (or tohit whatever I'm calling it)

@@ -42,7 +42,7 @@ public class Debug_LISTviewer : MonoBehaviour {
             }
             else
             {
-                t += actionmanager.LIST2[i].thoughtType + " " + actionmanager.LIST2[i].ability.abilityType + " " + actionmanager.LIST2[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST2[i].ability.abilityName + "-->" + actionmanager.LIST2[i].targets[0].beingName + " Reflex: " + actionmanager.LIST2[i].reflex + "\n";
+                t += actionmanager.LIST2[i].thoughtType + " " + actionmanager.LIST2[i].ability.abilityType + " " + actionmanager.LIST2[i].ability.GetParentBeing().beingName + ": " + actionmanager.LIST2[i].ability.abilityName + "-->" + actionmanager.LIST2[i].targets.Count + " Reflex: " + actionmanager.LIST2[i].reflex + "\n";
             }
 
         }

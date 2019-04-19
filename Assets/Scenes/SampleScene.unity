@@ -523,7 +523,6 @@ MonoBehaviour:
   currentThought:
     thoughtType: 0
     reflex: 0
-    priority: 0
     actors: []
     provoker:
       actionType: 0

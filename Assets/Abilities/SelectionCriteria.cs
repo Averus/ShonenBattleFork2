@@ -9,20 +9,15 @@ public abstract class SelectionCriteria {
     public Ability parentAbility;
     public string selectionCriteriaName;
 
-    public float minPriority;
-    public float maxPriority;
+
+    public abstract bool IsThisSuitable(Ability ability);
 
 
-    public abstract void Assess(Thought thought);
-
-
-    public SelectionCriteria(ActionManager actionManager, Being parentBeing, string selectionCriteriaName, float minPriority, float maxPriority)
+    public SelectionCriteria(ActionManager actionManager, Being parentBeing, string selectionCriteriaName)
     {
         this.actionManager = actionManager;
         this.parentBeing = parentBeing;
         this.selectionCriteriaName = selectionCriteriaName;
-        this.minPriority = minPriority;
-        this.maxPriority = maxPriority;
     }
 
 }

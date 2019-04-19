@@ -48,6 +48,7 @@ public class Being : MonoBehaviour{
     //public float currentActionReflex = 0; //the reflex speed this Being is currently acting under.
     public FunctionCall resolutionFunction; //This is a pointer to a function that will be called from actionManager after an ability has been used
     public float HPDamageThisTurn = 0; //set in RuleFunctions
+    public int team;
 
     public void Start()
     {
@@ -332,38 +333,62 @@ public void SelectAnAbility()
                 }
         }
 
+        List<Behaviour> useableBehaviours = new List<Behaviour>();
 
-        for (int i = 0; i < useableAbilities.Count; i++)
-        {
-            thoughts.Add(new Thought(ThoughtType.Normal, thisThoughtsReflex, 0, useableAbilities[i]));
-            //mark each ability with the reflex speed it's firing on so it can be ordered by Action Manager
-        }
-
-        //Debug.Log(beingName + " is prioritising useable abilities...");
-
+        //Create a list of useable behaviours
         for (int i = 0; i < behaviours.Count; i++)
         {
             if (behaviours[i].CanThisBeDone())
             {
-                behaviours[i].PrioritiseAbilities(thoughts); //give each AbilityToken a priority based on Behaviours
-
+                useableBehaviours.Add(behaviours[i]);
             }
         }
-        
-        //Will need to expand this in future to sort by AbilityType AND priority
-        //Also to tie break tied priorities
-        List<Thought> sortedList = thoughts.OrderBy(o => o.priority).ToList(); //Is this sorting in the right order?
-        thoughts = sortedList;
+
+        if (useableBehaviours.Count == 0)
+        {
+            Debug.Log(beingName + " has no relevent behaviours and will take no action");
+            return null;
+        }
+
+        //Sort the list by salience
+        useableBehaviours = useableBehaviours.OrderByDescending(o => o.conditions.Count).ToList();
+
+        for (int i = 0; i < useableBehaviours.Count; i++)
+        {
+            //ask the behaviour for ideas of what to do (thoughts about using an ability with a target(s))
+            List<Thought> tempThoughts = useableBehaviours[i].GenerateThoughts(useableAbilities);
+
+            if (tempThoughts.Count > 0)
+            {
+                //This is now a list of possible ideas
+                thoughts.AddRange(tempThoughts);
+            }
+        }
+
+        if (thoughts.Count == 0)
+        {
+            Debug.Log(beingName + " can't think of an appropriate action and will do nothing");
+            return null;
+        }
+
+        //mark each thought with the reflex speed it's firing on so it can be ordered by Action Manager
+        for (int i = 0; i < thoughts.Count; i++)
+        {
+            thoughts[i].reflex = thisThoughtsReflex;
+        }
+
+        //because we ordered the behaviours by salience before we asked them for thoughts, the list of thoughts is also sorted by salience
+        //the first pubicNormal thought will be the most salient
 
         //below is an ugly way of selecting one and only one public normal action...this will change in the future
         bool hasOnlyOnePublicNormalAction = false;
-        List<Thought> fastestPublicNormal = new List<Thought>();
+        List<Thought> mostSalientPublicNormal = new List<Thought>();
         for (int i = 0; i < thoughts.Count; i++)
         {
             if (hasOnlyOnePublicNormalAction == false && thoughts[i].ability.abilityType == AbilityType.PublicNormal)
             {
                 hasOnlyOnePublicNormalAction = true;
-                fastestPublicNormal.Add(thoughts[i]);
+                mostSalientPublicNormal.Add(thoughts[i]);
             }
         }
         for (int i= thoughts.Count -1; i > -1; i--)
@@ -375,27 +400,7 @@ public void SelectAnAbility()
         }
         if (hasOnlyOnePublicNormalAction == true)
         {
-            thoughts.AddRange(fastestPublicNormal);
-        }
-
-        for (int i = 0; i < thoughts.Count; i++)
-        {
-            if (thoughts[i].ability.numberOfTargets > 0)
-            {
-                for (int ii = 0; ii < thoughts[i].ability.numberOfTargets; ii++) //fire the number of times you can...
-                {
-                    int r = Random.Range(0, thoughts[i].ability.validTargets.Count); //pick a random target from those that are valid
-
-                    thoughts[i].targets.Add(thoughts[i].ability.validTargets[r]);
-
-                    //need to include checking for abilities that can hit the same target multiple times etc  
-                }
-            }
-            else
-            {
-                Debug.Log("ERROR: " + thoughts[i].ability.abilityName + " has no targets in it's targets list");
-            }
-
+            thoughts.AddRange(mostSalientPublicNormal);
         }
 
         //Place this Being in the list of actors of the Thought (the ones originating this thought - might have multiple actors in the future in cases of team attacks)
@@ -425,40 +430,62 @@ public void SelectAnAbility()
             }
         }
 
+        List<Reaction> useableReactions = new List<Reaction>();
 
-        for (int i = 0; i < useableAbilities.Count; i++)
+        //Create a list of useable reactions
+        for (int i = 0; i < reactions.Count; i++)
         {
-            thoughts.Add(new Thought(ThoughtType.Reaction, thisThoughtsReflex, 0, useableAbilities[i]));
-            //mark each ability with the reflex speed it's firing on so it can be ordered by Action Manager
-        }
-
-        //Debug.Log(beingName + " is prioritising useable abilities...");
-        if (reactions.Count > 0)
-        {
-            for (int i = 0; i < reactions.Count; i++)
+            if (reactions[i].CanThisBeDone(action))
             {
-                if (reactions[i].CanThisBeDone(action))
-                {
-                    reactions[i].PrioritiseAbilities(thoughts); //give each AbilityToken a priority based on reactions
-
-                }
+                useableReactions.Add(reactions[i]);
             }
         }
 
-        //Will need to expand this in future to sort by AbilityType AND priority
-        //Also to tie break tied priorities
-        List<Thought> sortedList = thoughts.OrderBy(o => o.priority).ToList(); //Is this sorting in the right order?
-        thoughts = sortedList;
+        if (useableReactions.Count == 0)
+        {
+            Debug.Log(beingName + " has no relevent reactions and will take no action");
+            return null;
+        }
+
+        //Sort the list by salience
+        useableReactions = useableReactions.OrderByDescending(o => o.conditions.Count).ToList();
+
+        for (int i = 0; i < useableReactions.Count; i++)
+        {
+            //ask the behaviour for ideas of what to do (thoughts about using an ability with a target(s))
+            List<Thought> tempThoughts = useableReactions[i].GenerateThoughts(useableAbilities);
+
+            if (tempThoughts.Count > 0)
+            {
+                //This is now a list of possible ideas
+                thoughts.AddRange(tempThoughts);
+            }
+        }
+
+        if (thoughts.Count == 0)
+        {
+            Debug.Log(beingName + " can't think of an appropriate reaction and will do nothing");
+            return null;
+        }
+
+        //mark each thought with the reflex speed it's firing on so it can be ordered by Action Manager
+        for (int i = 0; i < thoughts.Count; i++)
+        {
+            thoughts[i].reflex = thisThoughtsReflex;
+        }
+
+        //because we ordered the reactions by salience before we asked them for thoughts, the list of thoughts is also sorted by salience
+        //the first pubicNormal thought will be the most salient
 
         //below is an ugly way of selecting one and only one public normal action...this will change in the future
         bool hasOnlyOnePublicNormalAction = false;
-        List<Thought> fastestPublicNormal = new List<Thought>();
+        List<Thought> mostSalientPublicNormal = new List<Thought>();
         for (int i = 0; i < thoughts.Count; i++)
         {
             if (hasOnlyOnePublicNormalAction == false && thoughts[i].ability.abilityType == AbilityType.PublicNormal)
             {
                 hasOnlyOnePublicNormalAction = true;
-                fastestPublicNormal.Add(thoughts[i]);
+                mostSalientPublicNormal.Add(thoughts[i]);
             }
         }
         for (int i = thoughts.Count - 1; i > -1; i--)
@@ -470,30 +497,7 @@ public void SelectAnAbility()
         }
         if (hasOnlyOnePublicNormalAction == true)
         {
-            thoughts.AddRange(fastestPublicNormal);
-        }
-
-        for (int i = 0; i < thoughts.Count; i++)
-        {
-
-            thoughts[i].provoker = action;
-
-            if (thoughts[i].ability.numberOfTargets > 0)
-            {
-                for (int ii = 0; ii < thoughts[i].ability.numberOfTargets; ii++) //fire the number of times you can...
-                {
-                    int r = Random.Range(0, thoughts[i].ability.validTargets.Count); //pick a random target from those that are valid
-
-                    thoughts[i].targets.Add(thoughts[i].ability.validTargets[r]);
-
-                    //need to include checking for abilities that can hit the same target multiple times etc  
-                }
-            }
-            else
-            {
-                Debug.Log("ERROR: " + thoughts[i].ability.abilityName + " has no targets in it's targets list");
-            }
-
+            thoughts.AddRange(mostSalientPublicNormal);
         }
 
         //Place this Being in the list of actors of the Thought (the ones originating this thought - might have multiple actors in the future in cases of team attacks)
