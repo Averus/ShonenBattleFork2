@@ -443,7 +443,7 @@ public void SelectAnAbility()
 
         if (useableReactions.Count == 0)
         {
-            Debug.Log(beingName + " has no relevent reactions and will take no action");
+            //Debug.Log(beingName + " has no relevent reactions and will take no action");
             return null;
         }
 
@@ -505,8 +505,14 @@ public void SelectAnAbility()
         {
             thoughts[i].actors.Add(this);
         }
+        //Add the original action as Provoker of this Thought
+        for (int i = 0; i < thoughts.Count; i++)
+        {
+            thoughts[i].provoker = action;
+        }
 
         selectedAbilities = thoughts; //keep a reference to their commited actions, just incase something wants to reference them in future
+
         return thoughts;
     }
     public Action Act(Thought thought){

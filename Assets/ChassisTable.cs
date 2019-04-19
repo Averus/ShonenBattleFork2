@@ -569,7 +569,7 @@ public class ChassisTable : ScriptableObject
         if (actionManager.currentAction != null)
         {
             float a = CompareToHits(actionManager.currentAction);
-            //Debug.Log(actionManager.currentAction.actors[0].beingName + "'s actonFacour is " + a);
+            //Debug.Log(actionManager.currentAction.actors[0].beingName + "'s action favour is " + a);
             actionManager.attackersFavour = a;
         }
         else

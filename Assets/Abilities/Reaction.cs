@@ -37,7 +37,7 @@ public class Reaction {
             }
         }
 
-        //Debug.Log(behaviourName + " can be done");
+        //Debug.Log(parentBeing.beingName + " wants to " + reactionName);
         return true;
     }
 
@@ -53,9 +53,11 @@ public class Reaction {
         {
             if (!selectionCriteria[i].IsThisSuitable(ability))
             {
+                //Debug.Log(reactionName + " in " + parentBeing.beingName + " reports : " + ability.abilityName + " is not suitable");
                 return false;
             }
         }
+        //Debug.Log(reactionName + " in " + parentBeing.beingName + " reports acceptable ability found: " + ability.abilityName);
         return true;
     }
 
@@ -103,12 +105,18 @@ public class Reaction {
                 List<Being> acceptableTargets = GetAcceptableTargets(useableAbilities[i].validTargets);
                 List<Being> chosenTargets = new List<Being>();
 
+                //debug bits
+                //Debug.Log(reactionName + " in " + parentBeing.beingName + " reports acceptable targets found: " + acceptableTargets.Count);
+
                 //Here we need to add functionality to select targets for abilities that can target the same being multiple times vs only once per being
 
                 for (int ii = 0; ii < useableAbilities[i].numberOfTargets; ii++)
                 {
                     chosenTargets.Add(acceptableTargets[Random.Range(0, acceptableTargets.Count)]);
                 }
+
+                //debug bits
+                //Debug.Log(reactionName + " in " + parentBeing.beingName + " reports chosen targets: " + acceptableTargets.Count);
 
                 thoughts.Add(new Thought(outputThoughtType, 0, useableAbilities[i], chosenTargets));
             }

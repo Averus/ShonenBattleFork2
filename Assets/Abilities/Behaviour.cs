@@ -99,7 +99,7 @@ public class Behaviour{
                 {
                     chosenTargets.Add(acceptableTargets[Random.Range(0, acceptableTargets.Count)]);
                 }
-                Debug.Log("chosen targets "+ chosenTargets.Count);
+                //Debug.Log("chosen targets "+ chosenTargets.Count);
                 thoughts.Add(new Thought(outputThoughtType, 0,useableAbilities[i], chosenTargets));
             }
         }

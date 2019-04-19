@@ -10,9 +10,9 @@ public class Action{
     public float toHit; //a formula of dexterity, accuracy etc called in ActionManager
     public float reflex;
     //public float priority;
-    public readonly List<Being> actors;
-    public readonly Ability ability;
-    public readonly List<Being> targets;
+    public List<Being> actors;
+    public Ability ability;
+    public List<Being> targets;
     public Action provoker;
 
 

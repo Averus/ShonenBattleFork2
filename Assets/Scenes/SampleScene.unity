@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669908}
   - component: {fileID: 534669907}
-  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -259,21 +258,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &534669906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d56a3d749207bc44875f1ea6b690508, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionManager: {fileID: 0}
-  beingPrefab: {fileID: 1316121936566862, guid: 3ae4623be5e45ba47b28536b2a30e61b,
-    type: 2}
-  ruleFunctions: {fileID: 11400000, guid: 7d0649a59c6dbde43b5420727f2ebe15, type: 2}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  actionManager: {fileID: 0}
+  actionManagerOb: {fileID: 931360441}
+  actionManager: {fileID: 931360442}
   beingFactory: {fileID: 0}
 --- !u!1 &619890521
 GameObject:
@@ -491,6 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 931360443}
   - component: {fileID: 931360442}
+  - component: {fileID: 931360444}
   m_Layer: 0
   m_Name: ActionManager
   m_TagString: Untagged
@@ -528,10 +514,42 @@ MonoBehaviour:
       actionType: 0
       toHit: 0
       reflex: 0
+      actors: []
+      ability:
+        isPassive: 0
+        isDefence: 0
+        defenceSpeed: 0
+        abilityName: 
+        ranks: 0
+        numberOfTargets: 0
+        abilityChassis: 0
+        abilityType: 0
+        reflex: 0
+        abilitySpeed: 0
+        visual: 
+        animations: []
+        validTargets: []
+      targets: []
   currentAction:
     actionType: 0
     toHit: 0
     reflex: 0
+    actors: []
+    ability:
+      isPassive: 0
+      isDefence: 0
+      defenceSpeed: 0
+      abilityName: 
+      ranks: 0
+      numberOfTargets: 0
+      abilityChassis: 0
+      abilityType: 0
+      reflex: 0
+      abilitySpeed: 0
+      visual: 
+      animations: []
+      validTargets: []
+    targets: []
   attackersFavour: 0
 --- !u!4 &931360443
 Transform:
@@ -546,6 +564,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &931360444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931360441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d56a3d749207bc44875f1ea6b690508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionManager: {fileID: 0}
+  beingPrefab: {fileID: 1316121936566862, guid: 3ae4623be5e45ba47b28536b2a30e61b,
+    type: 2}
+  ruleFunctions: {fileID: 11400000, guid: 7d0649a59c6dbde43b5420727f2ebe15, type: 2}
 --- !u!1 &1171706103
 GameObject:
   m_ObjectHideFlags: 0

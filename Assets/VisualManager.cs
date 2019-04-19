@@ -500,8 +500,11 @@ public class VisualManager : ScriptableObject {
                         s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.targets[0].beingName, "no provoker");
                         Debug.Log(s);
                     }
+                    //Only one visual fires with this method, the most specific case
+                    return;
                 }
             }
+            Debug.Log("Error: There is no default activation visual for this circumstance");
         }
     }
 
@@ -527,8 +530,10 @@ public class VisualManager : ScriptableObject {
                     }
                     //Only one visual fires with this method, the most specific case
                     return;
-                }
+                } 
             }
+
+            Debug.Log("Error: No resolution visual found for this series of events");
         }
     }
 

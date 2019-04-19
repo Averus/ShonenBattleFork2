@@ -52,6 +52,7 @@ public class BeingFactory : MonoBehaviour {
         b.stats.Add(dex);
     }
     //defence blocks
+    /*
     void BasicDefences(Being b) 
     {
         Ability def1 = new Ability(b,"Block",AbilityChassis.Block, AbilityType.PublicNormal, 100, 1, true);
@@ -96,6 +97,7 @@ public class BeingFactory : MonoBehaviour {
        // def3.targetingCriteria.Add(self3);
        // b.defences.Add(def3);
     }
+    */
     //behaviours
     void AttackBehaviour(Being b)
     {
@@ -122,6 +124,19 @@ public class BeingFactory : MonoBehaviour {
         healSelf.selectionCriteria.Add(includesHealSelf);
         healSelf.targetingCriteria.Add(targetSelf);
         b.behaviours.Add(healSelf);
+    }
+    public void AttackTeamBehaviour(Being b, int team)
+    {
+        //Create a new behaviour called 'just attack'
+        Behaviour attackTeam = new Behaviour(actionManager, b, "Attack Team", ThoughtType.Normal);
+        NoCondition_Condition noCondition = new NoCondition_Condition(actionManager, b, "NoCondition");
+        IncludesEffect_SelectionCriteria includesDamage = new IncludesEffect_SelectionCriteria(actionManager, b, "IncludesDamage", "Damage");
+        OnTeam_TargetingCriteria onTeam = new OnTeam_TargetingCriteria(actionManager, b, team);
+
+        attackTeam.conditions.Add(noCondition); ;
+        attackTeam.selectionCriteria.Add(includesDamage);
+        attackTeam.targetingCriteria.Add(onTeam);
+        b.behaviours.Add(attackTeam);
     }
     //Reactions (behaviours with an action parameter)
     void BasicReactions(Being b)
@@ -156,6 +171,24 @@ public class BeingFactory : MonoBehaviour {
         b.reactions.Add(noticeDanger);
 
     }
+    public void DefendTeamReaction(Being b, int team)
+    {
+        //Create a new reaction called 'self preservation'
+        Reaction defendTeam = new Reaction(actionManager, b, "Defend Team", ThoughtType.Reaction);
+        NoCondition_Condition noCondition = new NoCondition_Condition(actionManager, b, "No Condition");
+        TargetOnTeam_ReactionCondition targetOnTeam = new TargetOnTeam_ReactionCondition(actionManager, b, "target on team", team);
+        ContainsEffect_ReactionCondition dealsDamage = new ContainsEffect_ReactionCondition(actionManager, b, "Deals Damage", "Damage");
+        IncludesEffect_SelectionCriteria blocks = new IncludesEffect_SelectionCriteria(actionManager, b, "blocks", "Block");
+        CurrentActionActor_TargetingCriteria currentActionActor = new CurrentActionActor_TargetingCriteria(actionManager, b);
+
+        defendTeam.conditions.Add(noCondition);
+        defendTeam.reactionConditions.Add(targetOnTeam);
+        defendTeam.reactionConditions.Add(dealsDamage);
+        defendTeam.selectionCriteria.Add(blocks);
+        defendTeam.targetingCriteria.Add(currentActionActor);
+
+        b.reactions.Add(defendTeam);
+    }
     //ability packs
     void BasicAttackAbilities(Being b)
     {
@@ -163,7 +196,7 @@ public class BeingFactory : MonoBehaviour {
         Ability ab3 = new Ability(b, "Poor punch", AbilityChassis.Melee, AbilityType.PublicNormal, 100, 1, false);
         NoCondition_Condition noCondition2 = new NoCondition_Condition(actionManager, b, "NoCondition");
         ModulateResource_Effect damage = new ModulateResource_Effect(actionManager, b, ab3, "Damage", "HP", -3, false, CombatState.Hit);
-        Others_TargetingCriteria o = new Others_TargetingCriteria(actionManager, b, ab3);
+        Others_TargetingCriteria o = new Others_TargetingCriteria(actionManager, b);
 
         ab3.conditions.Add(noCondition2);
         ab3.effects.Add(damage);
@@ -176,7 +209,7 @@ public class BeingFactory : MonoBehaviour {
         ResourceAtValue_Condition reqStam = new ResourceAtValue_Condition(actionManager, b, "Stamina above 0", "STAMINA", ">", 0);
         ModulateResource_Effect costsStamina = new ModulateResource_Effect(actionManager, b, ab3, "CostsStamina", "STAMINA", -20, true, CombatState.Activate);
         ModulateResource_Effect damage2 = new ModulateResource_Effect(actionManager, b, ab4, "Damage", "HP", -10, false, CombatState.Hit);
-        Others_TargetingCriteria o2 = new Others_TargetingCriteria(actionManager, b, ab4);
+        Others_TargetingCriteria o2 = new Others_TargetingCriteria(actionManager, b);
 
         ab4.abilityType = AbilityType.PublicNormal;
         ab4.conditions.Add(reqStam);
@@ -185,6 +218,32 @@ public class BeingFactory : MonoBehaviour {
         ab4.targetingCriteria.Add(o2);
         ab4.numberOfTargets = 1;
         b.abilities.Add(ab4);
+    }
+    void BasicDefenceAbilities(Being b)
+    {
+        Ability dodge = new Ability(b, "Dodge", AbilityChassis.Dodge, AbilityType.PublicNormal, 100, 1, false);
+        NoCondition_Condition noCondition = new NoCondition_Condition(actionManager, b, "No Condition");
+        Dodge_DefenceEffect dodgeEffect = new Dodge_DefenceEffect(actionManager, b, dodge, "Dodge", CombatState.Hit);
+        Others_TargetingCriteria others = new Others_TargetingCriteria(actionManager, b);
+
+        dodge.conditions.Add(noCondition);
+        dodge.effects.Add(dodgeEffect);
+        dodge.targetingCriteria.Add(others);
+
+        b.abilities.Add(dodge);
+
+        Ability block = new Ability(b, "Block", AbilityChassis.Block, AbilityType.PublicNormal, 100, 1, false);
+        NoCondition_Condition noCondition2 = new NoCondition_Condition(actionManager, b, "No Condition");
+        Block_DefenceEffect block2 = new Block_DefenceEffect(actionManager, b, block, "Block", CombatState.Hit);
+        Others_TargetingCriteria others2 = new Others_TargetingCriteria(actionManager, b);
+
+        block.conditions.Add(noCondition2);
+        block.effects.Add(block2);
+        block.targetingCriteria.Add(others2);
+
+        b.abilities.Add(block);
+
+
     }
     void BasicSelfHealingAbility(Being b)
     {
@@ -218,7 +277,8 @@ public class BeingFactory : MonoBehaviour {
         reg.targetingCriteria.Add(self);
         b.abilities.Add(reg);
     }
-
+   
+   
     public Being CreateBeing(string name)
     {
 
@@ -244,21 +304,22 @@ public class BeingFactory : MonoBehaviour {
         NewBasicStats(p);
 
         //Bestow behaviours
-        AttackBehaviour(p);
+        //AttackBehaviour(p);
 
         //Bestow abilities
         BasicAttackAbilities(p);
+        BasicDefenceAbilities(p);
 
         //Bestow passive abilities
         //BasicPassiveAbilities(p);
 
         //bestow defences
-        // BasicDefences(p);
+         //BasicDefences(p);
 
 
 
         //puts the beings defences in the right order (sorted by defenceSpeed)
-        p.SortDefences();
+        //p.SortDefences();
         //give the Being rule functions like 'check if I'm damaged' etc, these will be called from actionManager during combat
         p.resolutionFunction = new BasicResolutionChecks_FunctionCall(ruleFunctions, p);
 

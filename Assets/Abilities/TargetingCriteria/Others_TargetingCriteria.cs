@@ -17,7 +17,7 @@ public class Others_TargetingCriteria : TargetingCriteria {
     }
 
 
-    public Others_TargetingCriteria(ActionManager actionManager, Being parentBeing, Ability parentAbility) : base(actionManager, parentBeing)
+    public Others_TargetingCriteria(ActionManager actionManager, Being parentBeing) : base(actionManager, parentBeing)
     {
         this.actionManager = actionManager;
         this.parentBeing = parentBeing;

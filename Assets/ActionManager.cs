@@ -178,8 +178,9 @@ public class ActionManager : MonoBehaviour {
             {
                 for (int ii = 0; ii < effectsInPlay[i].targets.Count; ii++)
                 {
-                    effectsInPlay[i].effect.Use(effectsInPlay[i].targets[ii]);
                     Debug.Log("Doing effect " + effectsInPlay[i].effect.effectName + " from " + effectsInPlay[i].effect.parentAbility + " in " + effectsInPlay[i].effect.parentBeing.beingName);
+                    effectsInPlay[i].effect.Use(effectsInPlay[i].targets[ii]);
+
                 }
             }
         }
@@ -334,6 +335,7 @@ public class ActionManager : MonoBehaviour {
 
                 if (IsFirstLIST3ProvokerStillActive())
                 {
+                    
                     //compare tohits to get attackers to hit advantage
                     attackersFavour = chassisTable.CompareToHits(currentAction);
 
@@ -369,10 +371,12 @@ public class ActionManager : MonoBehaviour {
         {
             if (LIST3.Contains(LIST3[0].provoker))
             {
+                //Debug.Log("Action: " + LIST3[0].provoker.actors[0].beingName + LIST3[0].provoker.ability.abilityName + LIST3[0].provoker.targets[0].beingName + " still exists");
                 return true;                
             }
             else
             {
+                //Debug.Log("Action: " + LIST3[0].provoker.actors[0].beingName + LIST3[0].provoker.ability.abilityName + LIST3[0].provoker.targets[0].beingName + " no longer exists");
                 return false;
             }
         }

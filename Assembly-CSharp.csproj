@@ -87,6 +87,7 @@
     <Compile Include="Assets\Abilities\ReactionCondition.cs" />
     <Compile Include="Assets\Abilities\ReactionConditions\AmTarget_ReactionCondition.cs" />
     <Compile Include="Assets\Abilities\ReactionConditions\ContainsEffect_ReactionCondition.cs" />
+    <Compile Include="Assets\Abilities\ReactionConditions\TargetOnTeam_ReactionCondition.cs" />
     <Compile Include="Assets\Abilities\Resource.cs" />
     <Compile Include="Assets\Abilities\ResourceModifier.cs" />
     <Compile Include="Assets\Abilities\SelectionCriteria.cs" />
@@ -94,6 +95,9 @@
     <Compile Include="Assets\Abilities\Stat.cs" />
     <Compile Include="Assets\Abilities\StatModifier.cs" />
     <Compile Include="Assets\Abilities\TargetingCriteria.cs" />
+    <Compile Include="Assets\Abilities\TargetingCriteria\AnyBeing_TargetingCriteria.cs" />
+    <Compile Include="Assets\Abilities\TargetingCriteria\CurrentActionActor_TargetingCriteria.cs" />
+    <Compile Include="Assets\Abilities\TargetingCriteria\OnTeam_TargetingCriteria.cs" />
     <Compile Include="Assets\Abilities\TargetingCriteria\Others_TargetingCriteria.cs" />
     <Compile Include="Assets\Abilities\TargetingCriteria\Self_TargetingCriteria.cs" />
     <Compile Include="Assets\Abilities\Thought.cs" />
