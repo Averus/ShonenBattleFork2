@@ -20,6 +20,10 @@ public class ActionManager : MonoBehaviour {
     public ChassisTable chassisTable;
     public bool turnNotFinishedYet = false;
 
+    public Canvas canvas;
+    public GameObject scrollViewPrefab;//used when player has a list of options
+    public GameObject buttonPrefab; //used when player must select options
+
     public List<BeingToken> LIST1 = new List<BeingToken>(); //A list of beings acting in the location
     public List<Thought> LIST2 = new List<Thought>();//A list of actions declared by said beings ready to be ordered and added to...
     public List<Action> LIST3 = new List<Action>(); //The main stack of public actions, ready to be resolved one by one
@@ -62,7 +66,7 @@ public class ActionManager : MonoBehaviour {
             //SortList1();
         }
 
-        if (Input.GetMouseButtonDown(0) && pause == false)
+        if (Input.GetKeyDown(KeyCode.Space) && pause == false)
         {
             if (step == 4)
             {
@@ -100,7 +104,7 @@ public class ActionManager : MonoBehaviour {
 
         }
 
-        if (Input.GetMouseButtonUp(0) && pause == true)
+        if (Input.GetKeyUp(KeyCode.Space) && pause == true)
         {
             pause = false;
         }
@@ -109,27 +113,63 @@ public class ActionManager : MonoBehaviour {
 
     public void AddToBeingQueue(BeingToken being)
     {
+        Debug.Log("hhdhdhdhdhdh");
         LIST1.Add(being);
         SortList1();
     }
 
     void Step1()
     {
-        turnNotFinishedYet = true;
+        //turnNotFinishedYet = true; //not sure what this was for.
         if (LIST1.Count > 0)
         {
-            //ask Being to Think of some abilities to use
-            List<Thought> tempList = LIST1[currentTurn].being.Think();
-
-            //Unlike most instancs of Think(), this action must be taken at the reflexspeed the Being originally rolled at the start of the round
-            for (int i = 0; i < tempList.Count; i++)
+            if (LIST1[currentTurn].being.playerControlled == true)
             {
-                if (tempList[i].ability.abilityType == AbilityType.PublicNormal)
+                Debug.Log("IS POLAYER CONTROLERD");
+                //ask Being to Think of some abilities to use
+                List<Ability> tempList = LIST1[currentTurn].being.ListUseableAbilities();
+
+                if (tempList != null)
                 {
-                    tempList[i].reflex = LIST1[currentTurn].reflexSpeed;
+                    if (tempList.Count > 0)
+                    {
+                        //Unlike most instancs of Think(), this action must be taken at the reflexspeed the Being originally rolled at the start of the round
+                        for (int i = 0; i < tempList.Count; i++)
+                        {
+                            if (tempList[i].abilityType == AbilityType.PublicNormal)
+                            {
+                                tempList[i].reflex = LIST1[currentTurn].reflexSpeed;
+                            }
+                        }
+                        DisplayUseableAbilities(tempList);
+                    }
                 }
             }
-            ProposeActions(tempList);
+
+            if (LIST1[currentTurn].being.playerControlled == false)
+            {
+                //ask Being to Think of some abilities to use
+                List<Thought> tempList = LIST1[currentTurn].being.Think();
+
+                if (tempList != null)
+                {
+                    if (tempList.Count > 0)
+                    {
+                        //Unlike most instancs of Think(), this action must be taken at the reflexspeed the Being originally rolled at the start of the round
+                        for (int i = 0; i < tempList.Count; i++)
+                        {
+                            if (tempList[i].ability.abilityType == AbilityType.PublicNormal)
+                            {
+                                tempList[i].reflex = LIST1[currentTurn].reflexSpeed;
+                            }
+                        }
+                        ProposeActions(tempList);
+                    }
+                }
+            }
+
+
+            
         }
     }
 
@@ -139,8 +179,26 @@ public class ActionManager : MonoBehaviour {
         SortList2();
     }
 
+    private void DisplayUseableAbilities(List<Ability> list)
+    {
+        GameObject scrollview = GameObject.Instantiate(scrollViewPrefab, canvas.transform);
+        Transform content = scrollview.transform.GetChild(0).GetChild(0);
+
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            //put a button in the list
+            GameObject b = GameObject.Instantiate(buttonPrefab, content);
+            //space each button out by height
+            b.transform.position = new Vector3(b.transform.position.x, b.transform.position.y -(25 * i), b.transform.position.z);
+            //give the button a reference to this ability
+            b.GetComponent<AbilityButton>().Initialize(list[i]);
+        }
+    }
+
     private void SortList1()
     {
+        Debug.Log("sortin list 1");
         List<BeingToken> sortedList = LIST1.OrderByDescending(o => o.reflexSpeed).ToList();
         LIST1 = sortedList;
     }
@@ -180,6 +238,8 @@ public class ActionManager : MonoBehaviour {
                 {
                     Debug.Log("Doing effect " + effectsInPlay[i].effect.effectName + " from " + effectsInPlay[i].effect.parentAbility + " in " + effectsInPlay[i].effect.parentBeing.beingName);
                     effectsInPlay[i].effect.Use(effectsInPlay[i].targets[ii]);
+                    effectsInPlay[i].effect.persistsForRounds -= 1;
+
 
                 }
             }
@@ -404,6 +464,11 @@ public class ActionManager : MonoBehaviour {
         return a;
     }
 
+    public float GetPowerLevelComparison(Being origin, Being comparator)
+    {
+        return origin.GetResourceValue("POWERLEVEL", 1) / comparator.GetResourceValue("POWERLEVEL", 1);
+    }
+
     private void NextTurn()
     {
         Debug.Log("next turn");
@@ -427,8 +492,30 @@ public class ActionManager : MonoBehaviour {
         
     }
 
+    private void RemoveSpentEffects()
+    {
+        for (int i = effectsInPlay.Count -1; i > -1; i--)
+        {
+            if (effectsInPlay[i].effect.persistsForRounds <= 0)
+            {
+                effectsInPlay.RemoveAt(i);
+            }
+        }
+    }
+
+    private void UnCommitBeings()
+    {
+        //What about beings in a beam battle etc? They should stay committed.
+        for (int i = 0; i < LIST1.Count; i++)
+        {
+            LIST1[i].being.isCommittedToAction = false;
+        }
+    }
+
     private void NewRound()
     {
-        Debug.Log("END OF ROUND");
+        RemoveSpentEffects();
+        UnCommitBeings();
+        step = 0;
     }
 }

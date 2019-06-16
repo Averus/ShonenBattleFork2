@@ -38,7 +38,7 @@ public class StatModulation : Effect {
 
     
 
-    public StatModulation(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, Stat targetStat, string modifier, int value) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
+    public StatModulation(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, Stat targetStat, string modifier, int value, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
     {
         this.targetStat = targetStat;
         this.modifier = modifier;

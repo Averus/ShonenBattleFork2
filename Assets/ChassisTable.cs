@@ -491,6 +491,8 @@ public class ChassisTable : ScriptableObject
                     {
 
                             float attackersFavour = ((action.provoker.toHit / action.toHit) * 100) - 100;
+                        Debug.Log("Provoker " + action.provoker.toHit + " vs Action " + action.toHit);
+
 
                             if (attackersFavour <= criticalFail)
                             {
@@ -530,33 +532,9 @@ public class ChassisTable : ScriptableObject
                 //ONE DEFENDER/TARGET
                 if (action.targets.Count == 1)
                 {
- 
-                            float attackersFavour = ((1 / action.toHit) * 100) - 100;
-
-                            if (attackersFavour <= criticalFail)
-                            {
-                                return 1;
-                            }
-
-                            if (attackersFavour > criticalFail && attackersFavour <= fail)
-                            {
-                                return 2;
-                            }
-
-                            if (attackersFavour > fail && attackersFavour <= success)
-                            {
-                                return 3;
-                            }
-
-                            if (attackersFavour > success && attackersFavour <= criticalSuccess)
-                            {
-                                return 4;
-                            }
-
-                            if (attackersFavour > criticalSuccess)
-                            {
-                                return 5;
-                            }  
+                    return 5; //If there's no contest it means that the attack is coming in faster than any response was able to fire, therefore autohit
+                   //I've never seen an anime character miss a purposefull attack, that would mean the action speed (to hit) was a 'bad roll' adn the opponent would easily avoid
+                   
                 }
             }
         }
@@ -590,7 +568,7 @@ public class ChassisTable : ScriptableObject
                         //use the functions in the appropriate rule
                         for (int ii = 0; ii < chassisRules[i].functons.Count; ii++)
                         {
-                            Debug.Log(chassisRules[i].functons.Count);
+                            //Debug.Log(chassisRules[i].functons.Count);
                             chassisRules[i].functons[ii].Use();
                         }
                         return;

@@ -18,13 +18,8 @@ ActionType Reaction,ActorCount 1,TargetCount 1,ProvokerCount 1,ActorChassis Bloc
 ActionType Reaction,ActorCount 1,TargetCount 1,ProvokerCount 1,ActorChassis Block,ProvokerChassis Melee,AttackersFavour 3,"ACTOR blocks TARGET's fist just in the nick of time",_ActorAndProvokerHit
 ActionType Reaction,ActorCount 1,TargetCount 1,ProvokerCount 1,ActorChassis Block,ProvokerChassis Melee,AttackersFavour 2,"TARGET delivers a solid punch past ACTOR's guard",_ProvokerHit
 ActionType Reaction,ActorCount 1,TargetCount 1,ProvokerCount 1,ActorChassis Block,ProvokerChassis Melee,AttackersFavour 1,"TARGET utterly fails to block ACTOR's fist slamming in to their face",_ProvokerHit
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 5,"TARGET has no time to act before ACTOR hits them square in the face"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 4,"ACTOR intercepts TARGET with a blow to the face"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 3,"In the last second ACTOR knocks TARGET's arm away from their target"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 2,"TARGET easily avoids ACTOR's blow"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 1,"ACTOR hits only TARGET's afterimage as they flash past"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 5,"TARGET utterly fails to block ACTOR's fist slamming in to their face"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 4,"ACTOR delivers a solid punch through TARGET guard"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 3,"TARGET blocks ACTOR's fist just in the nick of time"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 2,"TARGET blocks ACTOR's hit"
-ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 1,"TARGET easily blocks ACTOR's punch"
+ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 5,"TARGET has no time to act before ACTOR hits them square in the face",_ActorHit
+ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 4,"This chassis rule shouldnt exist"
+ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 3,"This chassis rule shouldnt exist"
+ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 2,"This chassis rule shouldnt exist"
+ActionType Normal,ActorCount 1,TargetCount 1,ActorChassis Melee,AttackersFavour 1,"This chassis rule shouldnt exist"

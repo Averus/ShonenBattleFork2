@@ -7,7 +7,7 @@ public class Resource{
 
     public float last;//Used to work out how much change there's been since last checked
     public readonly string resourceName = "NO NAME";
-    float current;
+    public float current;
     float max;
 
     //readonly List<ResourceModifier> resourceModifiers;

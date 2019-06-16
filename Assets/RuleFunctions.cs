@@ -9,6 +9,7 @@ public class RuleFunctions : ScriptableObject
     public void BasicResolutionChecks(Being b)
     {
         DamageCheck(b);
+        ToughnessVsDamage(b);
     }
 
     void DamageCheck(Being b)
@@ -31,10 +32,28 @@ public class RuleFunctions : ScriptableObject
             {
                 float damage = hp.GetCurrent() - hp.last;
                 b.HPDamageThisTurn = damage;
-                //Debug.Log(damage + " hp added to " + b.beingName);
+               // Debug.Log(damage + " hp added to " + b.beingName);
             }
 
             hp.last = hp.GetCurrent();
+        }
+    }
+
+    void ToughnessVsDamage(Being b)
+    {
+        if (b.GetStat("TOUGHNESS") == null)
+        {
+            Debug.Log("Cannot find an TOUGHNESS resource in Being " + b.beingName);
+        }
+        else
+        {
+            Stat toughness = b.GetStat("TOUGHNESS");
+
+            if (b.HPDamageThisTurn > toughness.current)
+            {
+                Debug.Log(b.beingName + " is staggered");
+                b.status = Being.Status.staggered;
+            }
         }
     }
 

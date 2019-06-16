@@ -34,10 +34,11 @@ public class ModulateResource_Effect : Effect{
 
 
 
-    public ModulateResource_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, int value, bool targetSelf, CombatState usedInState) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
+    public ModulateResource_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, int value, bool targetSelf, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
     {
         this.targetResource = targetStat;
         this.value = value;
         this.targetSelf = targetSelf;
+        this.persistsForRounds = persistsForRounds;
     }
 }

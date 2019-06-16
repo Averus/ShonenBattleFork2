@@ -9,6 +9,15 @@ public class Dodge_DefenceEffect : Effect
     {
         Debug.Log(target.beingName + " flickers as they dodge with super speed.");
 
+        for (int i = actionManager.effectsInPlay.Count - 1; i > -1; i--)
+        {
+            //This is farly simplistic and may need to be revisited if the effectsInPlay list becomes full of items from other turns etc
+            if (actionManager.effectsInPlay[i].effect.UsedInState == CombatState.Hit)
+            {
+                actionManager.effectsInPlay.RemoveAt(i);
+            }
+        }
+
     }
 
 
@@ -16,7 +25,7 @@ public class Dodge_DefenceEffect : Effect
 
 
 
-    public Dodge_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
+    public Dodge_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
     {
 
     }

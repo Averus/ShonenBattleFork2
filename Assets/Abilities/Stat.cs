@@ -26,6 +26,10 @@ public class Stat {
             }
             return _current;
         }
+        set
+        {
+            _current = value;
+        }
 
     }
 

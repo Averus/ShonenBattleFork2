@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class EffectToken
 {
+
     public List<Being> targets;
 
     public Effect effect;

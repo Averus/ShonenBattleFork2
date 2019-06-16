@@ -19,8 +19,8 @@ public class Being : MonoBehaviour{
     //public List<StatModulation> statModulations = new List<StatModulation>(); //the list of EffectTokens is now global, it contains all effects currnetly in play and is in the battlemanager
 
     //normal, dazed, staggared, unconcious, dead etc
-    public enum Condition { normal, dazed, staggered, unconcious };
-    public Condition condition = Condition.normal;
+    public enum Status { normal, dazed, staggered, unconcious };
+    public Status status = Status.normal;
 
     //Behaviours will go here, behaviours dictate AI behaviour
     public List<Behaviour> behaviours = new List<Behaviour>();
@@ -53,6 +53,7 @@ public class Being : MonoBehaviour{
     public void Start()
     {
         actionManager = GameObject.Find("ActionManager").GetComponent<ActionManager>();
+
     }
 
 
@@ -528,15 +529,39 @@ public void SelectAnAbility()
 
         return new Action(thought.thoughtType, rollToHit(thought), thought.reflex, thought.actors, thought.ability, thought.targets);
     }
+    public List<Ability> ListUseableAbilities()  //This is for player controlled beings to display useable abilities
+    {
+        useableAbilities.Clear();
+
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if (abilities[i].CanThisBeUsed(actionManager))
+            {
+                useableAbilities.Add(abilities[i]);
+                //Debug.Log(abilities[i].abilityName + " added to useableAbilities list");
+            }
+        }
+
+        if (useableAbilities.Count == 0)
+        {
+            Debug.Log(beingName + " has no useable abilities and will do nothing");
+            return null;
+        }
+
+        return useableAbilities;
+
+
+    }
+       
     private float rollToHit(Thought thought)
     {
         float dex = this.GetStatValue("DEXTERITY", 2);
         float random = Random.Range(1, 10);
         float pl = this.GetResourceValue("POWERLEVEL", 1);
-        float ToHit = pl + ((dex / 100) * thought.ability.ranks) + random;
-        //Debug.Log(pl + " + (" + (dex / 100) + " * " + thought.ability.ranks + ") + " + random + " + " + tohit + " = " + ToHit);
+        float toHit = pl + ((dex / 100) * thought.ability.ranks) + random;
+        //Debug.Log(pl + " + (" + (dex / 100) + " * " + thought.ability.ranks + ") + " + random + " + " + toHit + " = " + toHit);
 
-        return ToHit;
+        return toHit;
     }
     public void CheckResolveRules()
     {

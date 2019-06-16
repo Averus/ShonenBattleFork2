@@ -15,7 +15,7 @@ public class AnyAction_DefenceEffect : Effect {
 
 
 
-    public AnyAction_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState) : base(actionManager, parentBeing, parentAbility, effectName, usedInState)
+    public AnyAction_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
     {
 
     }
