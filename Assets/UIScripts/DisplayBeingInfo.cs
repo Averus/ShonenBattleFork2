@@ -50,7 +50,9 @@ public class DisplayBeingInfo : MonoBehaviour {
             "\n" +
             "Stats " + "\n" +
             GetStats() +
-            "\n";
+            "\n" +
+            "Status" + "\n" +
+            being.status;
 
 
 

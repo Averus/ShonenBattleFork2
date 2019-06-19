@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CombatState
 {
@@ -21,8 +22,8 @@ public class ActionManager : MonoBehaviour {
     public bool turnNotFinishedYet = false;
 
     public Canvas canvas;
-    public GameObject scrollViewPrefab;//used when player has a list of options
-    public GameObject buttonPrefab; //used when player must select options
+    public GameObject selectAbilitiesMenuPrefab;//used when player must select abilities to use
+    public GameObject button; //used when player must select from some options
 
     public List<BeingToken> LIST1 = new List<BeingToken>(); //A list of beings acting in the location
     public List<Thought> LIST2 = new List<Thought>();//A list of actions declared by said beings ready to be ordered and added to...
@@ -37,6 +38,9 @@ public class ActionManager : MonoBehaviour {
     public Thought currentThought = null; //The current Thought that is being evaluated
     public Action currentAction = null; //The current action being evaluated
     public float attackersFavour = 0; //Actors speed value
+
+    //public Thought playerSelectedAbility = null; //The ability chosen by the player
+    public List<Thought> playerSelectedAbilities = null; //a package of abilities selected by the player on the current turn
 
     // Use this for initialization
     void Start () {
@@ -94,9 +98,8 @@ public class ActionManager : MonoBehaviour {
 
             if (step == 0)
            {
-               step = 1; //fires the turn of the current Being, asking them to Think() and filling LIST2
-               Step1();
-               pause = true;
+               Step1(); //fires the turn of the current Being, asking them to Think() and filling LIST2
+                pause = true;
             }
 
 
@@ -123,29 +126,21 @@ public class ActionManager : MonoBehaviour {
         //turnNotFinishedYet = true; //not sure what this was for.
         if (LIST1.Count > 0)
         {
+            //IF BEING IS PLAYER CONTROLLED
             if (LIST1[currentTurn].being.playerControlled == true)
             {
-                Debug.Log("IS POLAYER CONTROLERD");
-                //ask Being to Think of some abilities to use
-                List<Ability> tempList = LIST1[currentTurn].being.ListUseableAbilities();
+                Debug.Log("IS PLAYER CONTROLED");
 
-                if (tempList != null)
-                {
-                    if (tempList.Count > 0)
-                    {
-                        //Unlike most instancs of Think(), this action must be taken at the reflexspeed the Being originally rolled at the start of the round
-                        for (int i = 0; i < tempList.Count; i++)
-                        {
-                            if (tempList[i].abilityType == AbilityType.PublicNormal)
-                            {
-                                tempList[i].reflex = LIST1[currentTurn].reflexSpeed;
-                            }
-                        }
-                        DisplayUseableAbilities(tempList);
-                    }
-                }
+                //create a 'Select Abilities' menu for the player to use
+                GameObject scrollView = GameObject.Instantiate(selectAbilitiesMenuPrefab, canvas.transform);
+                //initialize the psa - set ThoughtType as normal as this will not be a reaction (it's on the beings combat turn)
+                //Unlike in other cases, any publicnormal abilities here must be taken at the reflexspeed the Being originally rolled at the start of the round
+                scrollView.GetComponent<PlayerSelectAbilities>().Initialize(this, LIST1[currentTurn].being, ThoughtType.Normal, LIST1[currentTurn].reflexSpeed);
+                
+                //from here the menu object will handle collecting abilities and targets etc, then will fire the next step in here itself.
             }
 
+            //IF BEING IS NOT PLAYER CONTROLLED
             if (LIST1[currentTurn].being.playerControlled == false)
             {
                 //ask Being to Think of some abilities to use
@@ -155,7 +150,7 @@ public class ActionManager : MonoBehaviour {
                 {
                     if (tempList.Count > 0)
                     {
-                        //Unlike most instancs of Think(), this action must be taken at the reflexspeed the Being originally rolled at the start of the round
+                        //Unlike most instances of Think(), this action must be taken at the reflexspeed the Being originally rolled at the start of the round
                         for (int i = 0; i < tempList.Count; i++)
                         {
                             if (tempList[i].ability.abilityType == AbilityType.PublicNormal)
@@ -177,24 +172,65 @@ public class ActionManager : MonoBehaviour {
     {
         LIST2.AddRange(thoughts);
         SortList2();
+        step = 1;
     }
 
-    private void DisplayUseableAbilities(List<Ability> list)
+    
+    /*
+    public void CheckPlayerSelectedAbility() //This is called from the ability selection popup (the script on the button sets the playerSelectedAbility to whatever ability)
     {
+        if (playerSelectedAbility == null)
+        {
+            Debug.Log(LIST1[currentTurn].being.beingName + " chose to do nothing");
+            step = 1;
+        }
+        if (playerSelectedAbility != null)
+        {
+            if (playerSelectedAbility.targets == null)
+            {
+                DisplayPossibleTargets();
+            }
+        }
+    }
+
+    private void DisplayPossibleTargets()
+    {
+        if (playerSelectedAbility == null)
+        {
+            Debug.Log("Error: Cannot select targets as there is no playerSelectedAbility");
+            step = 1;
+            return;
+        }
+
         GameObject scrollview = GameObject.Instantiate(scrollViewPrefab, canvas.transform);
         Transform content = scrollview.transform.GetChild(0).GetChild(0);
 
-
-        for (int i = 0; i < list.Count; i++)
+        if (playerSelectedAbility.targets.Count < playerSelectedAbility.ability.numberOfTargets)
         {
-            //put a button in the list
-            GameObject b = GameObject.Instantiate(buttonPrefab, content);
-            //space each button out by height
-            b.transform.position = new Vector3(b.transform.position.x, b.transform.position.y -(25 * i), b.transform.position.z);
-            //give the button a reference to this ability
-            b.GetComponent<AbilityButton>().Initialize(list[i]);
+
+            for (int i = 0; i < playerSelectedAbility.ability.validTargets.Count; i++)
+            {
+                //put a button in the list
+                GameObject b = GameObject.Instantiate(button, content);
+                //space each button out by height
+                b.transform.position = new Vector3(b.transform.position.x, b.transform.position.y - (25 * i), b.transform.position.z);
+                //give the button a reference to a valid target
+                b.GetComponent<ButtonBehaviours>().SetAsTargetButton(playerSelectedAbility.ability.validTargets[i]);
+                //Set the buttons onClick behaviour to fire its own ButtonCLicked method from its own ButtonBehaviours script (because each button is initialized differently)
+                //This onClick behaviour does not show in the inspector for some reason, but it does work
+                b.GetComponent<Button>().onClick.AddListener(b.GetComponent<ButtonBehaviours>().ButtonClicked);
+            }
+ 
         }
+        else
+        {
+            step = 1;
+        }
+
+
     }
+
+    */
 
     private void SortList1()
     {

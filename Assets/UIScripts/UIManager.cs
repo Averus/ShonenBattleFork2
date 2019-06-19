@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour {
             GameObject g = GameObject.Instantiate(beingInfoPrefab, canvas.transform);
             g.transform.position = g.transform.position += new Vector3(i * 210,0,0);
             g.GetComponent<DisplayBeingInfo>().being = b[i];
+                
+               
         }
 
        

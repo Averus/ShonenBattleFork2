@@ -517,10 +517,9 @@ MonoBehaviour:
   chassisTable: {fileID: 11400000, guid: a9e3138db1bbceb4483f068b007619c3, type: 2}
   turnNotFinishedYet: 0
   canvas: {fileID: 632279782}
-  scrollViewPrefab: {fileID: 1019393486563022, guid: 564fdb80b64f45c4a9fe98ce04032186,
+  selectAbilitiesMenuPrefab: {fileID: 1596863529838950, guid: 3b69df8511c204745a9f18aa03a9330d,
     type: 2}
-  buttonPrefab: {fileID: 1266638673614338, guid: d8a154f35438c8942ab7d037dd7d0634,
-    type: 2}
+  button: {fileID: 1266638673614338, guid: d8a154f35438c8942ab7d037dd7d0634, type: 2}
   LIST1: []
   LIST2: []
   LIST3: []
@@ -574,6 +573,7 @@ MonoBehaviour:
       validTargets: []
     targets: []
   attackersFavour: 0
+  playerSelectedAbilities: []
 --- !u!4 &931360443
 Transform:
   m_ObjectHideFlags: 0
