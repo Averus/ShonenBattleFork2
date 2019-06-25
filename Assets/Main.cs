@@ -33,9 +33,9 @@ public GameStates gameState = new GameStates();
 
         //test stuff below
 
-       // Being a = beingFactory.CreateBeing("Goku");
-        //beingFactory.AttackTeamBehaviour(a, 2);
-        //a.GetResource("POWERLEVEL").current += 150;
+        Being a = beingFactory.CreateBeing("Goku");
+        beingFactory.AttackTeamBehaviour(a, 2);
+        a.GetResource("POWERLEVEL").current += 150;
 
         Being b = beingFactory.CreateBeing("Gohan");
         beingFactory.AttackTeamBehaviour(b, 2);
@@ -60,7 +60,8 @@ public GameStates gameState = new GameStates();
         //beingFactory.AttackTeamBehaviour(h, 1);
         //beingFactory.DefendTeamReaction(h, 2);
 
-        //a.team = 1; b.team = 1; c.team = 1; d.team = 1;
+        a.team = 1;
+        //b.team = 1; c.team = 1; d.team = 1;
         //e.team = 2; f.team = 2; g.team = 2; h.team = 2;
         f.team = 2;
         b.team = 1;
@@ -77,6 +78,7 @@ public GameStates gameState = new GameStates();
 
         //Display the names, resources, etc of the Beings in Combat 
         List<Being> beingList = new List<Being>();
+        beingList.Add(a);
         beingList.Add(b);
         beingList.Add(f);
         uiManager.DisplayCombatantInfo(beingList);

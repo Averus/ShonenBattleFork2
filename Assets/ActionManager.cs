@@ -116,7 +116,6 @@ public class ActionManager : MonoBehaviour {
 
     public void AddToBeingQueue(BeingToken being)
     {
-        Debug.Log("hhdhdhdhdhdh");
         LIST1.Add(being);
         SortList1();
     }
@@ -137,7 +136,7 @@ public class ActionManager : MonoBehaviour {
                 //Unlike in other cases, any publicnormal abilities here must be taken at the reflexspeed the Being originally rolled at the start of the round
                 scrollView.GetComponent<PlayerSelectAbilities>().Initialize(this, LIST1[currentTurn].being, ThoughtType.Normal, LIST1[currentTurn].reflexSpeed);
                 
-                //from here the menu object will handle collecting abilities and targets etc, then will fire the next step in here itself.
+                //from here the menu object will handle collecting abilities and targets etc, then will fire the next step in ActionManager itself.
             }
 
             //IF BEING IS NOT PLAYER CONTROLLED
@@ -158,9 +157,10 @@ public class ActionManager : MonoBehaviour {
                                 tempList[i].reflex = LIST1[currentTurn].reflexSpeed;
                             }
                         }
-                        ProposeActions(tempList);
+                        //ProposeActions(tempList);
                     }
                 }
+                ProposeActions(tempList);
             }
 
 
@@ -170,8 +170,12 @@ public class ActionManager : MonoBehaviour {
 
     public void ProposeActions(List<Thought> thoughts)
     {
-        LIST2.AddRange(thoughts);
-        SortList2();
+        if (thoughts != null)
+        {
+            LIST2.AddRange(thoughts);
+            SortList2();
+        }
+        
         step = 1;
     }
 
@@ -234,7 +238,7 @@ public class ActionManager : MonoBehaviour {
 
     private void SortList1()
     {
-        Debug.Log("sortin list 1");
+        //Debug.Log("sortin list 1");
         List<BeingToken> sortedList = LIST1.OrderByDescending(o => o.reflexSpeed).ToList();
         LIST1 = sortedList;
     }
@@ -552,6 +556,7 @@ public class ActionManager : MonoBehaviour {
     {
         RemoveSpentEffects();
         UnCommitBeings();
+        currentTurn = 0;
         step = 0;
     }
 }

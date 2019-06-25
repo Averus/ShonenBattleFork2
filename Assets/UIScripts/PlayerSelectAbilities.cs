@@ -11,6 +11,8 @@ public class PlayerSelectAbilities : MonoBehaviour {
     float reflexSpeed;
 
     List<Thought> playerSelectedAbilities;
+    List<GameObject> buttons; //The buttons currently displayed
+    Transform content; // the game object that must parent buttons that are to be displayed in the menu
 
     public GameObject button;
     
@@ -24,7 +26,8 @@ public class PlayerSelectAbilities : MonoBehaviour {
 
     private void DisplayUseableAbilities()
     {
-        Transform content = transform.GetChild(0).GetChild(0);     
+        ClearMenu();
+        being.ListUseableAbilities();
 
         for (int i = 0; i < being.useableAbilities.Count; i++)
         {
@@ -34,18 +37,87 @@ public class PlayerSelectAbilities : MonoBehaviour {
             b.transform.position = new Vector3(b.transform.position.x, b.transform.position.y - (25 * i), b.transform.position.z);
             //give the button a reference to this ability
             b.GetComponent<ButtonBehaviours>().SetAsAbilityButton(actionManager, this, being.useableAbilities[i]);
-
             //Set the buttons onClick behaviour to fire its own ButtonClicked method from its own ButtonBehaviours script (because each button is initialized differently)
             //This onClick behaviour does not show in the inspector for some reason, but it does work
             b.GetComponent<Button>().onClick.AddListener(b.GetComponent<ButtonBehaviours>().ButtonClicked);
+            buttons.Add(b);
+        }
+    }
+
+    private void ClearMenu()
+    {
+        if (buttons != null)
+        {
+            if (buttons.Count > 0)
+            {
+                for (int i = buttons.Count -1; i > -1; i--)
+                {
+                    GameObject.Destroy(buttons[i]);
+                }
+            }
+
         }
     }
 
     public void DisplayValidTargets(Ability ability)
     {
-        Debug.Log("displaying targets for " + ability.abilityName);
+        ClearMenu();
+
+        for (int i = 0; i < ability.validTargets.Count; i++)
+        {
+            //put a button in the list
+            GameObject b = GameObject.Instantiate(button, content);
+            //space each button out by height
+            b.transform.position = new Vector3(b.transform.position.x, b.transform.position.y - (25 * i), b.transform.position.z);
+            //give the button a reference to a target
+            b.GetComponent<ButtonBehaviours>().SetAsTargetButton(actionManager, this, ability.validTargets[i]);
+            //Set the buttons onClick behaviour to fire its own ButtonClicked method from its own ButtonBehaviours script (because each button is initialized differently)
+            //This onClick behaviour does not show in the inspector for some reason, but it does work
+            b.GetComponent<Button>().onClick.AddListener(b.GetComponent<ButtonBehaviours>().ButtonClicked);
+            buttons.Add(b);
+        }
     }
 
+    //called from an ability button, creates a thought containing the selected ability and puts it in the playerSelectedABility list
+    public void ChooseAbility(Ability ability)
+    {
+        List<Being> targets = new List<Being>();
+
+        if (reflexSpeed == 0)
+        {
+            Thought thought = new Thought(thoughtType, being.rollReflex(), ability, targets);
+            thought.actors.Add(being);
+            playerSelectedAbilities.Add(thought);
+            return;
+        }
+        else
+        {
+            Thought thought = new Thought(thoughtType, reflexSpeed, ability, targets);
+            thought.actors.Add(being);
+            playerSelectedAbilities.Add(thought);
+        }
+
+    }
+
+    //This needs ability because a player can choose multiple abilities on their turn (from this one menu?)
+    public void SetTarget(Being target)
+    {
+
+        if (playerSelectedAbilities[playerSelectedAbilities.Count - 1].targets.Count < playerSelectedAbilities[playerSelectedAbilities.Count - 1].ability.numberOfTargets)
+        {
+            playerSelectedAbilities[playerSelectedAbilities.Count - 1].targets.Add(target);
+        }
+        else
+        {
+            //check to see if we're ready to return to ActionManager
+            //Do we have one and only one public normal etc (perhaps check that in 'choose ability' or rebuild the buttons after one has been chosen)
+
+            actionManager.ProposeActions(playerSelectedAbilities);
+            GameObject.Destroy(gameObject);
+        }
+
+       
+    }
 
     public void Initialize(ActionManager actionManager, Being being, ThoughtType thoughtType)
     {
@@ -53,7 +125,9 @@ public class PlayerSelectAbilities : MonoBehaviour {
         this.being = being;
         this.thoughtType = thoughtType;
 
-        playerSelectedAbilities = new List<Thought>();
+        this.playerSelectedAbilities = new List<Thought>();
+        this.buttons = new List<GameObject>();
+        this.content = transform.GetChild(0).GetChild(0);
 
         DisplayUseableAbilities();
    

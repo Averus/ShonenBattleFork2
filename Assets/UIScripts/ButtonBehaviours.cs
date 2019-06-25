@@ -24,9 +24,10 @@ public class ButtonBehaviours : MonoBehaviour {
        
 	}
 
-    public void SetAsTargetButton(Being target)
+    public void SetAsTargetButton(ActionManager actionManager, PlayerSelectAbilities psa, Being target)
     {
         this.target = target;
+        this.playerSelectAbilities = psa;
 
         if (gameObject.GetComponentInChildren<Text>() && this.target != null)
         {
@@ -46,11 +47,12 @@ public class ButtonBehaviours : MonoBehaviour {
         if (type == "ability")
         {
             Debug.Log("PRESSED " + ability.abilityName);
+            playerSelectAbilities.ChooseAbility(ability);
             playerSelectAbilities.DisplayValidTargets(ability);
         }
         if (type == "target")
         {
-            Debug.Log("PFRESSEDTARGET");
+            playerSelectAbilities.SetTarget(target);
         }
 
 
