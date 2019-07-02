@@ -288,6 +288,7 @@ public class ActionManager : MonoBehaviour {
 
     public void UseCurrentActionActorEffects(CombatState combatState)
     {
+        Debug.Log("USECURRENTACTIONACTOREFFECTS: " + combatState.ToString());
         //We begin calculating the abilities speed
         this.combatState = combatState;
         //Place effects that fire in the current state into the EffectsInPlay list
@@ -379,6 +380,9 @@ public class ActionManager : MonoBehaviour {
             visualManager.Visualise(a);
             SortList3();
             LIST2.RemoveAt(0);
+
+            //look for and resolve effects that fire on Activate in current ability - for example an MP cost for using this ability
+            UseCurrentActionActorEffects(CombatState.Activate);
 
             //look for and resolve effects that fire on AbilitySpeedCalc in current ability
             UseCurrentActionActorEffects(CombatState.AbilitySpeedCalc);

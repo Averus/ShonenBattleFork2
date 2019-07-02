@@ -217,7 +217,7 @@ public class BeingFactory : MonoBehaviour {
 
         ab4.abilityType = AbilityType.PublicNormal;
         ab4.conditions.Add(notStaggered2);
-        ab4.conditions.Add(reqStam);
+        //ab4.conditions.Add(reqStam);
         ab4.effects.Add(costsStamina);
         ab4.effects.Add(damage2);
         ab4.targetingCriteria.Add(o2);

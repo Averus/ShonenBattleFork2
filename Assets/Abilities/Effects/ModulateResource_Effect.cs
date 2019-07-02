@@ -11,7 +11,7 @@ public class ModulateResource_Effect : Effect{
 
     public override void Use(Being target)
     {
-
+        Debug.Log("Modulate resource: " + targetResource + " " + value);
         Resource actualTargetResource;
 
         if (targetSelf)
