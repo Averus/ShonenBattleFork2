@@ -24,7 +24,7 @@ public class ModulateToHitSelf_Effect : Effect
 
 
 
-    public ModulateToHitSelf_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int value, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
+    public ModulateToHitSelf_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string modulator, int value, CombatState usedInState, int persistsForTurns, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForTurns, persistsForRounds)
     {
         this.modulator = modulator;
         this.value = value;

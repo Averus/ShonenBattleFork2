@@ -16,8 +16,8 @@ public class Being : MonoBehaviour{
     //all stats to go here
     public List<Stat> stats = new List<Stat>();
     public List<Resource> resources = new List<Resource>();
-    //public List<StatModulation> statModulations = new List<StatModulation>(); //the list of EffectTokens is now global, it contains all effects currnetly in play and is in the battlemanager
-
+    public List<FocusToken> focus = new List<FocusToken>();
+ 
     //normal, dazed, staggared, unconcious, dead etc
     public enum Status { normal, dazed, staggered, unconcious };
     public Status status = Status.normal;
@@ -64,7 +64,6 @@ public class Being : MonoBehaviour{
 
     }
 
-    //honestly code for this project is getting sloppier and sloppier, just look at the state of all this messy reliance on strings
     /// <summary>
     /// Returns the value of a substat, 0 = Max, 1 = Base, 2 = current 
     /// </summary>
@@ -177,9 +176,9 @@ public class Being : MonoBehaviour{
         return null;
     }
 
-    /*
+    
     //GetUsableAbilities should be called once per turn. Filters abilities by which ones can be performed, checks for valid targets for each ability and populated their valid targets lists
-    public void GetUseableActiveAbilities()
+    private void GetUseableActiveAbilities()
     {
         //Debug.Log("getting useable abilities");
         useableAbilities.Clear();
@@ -188,7 +187,7 @@ public class Being : MonoBehaviour{
         {
             if (abilities[i].isPassive == false)
             {
-                if (abilities[i].CanThisBeUsed())
+                if (abilities[i].CanThisBeUsed(actionManager))
                 {
                     useableAbilities.Add(abilities[i]);
                     //Debug.Log(abilities[i].abilityName + " added to useableAbilities list");
@@ -207,10 +206,10 @@ public class Being : MonoBehaviour{
         {
             if (abilities[i].isPassive == true) 
             {
-                if (abilities[i].CanThisBeUsed())
+                if (abilities[i].CanThisBeUsed(actionManager))
                 {
                     useableAbilities.Add(abilities[i]);
-                    //Debug.Log(abilities[i].abilityName + " added to useableAbilities list");
+                    Debug.Log(abilities[i].abilityName + " added to useableAbilities list");
                 }
 
             }
@@ -224,7 +223,7 @@ public class Being : MonoBehaviour{
 
         for (int i = 0; i < defences.Count; i++)
         {
-            if (defences[i].CanThisBeUsed())
+            if (defences[i].CanThisBeUsed(actionManager))
             {
                 useableDefences.Add(defences[i]);
                 //Debug.Log(defences[i].abilityName + " added to useableDefences list");
@@ -232,7 +231,7 @@ public class Being : MonoBehaviour{
         }
     }
 
-        */
+      
     //Compares behaviours to the abilities that can be used and sets selectedAbility equal to an ability from useableAbilities
 
     /*
@@ -323,16 +322,8 @@ public void SelectAnAbility()
         List<Thought> thoughts = new List<Thought>();
         float thisThoughtsReflex = rollReflex();
 
-        useableAbilities.Clear();
-
-        for (int i = 0; i < abilities.Count; i++)
-        {
-                if (abilities[i].CanThisBeUsed(actionManager))
-                {
-                    useableAbilities.Add(abilities[i]);
-                    //Debug.Log(abilities[i].abilityName + " added to useableAbilities list");
-                }
-        }
+        //clear, the populate the useable abilities list with useable active abilities
+        GetUseableActiveAbilities();
 
         List<Behaviour> useableBehaviours = new List<Behaviour>();
 
@@ -551,8 +542,7 @@ public void SelectAnAbility()
         return useableAbilities;
 
 
-    }
-       
+    }  
     private float rollToHit(Thought thought)
     {
         float dex = this.GetStatValue("DEXTERITY", 2);

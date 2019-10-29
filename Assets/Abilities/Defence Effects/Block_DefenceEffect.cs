@@ -26,7 +26,7 @@ public class Block_DefenceEffect : Effect {
                     int damageAfterBlocking = mo.value / 2;
 
                     //create a new modulateResource_Effect to replace it - now with the halved damage
-                    ModulateResource_Effect mod = new ModulateResource_Effect(actionManager, mo.parentBeing, mo.parentAbility, mo.effectName, mo.targetResource, damageAfterBlocking, mo.targetSelf, mo.UsedInState, mo.persistsForRounds);
+                    ModulateResource_Effect mod = new ModulateResource_Effect(actionManager, mo.parentBeing, mo.parentAbility, mo.effectName, mo.targetResource, damageAfterBlocking, mo.targetSelf, mo.UsedInState,mo.persistsForTurns, mo.persistsForRounds);
 
                     //swap the effect in this effectToken for the new effect with halved damage
                     actionManager.effectsInPlay[i].effect = mod;
@@ -41,7 +41,7 @@ public class Block_DefenceEffect : Effect {
 
 
 
-    public Block_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
+    public Block_DefenceEffect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, int persistsForTurns, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForTurns, persistsForRounds)
     {
 
     }

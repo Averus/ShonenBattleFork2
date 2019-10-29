@@ -5,6 +5,14 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RuleFunctions : ScriptableObject
 {
+    public GameObject attributeFocusMenu;
+
+    //Calls the focus attribution menu. This function is called by an 'attribute focus' ability that all beings who can do so should have
+    public void PlayerAttributesFocus(ActionManager actionManager, Transform canvas, Being being) 
+    {
+        GameObject ob = GameObject.Instantiate(attributeFocusMenu, canvas);
+        ob.GetComponent<PlayerAttributesFocus>().Initialize(actionManager, being);
+    }
 
     public void BasicResolutionChecks(Being b)
     {
@@ -56,5 +64,6 @@ public class RuleFunctions : ScriptableObject
             }
         }
     }
+
 
 }

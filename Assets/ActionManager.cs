@@ -19,6 +19,8 @@ public class ActionManager : MonoBehaviour {
 
     public VisualManager visualManager;
     public ChassisTable chassisTable;
+    public RuleFunctions ruleFunctions;
+    public Debug_Visualiser debug_Visualiser; //This is a temporary script that handles displaying the 'visuals' from the visualManager while they're still text strings
     public bool turnNotFinishedYet = false;
 
     public Canvas canvas;
@@ -125,6 +127,8 @@ public class ActionManager : MonoBehaviour {
         //turnNotFinishedYet = true; //not sure what this was for.
         if (LIST1.Count > 0)
         {
+
+
             //IF BEING IS PLAYER CONTROLLED
             if (LIST1[currentTurn].being.playerControlled == true)
             {
@@ -278,12 +282,14 @@ public class ActionManager : MonoBehaviour {
                 {
                     Debug.Log("Doing effect " + effectsInPlay[i].effect.effectName + " from " + effectsInPlay[i].effect.parentAbility + " in " + effectsInPlay[i].effect.parentBeing.beingName);
                     effectsInPlay[i].effect.Use(effectsInPlay[i].targets[ii]);
-                    effectsInPlay[i].effect.persistsForRounds -= 1;
+                    effectsInPlay[i].effect.persistsForTurns -= 1;
 
 
                 }
             }
         }
+        //false because it's not yet the end of the round
+        RemoveSpentEffects(false);
     }
 
     public void UseCurrentActionActorEffects(CombatState combatState)
@@ -366,18 +372,19 @@ public class ActionManager : MonoBehaviour {
         if (LIST2.Count > 0)
         {
             //Take action
-
-            LIST2[0].ability.GetParentBeing().isCommittedToAction = true;//this should only happen when it's a PUBLICNORMAL abilty
             currentThought = LIST2[0];
-            //The abilites visual fires (not the individual effect visuals, the 'activate' visual)
-            //visualManager.VisualiseThought(LIST2);
+            //If the current action is a PublicNormal, set that being as Committed to action - whether it's their turn or not (in the case of a reaction)
+            if (currentThought.ability.abilityType == AbilityType.PublicNormal)
+            {
+                LIST2[0].ability.GetParentBeing().isCommittedToAction = true;
+            }
             //Move thought from list 2 to become an action in list 3: 'X dashes forwards'
             Action a = LIST2[0].ability.GetParentBeing().Act(LIST2[0]);
             LIST3.Add(a);
             //find action 'a' that were currently moving from Thought to Action in LIST3 - it might not be in element 0
             currentAction = LIST3.Find(action => action == a);
             //Play the 'activate' visual of the ability
-            visualManager.Visualise(a);
+            debug_Visualiser.Debug_DisplayNewVisuals(visualManager.Visualise(a));
             SortList3();
             LIST2.RemoveAt(0);
 
@@ -443,7 +450,7 @@ public class ActionManager : MonoBehaviour {
                     //compare tohits to get attackers to hit advantage
                     attackersFavour = chassisTable.CompareToHits(currentAction);
 
-                    visualManager.VisualiseResolution();
+                    debug_Visualiser.Debug_DisplayNewVisuals(visualManager.VisualiseResolution());
                     //Compare Chassis rules to see if a special effect happens like a beam battle
                     chassisTable.CheckChassisTable();
 
@@ -536,15 +543,33 @@ public class ActionManager : MonoBehaviour {
         
     }
 
-    private void RemoveSpentEffects()
+    private void RemoveSpentEffects(bool endOfRound)
     {
-        for (int i = effectsInPlay.Count -1; i > -1; i--)
+        if (!endOfRound)
         {
-            if (effectsInPlay[i].effect.persistsForRounds <= 0)
+            for (int i = effectsInPlay.Count - 1; i > -1; i--)
             {
-                effectsInPlay.RemoveAt(i);
+                //checks the effects persists for TURNS value
+                if (effectsInPlay[i].effect.persistsForTurns <= 0)
+                {
+                    effectsInPlay.RemoveAt(i);
+                }
+            }
+
+        }
+
+        if (endOfRound)
+        {
+            for (int i = effectsInPlay.Count - 1; i > -1; i--)
+            {
+                //checks the effects persists for ROUNDS value
+                if (effectsInPlay[i].effect.persistsForRounds <= 0)
+                {
+                    effectsInPlay.RemoveAt(i);
+                }
             }
         }
+
     }
 
     private void UnCommitBeings()
@@ -558,7 +583,11 @@ public class ActionManager : MonoBehaviour {
 
     private void NewRound()
     {
-        RemoveSpentEffects();
+        for (int i = 0; i < effectsInPlay.Count; i++)
+        {
+            effectsInPlay[i].effect.persistsForRounds--;
+        }
+        RemoveSpentEffects(true);
         UnCommitBeings();
         currentTurn = 0;
         step = 0;

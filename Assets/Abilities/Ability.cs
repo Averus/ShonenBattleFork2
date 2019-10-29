@@ -22,7 +22,10 @@ public enum AbilityChassis
     Block = 700,
     Dodge = 800,
 
-    Speech = 900,
+    StaggerRecover = 900,
+
+    Speech = 1000,
+    Thought = 1100
 }
 
 [System.Serializable]

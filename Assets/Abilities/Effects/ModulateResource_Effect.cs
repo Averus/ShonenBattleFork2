@@ -11,7 +11,7 @@ public class ModulateResource_Effect : Effect{
 
     public override void Use(Being target)
     {
-        Debug.Log("Modulate resource: " + targetResource + " " + value);
+        Debug.Log("Modulate resource: " + targetResource + " " + value + " on " + target.beingName);
         Resource actualTargetResource;
 
         if (targetSelf)
@@ -34,7 +34,7 @@ public class ModulateResource_Effect : Effect{
 
 
 
-    public ModulateResource_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, int value, bool targetSelf, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
+    public ModulateResource_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetStat, int value, bool targetSelf, CombatState usedInState, int persistsForTurns, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForTurns, persistsForRounds)
     {
         this.targetResource = targetStat;
         this.value = value;

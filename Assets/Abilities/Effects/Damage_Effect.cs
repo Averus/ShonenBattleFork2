@@ -36,7 +36,7 @@ public class Damage_Effect : Effect
     }
 
 
-    public Damage_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetResource, int damage, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
+    public Damage_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, string targetResource, int damage, CombatState usedInState, int persistsForTurns, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForTurns, persistsForRounds)
     {
         this.baseDamage = damage;
         this.targetResource = targetResource;

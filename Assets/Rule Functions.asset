@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251904f5048c364458e522a2d87d2042, type: 3}
   m_Name: Rule Functions
   m_EditorClassIdentifier: 
+  attributeFocusMenu: {fileID: 1438503221601546, guid: 5981a8f8185cb1e41a896f37d7e4d49e,
+    type: 2}

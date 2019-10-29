@@ -8,7 +8,12 @@ public class StatusIs_Condition : Condition
 
     public override bool CanThisBeUsed()
     {
-        throw new System.NotImplementedException();
+        if (parentBeing.status == status)
+        {
+            return true;
+        }
+
+        return false;
     }
 
 

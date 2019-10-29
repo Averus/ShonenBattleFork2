@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1266638673614338, guid: d8a154f35438c8942ab7d037dd7d0634, type: 2}
+  beingNameText: {fileID: 114331404343083084}
 --- !u!114 &114787541754789240
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -479,10 +479,14 @@ public class VisualManager : ScriptableObject {
         return null;
     }
 
-    private void GetDefaultActivationVisual()
+    private List<string> GetDefaultActivationVisual()
     {
+
+        List<string> visuals = new List<string>();
+
         if (defaultActivationChassisVisuals != null)
         {
+
             for (int i = 0; i < defaultActivationChassisVisuals.Count; i++)
             {
 
@@ -493,23 +497,27 @@ public class VisualManager : ScriptableObject {
                     if (actionManager.currentAction.actionType == ThoughtType.Reaction)
                     {
                         s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.targets[0].beingName, actionManager.currentAction.provoker.actors[0].beingName);
-                        Debug.Log(s);
+                        visuals.Add(s);
                     }
                     else
                     {
                         s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.targets[0].beingName, "no provoker");
-                        Debug.Log(s);
+                        visuals.Add(s);
                     }
                     //Only one visual fires with this method, the most specific case
-                    return;
+                    return visuals;
                 }
             }
             Debug.Log("Error: There is no default activation visual for this circumstance");
         }
+
+        return visuals;
     }
 
-    private void GetResolutionVisual()
+    private List<string> GetResolutionVisual()
     {
+        List<string> visuals = new List<string>();
+
         if (resolutionVisuals != null)
         {
             for (int i = 0; i < resolutionVisuals.Count; i++)
@@ -521,20 +529,22 @@ public class VisualManager : ScriptableObject {
                     if (actionManager.currentAction.actionType == ThoughtType.Reaction)
                     {
                         s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.targets[0].beingName, actionManager.currentAction.provoker.actors[0].beingName);
-                        Debug.Log(s);
+                        visuals.Add(s);
                     }
                     else
                     {
                         s = InsertNames(s, actionManager.currentAction.actors[0].beingName, actionManager.currentAction.targets[0].beingName, "no provoker");
-                        Debug.Log(s);
+                        visuals.Add(s);
                     }
                     //Only one visual fires with this method, the most specific case
-                    return;
+                    return visuals;
                 } 
             }
 
             Debug.Log("Error: No resolution visual found for this series of events");
         }
+
+        return visuals;
     }
 
     private string InsertNames(string s, string attacker, string target, string provoker)
@@ -551,7 +561,6 @@ public class VisualManager : ScriptableObject {
         List<ChassisRule> SortedList = list.OrderByDescending(o => o.conditions.Count).ToList(); 
         return SortedList;
     }
-
 
     public void VisualiseThought(List<Thought> LIST2)
     {
@@ -579,21 +588,25 @@ public class VisualManager : ScriptableObject {
         }
     }
 
-    public void Visualise(Action a)
+    public List<string> Visualise(Action a)
     {
+        List<string> visuals = new List<string>();
+
         if (a.ability.visual !=null)
         {
-            Debug.Log(a.ability.visual);
+            visuals.Add(a.ability.visual);           
         }
         if (a.ability.visual == null)
         {
-            GetDefaultActivationVisual();
+            visuals.AddRange(GetDefaultActivationVisual());
         }
+
+        return visuals;
     }
 
-    public void VisualiseResolution()
+    public List<string> VisualiseResolution()
     {
-        GetResolutionVisual();
+        return GetResolutionVisual();
     }
    
 

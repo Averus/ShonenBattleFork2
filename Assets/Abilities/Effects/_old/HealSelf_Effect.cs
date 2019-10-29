@@ -15,7 +15,7 @@ public class HealSelf_Effect : Effect {
     }
 
 
-    public HealSelf_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int healAmount, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
+    public HealSelf_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, int healAmount, CombatState usedInState, int persistsForTurns, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForTurns, persistsForRounds)
     {
         healByValue = healAmount;
     }

@@ -15,14 +15,8 @@ public class PlayerSelectAbilities : MonoBehaviour {
     Transform content; // the game object that must parent buttons that are to be displayed in the menu
 
     public GameObject button;
-    
-	
-	// Update is called once per frame
-	void Update () {
+    public Text beingNameText;
 
-
-		
-	}
 
     private void DisplayUseableAbilities()
     {
@@ -78,7 +72,7 @@ public class PlayerSelectAbilities : MonoBehaviour {
         }
     }
 
-    //called from an ability button, creates a thought containing the selected ability and puts it in the playerSelectedABility list
+    //called from an ability button, creates a thought containing the selected ability and puts it in the playerSelectedAbility list
     public void ChooseAbility(Ability ability)
     {
         List<Being> targets = new List<Being>();
@@ -111,9 +105,20 @@ public class PlayerSelectAbilities : MonoBehaviour {
         {
             //check to see if we're ready to return to ActionManager
             //Do we have one and only one public normal etc (perhaps check that in 'choose ability' or rebuild the buttons after one has been chosen)
+            for (int i = 0; i < playerSelectedAbilities.Count; i++)
+            {
+                if (playerSelectedAbilities[i].ability.abilityType == AbilityType.PublicNormal) 
+                {
+                    actionManager.ProposeActions(playerSelectedAbilities);
+                    GameObject.Destroy(gameObject);
+                    return;
+                }
 
-            actionManager.ProposeActions(playerSelectedAbilities);
-            GameObject.Destroy(gameObject);
+                DisplayUseableAbilities();
+
+            }
+
+            
         }
 
        
@@ -125,6 +130,7 @@ public class PlayerSelectAbilities : MonoBehaviour {
         this.being = being;
         this.thoughtType = thoughtType;
 
+        this.beingNameText.text = being.beingName;
         this.playerSelectedAbilities = new List<Thought>();
         this.buttons = new List<GameObject>();
         this.content = transform.GetChild(0).GetChild(0);

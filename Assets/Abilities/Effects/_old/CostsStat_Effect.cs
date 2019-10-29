@@ -29,7 +29,7 @@ public class CostsStat_Effect : Effect {
 
     }
 
-    public CostsStat_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, String effectName, String statName, int cost, CombatState usedInState, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
+    public CostsStat_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, String effectName, String statName, int cost, CombatState usedInState, int persistsForTurns, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForTurns, persistsForRounds)
     {
         this.actionManager = actionManager;
         this.parentBeing = parentBeing;

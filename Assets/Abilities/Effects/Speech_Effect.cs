@@ -14,7 +14,7 @@ public class Speech_Effect : Effect {
     }
 
 
-    public Speech_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, string speech, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForRounds)
+    public Speech_Effect(ActionManager actionManager, Being parentBeing, Ability parentAbility, string effectName, CombatState usedInState, string speech, int persistsForTurns, int persistsForRounds) : base(actionManager, parentBeing, parentAbility, effectName, usedInState, persistsForTurns, persistsForRounds)
     {
         this.speech = speech;
     }
