@@ -301,7 +301,7 @@ public class ActionManager : MonoBehaviour {
         ActivateEffects(currentAction);
         //Sort the list by resolution order
         SortEffectsInPlay(); //TODO
-                             //Resolve the list
+        //Resolve the list
         ResolveEffectsInPlay();
 
 
@@ -381,7 +381,7 @@ public class ActionManager : MonoBehaviour {
             //Move thought from list 2 to become an action in list 3: 'X dashes forwards'
             Action a = LIST2[0].ability.GetParentBeing().Act(LIST2[0]);
             LIST3.Add(a);
-            //find action 'a' that were currently moving from Thought to Action in LIST3 - it might not be in element 0
+            //find action 'a' that we're currently moving from Thought to Action in LIST3 - it might not be in element 0
             currentAction = LIST3.Find(action => action == a);
             //Play the 'activate' visual of the ability
             debug_Visualiser.Debug_DisplayNewVisuals(visualManager.Visualise(a));
